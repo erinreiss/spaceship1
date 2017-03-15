@@ -8,11 +8,32 @@
 	opacity: 1;
 }
 
+.interactionsShell{
+    width: 100%;
+    padding-top: 30%;
+    padding-bottom: 30%;
+
+}
+
+.interactionsPhotos{
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+.interactionquotes{
+    width: 50%;
+    font-family: "Lato";
+    font-weight: 200;
+    margin: 0 auto;
+}
+
 .headshot{
 	display: inline-block;
 	max-width: 170px;
 	width: 100%;
     border: solid 3px transparent;
+    padding: 5px;
 }
 
 .headshot:hover {
@@ -54,4 +75,21 @@
     max-width: 516px;
     margin-bottom: 11px;
     color: #000;
+}
+
+.sectionheader{
+    font-family: "Bevan";
+    padding-bottom: 30px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    font-size: 2.5rem;
+    line-height: 28px;
+    line-height: 1.75rem;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    color: #000;
+    margin: 0 auto;
+    margin-bottom: 42px;
+
 }
