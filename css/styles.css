@@ -3,62 +3,17 @@
   top: 0;
   left: 0;
 }
-#intro {
+#intro1 {
 	padding-top: 100px;
 	opacity: 1;
 }
 
-.interactionsShell{
+.headshotStatusQuo{
+    display: inline-block;
+    max-width: 170px;
     width: 100%;
-    padding-top: 30%;
-    padding-bottom: 30%;
-
-}
-
-.interactionsPhotos{
-    width: 90%;
-    margin: 0 auto;
-    padding-bottom: 20px;
-}
-
-.interactionquotes{
-    width: 50%;
-    font-family: "Lato";
-    font-weight: 200;
-    margin: 0 auto;
-}
-
-.headshot{
-	display: inline-block;
-	max-width: 170px;
-	width: 100%;
     border: solid 3px transparent;
-    padding: 5px;
-}
-
-.headshot:hover {
-    border-color: black;
-}
-
-.paragraph {
-	max-width: 516px;
-	padding-left: 20%;
-	font-family: "Droid+Serif";
-    font-weight: 400;
-	text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    margin-bottom: 12px;
-    font-size: 1rem;
-    line-height: 1.5rem
-    font-weight: 400;
-    font-style: normal;
-    color: #333;
-    display: block;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    margin: 0 0 1em 0;
+    padding: 23px;
 }
 
 .paraheader{
@@ -73,8 +28,29 @@
     text-align: left;
     -webkit-font-smoothing: antialiased;
     max-width: 516px;
-    margin-bottom: 11px;
+    margin-bottom: 20px;
     color: #000;
+}
+
+.paragraph {
+	max-width: 700px;
+	padding-left: 20%;
+	font-family: "Droid+Serif";
+    font-weight: 400;
+	text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    font-style: normal;
+    color: #333;
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    margin: 0 0 1em 0;
 }
 
 .sectionheader{
@@ -91,5 +67,44 @@
     color: #000;
     margin: 0 auto;
     margin-bottom: 42px;
+}
 
+.statusQuoPhotos {
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 200px;
+}
+
+.interactionsShell{
+    width: 100%;
+    padding-top: 30%;
+    padding-bottom: 30%;
+}
+
+.interactionsPhotos{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.interactionsQuotes{
+    width: 50%;
+    padding-top: 65px;
+    font-family: "Lato";
+    font-weight: 100;
+    margin: 0 auto;
+    font-style: italic;
+    font-size: 2em;
+    line-height: 41px;
+}
+
+.headshot{
+    display: inline-block;
+    max-width: 155px;
+    width: 100%;
+    border: solid 3px transparent;
+    padding: 6px;
+}
+
+.headshot:hover {
+    border-color: black;
 }
