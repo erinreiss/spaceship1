@@ -84,7 +84,7 @@
     margin-bottom: 42px;
 }
 
-.statusQuoPhotos {
+#statusQuoPhotos {
     text-align: center;
     padding-top: 60px;
     padding-bottom: 200px;
@@ -96,7 +96,7 @@
     padding-bottom: 30%;
 }
 
-.interactionsPhotos{
+#interactionsPhotos{
     text-align: center;
     padding-bottom: 20px;
 }
