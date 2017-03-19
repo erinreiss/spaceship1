@@ -42,26 +42,17 @@ var matchData;
 $(headshotStatusQuo).click(
 	function(){
 		console.log(this.id);
-		// $('#clickStreet').css('visibility','hidden');
-		// $('#streetsBar').css('visibility','visible');
+		$('.headshotStatusQuo').css('opacity','.3');
+		$(this).css('opacity','1');
 		var thisID = ("audio/" + this.id + ".mp3");
-			console.log(thisID);
-		// for(var i=0;i<matchData.length;i++) {
-		// 	if(matchData[i].id == thisID) {
-		// 		// console.log(matchData[i].audioFill);
-		// 		$('.nameFill').text(matchData[i].nameFill);
-		// 		$('.jobFill').text(matchData[i].jobFill);
-		// 		$('.timeFill').text(matchData[i].timeFill);
-		// 		$('.fromFill').text(matchData[i].fromFill);
-		// 		$('.bioFill').html("&ldquo;" + matchData[i].bioFill + "&rdquo;");
-		// 		$('#streetTitleCh').html("&ldquo;" + matchData[i].streetTitleCh + "&rdquo;");
-		// 		$('#streetTitleEn').text(matchData[i].streetTitleEn);
-				changeTrack(thisID);	
-		// 		$('#speakerPhoto').attr("src",matchData[i].speakerPhoto)
-		// 		changeTrack(matchData[i].audioFill);		
-		//		break;
-		// 	}
-		// }
+  		console.log(thisID);	
+  			if (thisID.paused == false) {
+      			thisID.pause();
+      			} 
+      		else {
+      			changeTrack(thisID);
+ 				 }
+			
 	}
 );
 
