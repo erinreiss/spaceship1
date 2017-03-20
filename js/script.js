@@ -45,7 +45,7 @@ var matchData;
 $('.photoBank').on('click', 'img', function(e) {
   var player = document.getElementById('player');
   var ID = $(this).attr('id');
-  var path = 'audio/';
+  var path = 'https://erinreiss.github.io/spaceship1/audio/';
   var SRC = path + ID + '.mp3';
   console.log(this)
   console.log('and')
