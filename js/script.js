@@ -45,7 +45,7 @@ var matchData;
 $('.photoBank').on('click', 'img', function(e) {
   var player = document.getElementById('player');
   var ID = $(this).attr('id');
-  var path = 'http://localhost:8000/audio/';
+  var path = 'audio/';
   var SRC = path + ID + '.mp3';
   console.log(this)
   console.log('and')
