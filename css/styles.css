@@ -13,8 +13,7 @@
     opacity: .3;
     max-width: 170px;
     width: 100%;
-    border: solid 3px transparent;
-    padding: 23px;
+    padding: 0px 23px;
     -moz-transition: all 0.2s ease-out;  /* FF4+ */
     -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
     -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
@@ -98,28 +97,40 @@
 
 #interactionsPhotos{
     text-align: center;
-    padding-bottom: 20px;
 }
 
 .interactionsQuotes{
-    width: 50%;
-    padding-top: 65px;
+    max-width: 155px;
+    padding: 0px 14px;
     font-family: "Lato";
     font-weight: 100;
     margin: 0 auto;
     font-style: italic;
-    font-size: 2em;
-    line-height: 41px;
+    font-size: 1em;
+    line-height: 22px;
+    text-align: justify;
+    visibility: hidden;
 }
 
-.headshot{
+.headshotInteractions{
     display: inline-block;
+    opacity: .3;
     max-width: 155px;
     width: 100%;
     border: solid 3px transparent;
     padding: 6px;
+    -moz-transition: all 0.2s ease-out;  /* FF4+ */
+    -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
+    -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
+    -ms-transition: all 0.2s ease-out;  /* IE10? */
+    transition: all 0.2s ease-out; 
 }
 
-.headshot:hover {
-    border-color: black;
+.headshotInteractions:hover {
+    opacity: 1;
+    -moz-transition: all 0.2s ease-out;  /* FF4+ */
+    -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
+    -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
+    -ms-transition: all 0.2s ease-out;  /* IE10? */
+    transition: all 0.2s ease-out;  
 }
