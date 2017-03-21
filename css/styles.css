@@ -8,6 +8,11 @@
 	opacity: 1;
 }
 
+#intro2 {
+    padding-bottom: 300px;
+    opacity: 1;
+}
+
 .headshotStatusQuo{
     display: inline-block;
     opacity: .3;
@@ -89,9 +94,8 @@
     padding-bottom: 200px;
 }
 
-.interactionsShell{
+#interactionsShell{
     width: 100%;
-    padding-top: 30%;
     padding-bottom: 30%;
 }
 

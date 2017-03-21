@@ -46,4 +46,11 @@ $('#interactionsPhotos').on('click', 'img', function(e) {
   $(qID).css('visibility','visible');
 });
 
-
+// Attempt 1 at a waypoint to disapear photos in Interactions
+var waypoint = new Waypoint({
+  element: document.getElementById('interactionsShell'),
+  handler: function(direction) {
+  console.log('boom')
+  // $('#martha_interactions').css('visibility','hidden');
+  }
+})
