@@ -15,8 +15,8 @@ $('.photoBank').on('click', 'img', function(e) {
   var player = document.getElementById('player');
   var ID = $(this).attr('id');
   // For testing on local server vvVVvvV
-  // var path = 'http://localhost:8000/audio/';
-  var path = 'https://erinreiss.github.io/spaceship1/audio/';
+  var path = 'http://localhost:8000/audio/';
+  // var path = 'https://erinreiss.github.io/spaceship1/audio/';
   var SRC = path + ID + '.mp3';
   // console.log(this)
   // console.log('and')
