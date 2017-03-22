@@ -51,6 +51,6 @@ var waypoint = new Waypoint({
   element: document.getElementById('interactionsShell'),
   handler: function(direction) {
   console.log('boom')
-  $('#martha_interactions').css('visibility','hidden');
+  // $('#martha_interactions').css('visibility','hidden');
   }
 })
