@@ -3,9 +3,15 @@
   top: 0;
   left: 0;
 }
+
 #intro1 {
 	padding-top: 100px;
 	opacity: 1;
+}
+
+#intro3 {
+    padding: 300px 0px;
+    opacity: 1;
 }
 
 .headshotStatusQuo{
@@ -69,13 +75,13 @@
 
 .sectionheader{
     font-family: "Bevan";
+    max-width: 950px;
     padding-bottom: 30px;
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
     font-size: 2.5rem;
-    line-height: 28px;
-    line-height: 1.75rem;
+    line-height: 2.75rem;
     text-align: center;
     -webkit-font-smoothing: antialiased;
     color: #000;
@@ -89,10 +95,18 @@
     padding-bottom: 200px;
 }
 
-.interactionsShell{
+.photoBankShell{
     width: 100%;
     padding-top: 30%;
     padding-bottom: 30%;
+}
+
+.headshotQuestion{
+    display: inline-block;
+    max-width: 155px;
+    width: 100%;
+    padding: 6px;
+    padding: 0px 48px;
 }
 
 #interactionsPhotos{
