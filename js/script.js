@@ -47,10 +47,21 @@ $('#interactionsPhotos').on('click', 'img', function(e) {
 });
 
 // Attempt 1 at a waypoint to disapear photos in Interactions
-var waypoint = new Waypoint({
-  element: document.getElementById('interactionsShell'),
-  handler: function(direction) {
-  console.log('boom')
-  // $('#martha_interactions').css('visibility','hidden');
+// var waypoint = new Waypoint({
+//   element: document.getElementById('interactionsTitle'),
+//   handler: function(direction) {
+//   console.log('boom')
+//   $('#martha_interactions').css('visibility','hidden');
+//   },
+//   offset: 200
+// })
+
+// Attempt 2 at a waypoint to disapear photos in Interactions, more elegant
+var interactionsTitle = $('#interactionsTitle').waypoint(function (direction) {
+  console.log('bam!');
+  if(direction == 'down'){
+    $('#martha_interactions').addClass('headshotInteractions_W');
+  } else {
+    $('#martha_interactions').removeClass('headshotInteractions_W');
   }
-})
+}, {offset: 300});
