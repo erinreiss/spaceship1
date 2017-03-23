@@ -1,9 +1,3 @@
-// Scroll fade for intro paragraphs (attempt)
-
-// $(window).scroll(function(){
-//     $("#intro").css("opacity", 1 - $(window).scrollTop() / 250);
-//   });
-
 // Set up some variables. Do I need this? What is matchdata??
 
 var headshot = $(".headshot");
@@ -39,6 +33,18 @@ $('.photoBank').on('click', 'img', function(e) {
   }
 });
 
+// Intro 1, Bringing Into Exisitence
+var statusQuoPhotos = $('#statusQuoPhotos').waypoint(function (direction) {
+  console.log('bam!');
+  if(direction == 'down'){
+    $('#statusQuoPhotos').fadeTo(600,1);
+    // $('#statusQuoPhotos').css('visibility','visible');
+  } else {
+        $('#statusQuoPhotos').fadeTo(600,0);
+    // $('#statusQuoPhotos').css('visibility','hidden');
+  }
+}, {offset: 'bottom-in-view'});
+
 // Interactions Click Listener for quotes (should be able to combine with photoBank click listner, above)
 $('#interactionsPhotos').on('click', 'img', function(e) {
   var qID = "#" + $(this).attr('id') + "_quote";
@@ -46,19 +52,9 @@ $('#interactionsPhotos').on('click', 'img', function(e) {
   $(qID).css('visibility','visible');
 });
 
-// Attempt 1 at a waypoint to disapear photos in Interactions
-// var waypoint = new Waypoint({
-//   element: document.getElementById('interactionsTitle'),
-//   handler: function(direction) {
-//   console.log('boom')
-//   $('#martha_interactions').css('visibility','hidden');
-//   },
-//   offset: 200
-// })
-
 // Attempt 2 at a waypoint to disapear photos in Interactions, more elegant
 var interactionsTitle = $('#interactionsTitle').waypoint(function (direction) {
-  console.log('bam!');
+  // console.log('bam!');
   if(direction == 'down'){
     $('#martha_interactions').addClass('headshotInteractions_W');
   } else {

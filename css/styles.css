@@ -92,7 +92,8 @@
 #statusQuoPhotos {
     text-align: center;
     padding-top: 60px;
-    padding-bottom: 200px;
+    opacity: 0;
+    /*visibility: hidden;*/
 }
 
 .photoBankShell{
