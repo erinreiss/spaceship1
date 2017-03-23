@@ -34,16 +34,14 @@ $('.photoBank').on('click', 'img', function(e) {
 });
 
 // Intro 1, Bringing Into Exisitence
-var statusQuoPhotos = $('#statusQuoPhotos').waypoint(function (direction) {
-  console.log('bam!');
-  if(direction == 'down'){
-    $('#statusQuoPhotos').fadeTo(600,1);
-    // $('#statusQuoPhotos').css('visibility','visible');
-  } else {
-        $('#statusQuoPhotos').fadeTo(600,0);
-    // $('#statusQuoPhotos').css('visibility','hidden');
-  }
-}, {offset: 'bottom-in-view'});
+// var statusQuoPhotos = $('#statusQuoPhotos').waypoint(function (direction) {
+//   console.log('bam!');
+//   if(direction == 'down'){
+//     $('#statusQuoPhotos').fadeTo(600,1);
+//   } else {
+//         $('#statusQuoPhotos').fadeTo(600,0);
+//   }
+// }, {offset: 'bottom-in-view'});
 
 // Interactions Click Listener for quotes (should be able to combine with photoBank click listner, above)
 $('#interactionsPhotos').on('click', 'img', function(e) {

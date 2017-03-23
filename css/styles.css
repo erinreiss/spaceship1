@@ -5,8 +5,26 @@
 }
 
 #intro1 {
-	padding-top: 100px;
-	opacity: 1;
+    position: relative;
+}
+
+#intro1inner {
+    background-color: grey;
+    height: 571px;
+    width: 100%;
+    overflow: auto;
+}
+
+#intro1a {
+    position: absolute;
+    top: 30px;
+    background-color: blue;
+}
+
+#intro1b {
+    position: absolute;
+    top: 200px;
+    background-color: green;
 }
 
 #intro3 {
@@ -92,8 +110,6 @@
 #statusQuoPhotos {
     text-align: center;
     padding-top: 60px;
-    opacity: 0;
-    /*visibility: hidden;*/
 }
 
 .photoBankShell{
