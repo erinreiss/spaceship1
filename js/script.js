@@ -4,6 +4,71 @@ var headshot = $(".headshot");
 var headshotStatusQuo = $(".headshotStatusQuo");
 var matchData;
 
+//Log Scroll amount in intro1
+// $("#intro1").scroll(function() {
+//          var screenheight = parseInt($(document).height());
+//          var scrolledpx = parseInt($("#intro1").scrollTop());     
+//          var sum = screenheight+scrolledpx;
+//          console.log($("#intro1").scrollTop());
+//          console.log("screen: " + screenheight);
+//          console.log("sum=" + sum);
+//          $("div.#intro1inner").height(sum);
+// })
+
+//Fading landing with scroll (THIS WORKS)
+var target = $('#landing');
+var targetHeight = 200;
+
+// $(document).scroll(function(e){
+//     var scrollPercent = (targetHeight - window.scrollY) / targetHeight;
+//     if(scrollPercent >= 0){
+//         target.css('opacity', scrollPercent);
+//     }
+// });
+
+// Fade landing, with 200 pixels left to top
+var intro1 = $('#intro1').waypoint(function (direction) {
+    console.log('bam!');
+    $(document).scroll(function(e){
+      var scrollPercent = (targetHeight - window.scrollY) / targetHeight;
+        if(scrollPercent >= 0){
+            target.css('opacity', scrollPercent);
+        }
+    })
+}, {offset: 200});
+
+// Intro 1, Bringing Into Exisitence (THIS WORKS)
+// var statusQuoPhotos = $('#statusQuoPhotos').waypoint(function (direction) {
+//   console.log('bam!');
+//   if(direction == 'down'){
+//     $('#statusQuoPhotos').fadeTo(600,1);
+//   } else {
+//         $('#statusQuoPhotos').fadeTo(600,0);
+//   }
+// }, {offset: 'bottom-in-view'});
+
+//Auto scroll fill attempt cribbed from web
+// $(document).ready(function(){
+//     $('#intro1').bind('mousewheel', function(e){
+//         //var scroll = amountscrolled();
+//         console.log(scroll)
+//         if(e.originalEvent.wheelDelta /120 > 0) {
+//         if( $(this).prev().length){
+//             $('html, body').animate({
+//           scrollTop: $(this).prev().offset().top
+//         }, 2000);
+//         }
+//         }
+//         else{
+//         if( $(this).next().length){
+//             $('html, body').animate({
+//           scrollTop: $(this).next().offset().top
+//         }, 2000);
+//         }
+//         }
+//         })
+//         });
+
 // photoBank Click Listener try 3 - from stackoverflow, zer00ne
 $('.photoBank').on('click', 'img', function(e) {
   var player = document.getElementById('player');
@@ -32,16 +97,6 @@ $('.photoBank').on('click', 'img', function(e) {
     player.play();
   }
 });
-
-// Intro 1, Bringing Into Exisitence
-// var statusQuoPhotos = $('#statusQuoPhotos').waypoint(function (direction) {
-//   console.log('bam!');
-//   if(direction == 'down'){
-//     $('#statusQuoPhotos').fadeTo(600,1);
-//   } else {
-//         $('#statusQuoPhotos').fadeTo(600,0);
-//   }
-// }, {offset: 'bottom-in-view'});
 
 // Interactions Click Listener for quotes (should be able to combine with photoBank click listner, above)
 $('#interactionsPhotos').on('click', 'img', function(e) {
