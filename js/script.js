@@ -18,7 +18,6 @@ var matchData;
 //Fading landing with scroll (THIS WORKS)
 var target = $('#landing');
 var targetHeight = 200;
-
 // $(document).scroll(function(e){
 //     var scrollPercent = (targetHeight - window.scrollY) / targetHeight;
 //     if(scrollPercent >= 0){
@@ -26,7 +25,7 @@ var targetHeight = 200;
 //     }
 // });
 
-// Fade landing, with 200 pixels left to top
+// Fade landing, with 200 pixels offset
 var intro1 = $('#intro1').waypoint(function (direction) {
     console.log('bam!');
     $(document).scroll(function(e){
@@ -46,28 +45,6 @@ var intro1 = $('#intro1').waypoint(function (direction) {
 //         $('#statusQuoPhotos').fadeTo(600,0);
 //   }
 // }, {offset: 'bottom-in-view'});
-
-//Auto scroll fill attempt cribbed from web
-// $(document).ready(function(){
-//     $('#intro1').bind('mousewheel', function(e){
-//         //var scroll = amountscrolled();
-//         console.log(scroll)
-//         if(e.originalEvent.wheelDelta /120 > 0) {
-//         if( $(this).prev().length){
-//             $('html, body').animate({
-//           scrollTop: $(this).prev().offset().top
-//         }, 2000);
-//         }
-//         }
-//         else{
-//         if( $(this).next().length){
-//             $('html, body').animate({
-//           scrollTop: $(this).next().offset().top
-//         }, 2000);
-//         }
-//         }
-//         })
-//         });
 
 // photoBank Click Listener try 3 - from stackoverflow, zer00ne
 $('.photoBank').on('click', 'img', function(e) {
