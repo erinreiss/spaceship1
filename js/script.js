@@ -5,33 +5,85 @@ var headshotStatusQuo = $(".headshotStatusQuo");
 var matchData;
 
 
-//Fading landing with scroll (THIS WORKS)
+//Imediate fading landing with scroll (THIS WORKS)
 // var target = $('#landing');
 // var targetHeight = 200;
 // $(document).scroll(function(e){
-    // var scrollPercent = (targetHeight - window.scrollY) / targetHeight;
+//     var scrollPercent = (targetHeight - window.scrollY) / targetHeight;
+//     console.log(window.scrollY)
 //     if(scrollPercent >= 0){
 //         target.css('opacity', scrollPercent);
 //     }
 // });
 
-//make #intro1b fade in with scroll down (wihtout waypoints)
-var target = $('#intro1inner');
-$('#intro1inner').scroll(function(){
-      var changeA = target.scrollTop()
-      console.log('changeA:' + changeA)
-    var scrollPercent = changeA / 250;
-    console.log('scrollPercent:' + scrollPercent)
-    // if(scrollPercent >= 0){
-        $('#intro1b').css('opacity', scrollPercent);
-    // }
-    if (scrollPercent >= .99){
-      $('#introRect').css('pointer-events', 'none')
-    }
-    else {
-      $('#introRect').css('pointer-events', 'auto')
+//Get offset position of intro1_Top - attempting
+// $(function() {
+//   var intro1_Top = $('#intro1').offset().top; //get the offset top of the element
+
+//   var myBaby = (intro1_Top - (window.scrollY)); //position of the ele w.r.t window  
+//   $(window).scroll(function() { //when window is scrolled
+//   console.log("top" + intro1_Top);
+//   console.log("dist traveled" + window.scrollY);
+//   console.log("position relative to window:" + myBaby);
+//   });
+// });
+
+
+//Delayed fading landing with scroll (THIS WORKS)
+var intro1Activate = $('#intro1').waypoint(function (direction) {
+var intro1ActivateY = ('#intro1').scrollY  
+  console.log('fade me baby!');
+  // console.log(intro1ActivateY);
+    var target = $('#landing');
+    var targetHeight = 200;
+  $(document).scroll(function(e){
+    var scrollPercent = (200 - window.scrollY) / 200;
+    if(scrollPercent >= 0){
+        target.css('opacity', scrollPercent);
     }
 });
+
+}, {offset: 200});
+
+//Autoscroll to #intro1 THIS WORKS
+// var interactionsTitle = $('#intro1').waypoint(function (direction) {
+//   // console.log('ba-boom!');
+//   if(direction == 'down'){
+//     $('html, body').animate({
+//         scrollTop: $("#intro1").offset().top
+//     }, 2000);
+//   }
+// }, {offset: 200});
+
+//Activate #intro1
+var interactionsTitle = $('#intro1').waypoint(function (direction) {
+  console.log('ba-boomba-boom!');
+  if(direction == 'down'){
+    $('#intro1inner').css('overflow', 'auto')
+    };
+    // $('#intro1').hide(0).show(0);
+    // $('#intro1inner').hide(0).show(0);
+    // $('#introRect').hide(0).show(0);
+    // $('#container').hide(0).show(0);
+}, {offset: -45});
+
+//make #intro1b fade in with scroll down (wihtout waypoints)
+// var target = $('#intro1inner');
+// $('#intro1inner').scroll(function(){
+//       var changeA = target.scrollTop()
+//       console.log('changeA:' + changeA)
+//     var scrollPercent = changeA / 250;
+//     console.log('scrollPercent:' + scrollPercent)
+//     // if(scrollPercent >= 0){
+//         $('#intro1b').css('opacity', scrollPercent);
+//     // }
+//     if (scrollPercent >= .99){
+//       $('#introRect').css('pointer-events', 'none')
+//     }
+//     else {
+//       $('#introRect').css('pointer-events', 'auto')
+//     }
+// });
 
 
 // Intro 1, Bringing Into Exisitence (THIS WORKS)
