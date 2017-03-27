@@ -36,7 +36,10 @@ var interactionsTitle = $('#intro1').waypoint(function (direction) {
   console.log('ba-boomba-boom!');
   if(direction == 'down'){
     $('#intro1inner').css('overflow', 'auto')
-    };
+  }
+  else {
+    $('#intro1inner').css('overflow', 'inherit')
+  }
     // $('#intro1').hide(0).show(0);
     // $('#intro1inner').hide(0).show(0);
     // $('#introRect').hide(0).show(0);
