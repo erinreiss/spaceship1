@@ -4,32 +4,6 @@ var headshot = $(".headshot");
 var headshotStatusQuo = $(".headshotStatusQuo");
 var matchData;
 
-
-//Imediate fading landing with scroll (THIS WORKS)
-// var target = $('#landing');
-// var targetHeight = 200;
-// $(document).scroll(function(e){
-//     var scrollPercent = (targetHeight - window.scrollY) / targetHeight;
-//     console.log(window.scrollY)
-//     if(scrollPercent >= 0){
-//         target.css('opacity', scrollPercent);
-//     }
-// });
-
-//Get offset position of intro1_Top - THIS WORKS, but not if I change window size after loading
-// $(function() {
-//   var intro1_Top = $('#intro1').offset().top; //get the offset top of the element
-//   // var myBaby = (intro1_Top - window.scrollY); //position of the ele w.r.t window  
-//   $(window).scroll(function() { //when window is scrolled
-//   // console.log("top: " + intro1_Top);
-//   // console.log("dist traveled: " + window.scrollY);
-//   console.log("position relative to window: " + (intro1_Top - window.scrollY));
-//   });
-// });
-
-
-
-
 //Delayed fading landing with scroll
 var intro1Activate = $('#intro1').waypoint(function (direction) {
   // var target = $('#landing');
