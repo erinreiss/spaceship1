@@ -1,25 +1,21 @@
+body{
+    margin: 0px;
+}
 #stretch {
   width: 100%;
   top: 0;
   left: 0;
 }
 
-#intro1 {
-    /*position: relative;*/
-}
-
 #intro1inner {
     position:relative;
 }
 
-.preActivateIntro1 {
-    position: absolute;
-    top: 90px;
-}
-
-.activateIntro1{
-    position: fixed;
-    top: 90px;
+.stuck{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
 }
 
 .postActivateIntro1 {
@@ -30,12 +26,12 @@
 
 #intro1b {
     opacity: 0;
-    /*position: absolute;*/
-    margin: 0px auto;
-    max-width: 956px;
-    margin-left: -478px;
-    left: 50%;
-    top: 400px;
+}
+
+#intro2{
+    position: relative;
+    z-index: 99;
+    background-color: red;
 }
 
 #intro3 {
@@ -44,6 +40,7 @@
 }
 
 .headshotStatusQuo{
+    cursor: pointer;
     display: inline-block;
     pointer-events: none;
     max-width: 170px;
@@ -76,40 +73,31 @@
 .paraheader{
     font-family: "Bevan";
     font-style: normal;
-    box-sizing: content-box;
     font-weight: 700;
-    padding-left: 20%;
     font-size: 24px;
     font-size: 1.5rem;
     line-height: 28px;
     line-height: 1.75rem;
     text-align: left;
     -webkit-font-smoothing: antialiased;
-    max-width: 516px;
-    margin-bottom: 20px;
+    width: 500px;
+    margin: 0px auto 20px;
     color: #000;
 }
 
-.paragraph {
-	box-sizing: content-box;
-    max-width: 700px;
-	padding-left: 20%;
+p {
+    width: 500px;
 	font-family: "Droid+Serif";
     font-weight: 400;
 	text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    margin-bottom: 12px;
     font-size: 1rem;
     line-height: 1.5rem;
     font-weight: 400;
     font-style: normal;
     color: #333;
     display: block;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    margin: 0 0 1em 0;
+    margin:auto;
 }
 
 .sectionheader{
