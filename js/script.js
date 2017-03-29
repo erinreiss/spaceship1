@@ -3,22 +3,18 @@
 var headshot = $(".headshot");
 var headshotStatusQuo = $(".headshotStatusQuo");
 var matchData;
+var intro1_Top = $('#intro1').offset().top;  
+
 
 //Delayed fading landing with scroll
 var intro1Activate = $('#intro1').waypoint(function (direction) {
-  // var target = $('#landing');
-  //   var targetHeight = 200;
   $(document).scroll(function(e){
-    var intro1_Top = $('#intro1').offset().top;  
-      // console.log('fade me baby!');
-      // console.log('intro1_Top: ' + intro1_Top);
-      console.log("position relative to window: " + (intro1_Top - window.scrollY));
+      // console.log("position relative to window: " + (intro1_Top - window.scrollY));
     var scrollPercent = ((intro1_Top - window.scrollY)) / 350;
       if(scrollPercent >= 0){
-          $('#landing').css('opacity', scrollPercent);
+          $('#intro0').css('opacity', scrollPercent);
       }
   });
-
 }, {offset: 350});
 
 //Autoscroll to #intro1 THIS WORKS
@@ -32,37 +28,55 @@ var intro1Activate = $('#intro1').waypoint(function (direction) {
 // }, {offset: 200});
 
 //Activate #intro1
-var interactionsTitle = $('#intro1').waypoint(function (direction) {
+var activateI1 = $('#intro1').waypoint(function (direction) {
   console.log('ba-boomba-boom!');
-  if(direction == 'down'){
-    $('#intro1inner').css('overflow', 'auto')
-  }
-  else {
-    $('#intro1inner').css('overflow', 'inherit')
-  }
-    // $('#intro1').hide(0).show(0);
-    // $('#intro1inner').hide(0).show(0);
-    // $('#introRect').hide(0).show(0);
-    // $('#container').hide(0).show(0);
-}, {offset: -45});
-
-//make #intro1b fade in with scroll down (without waypoints) THIS WORKS
-var target = $('#intro1inner');
-$('#intro1inner').scroll(function(){
-      var changeA = target.scrollTop()
-      console.log('changeA:' + changeA)
-    var scrollPercent = changeA / 250;
-    console.log('scrollPercent:' + scrollPercent)
-    // if(scrollPercent >= 0){
-        $('#intro1b').css('opacity', scrollPercent);
-    // }
-    if (scrollPercent >= .99){
-      $('#introRect').css('pointer-events', 'none')
+$(document).scroll(function(){
+    // console.log("position relative to window: " + (intro1_Top - window.scrollY));
+    var scrollPercent = ((intro1_Top - window.scrollY) * -1) / 300;
+//     // if(scrollPercent >= 0){
+    console.log(scrollPercent);
+    $('#intro1b').css('opacity', scrollPercent);
+//     // }
+    if (scrollPercent >= .94){
+      $('.headshotStatusQuo').css('pointer-events', 'auto')
     }
     else {
-      $('#introRect').css('pointer-events', 'auto')
+      $('.headshotStatusQuo').css('pointer-events', 'none')
     }
 });
+  if(direction == 'down'){
+    $('#intro1a, #intro1b').removeClass('preActivateIntro1').addClass('activateIntro1')
+  }
+  else {
+    $('#intro1a, #intro1b').removeClass('activateIntro1').addClass('preActivateIntro1')
+  }
+});
+
+//De-activate #intro1
+$(document).scroll(function(){
+    var scrollPercent = ((intro1_Top - window.scrollY) * -1) / 300;
+    if(scrollPercent >= 1){
+      $('#intro1a, #intro1b').removeClass('activateIntro1').addClass('deIntro1');
+    }
+});
+
+//make #intro1b fade in with scroll down (without waypoints) THIS WORKS
+// var target = $('#intro1inner');
+// $('#intro1inner').scroll(function(){
+//       var changeA = target.scrollTop()
+//       console.log('changeA:' + changeA)
+//     var scrollPercent = changeA / 250;
+//     console.log('scrollPercent:' + scrollPercent)
+//     // if(scrollPercent >= 0){
+//         $('#intro1b').css('opacity', scrollPercent);
+//     // }
+//     if (scrollPercent >= .99){
+//       $('#introRect').css('pointer-events', 'none')
+//     }
+//     else {
+//       $('#introRect').css('pointer-events', 'auto')
+//     }
+// });
 
 
 // Intro 1, Bringing Into Exisitence (THIS WORKS)
