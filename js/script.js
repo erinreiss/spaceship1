@@ -13,13 +13,13 @@ var intro1Activate = $('#intro1').waypoint(function (direction) {
       // console.log('fade me baby!');
       // console.log('intro1_Top: ' + intro1_Top);
       console.log("position relative to window: " + (intro1_Top - window.scrollY));
-    var scrollPercent = ((intro1_Top - window.scrollY)) / 200;
+    var scrollPercent = ((intro1_Top - window.scrollY)) / 350;
       if(scrollPercent >= 0){
           $('#landing').css('opacity', scrollPercent);
       }
   });
 
-}, {offset: 200});
+}, {offset: 350});
 
 //Autoscroll to #intro1 THIS WORKS
 // var interactionsTitle = $('#intro1').waypoint(function (direction) {

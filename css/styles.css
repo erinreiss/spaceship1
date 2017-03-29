@@ -35,7 +35,6 @@
 
 .headshotStatusQuo{
     display: inline-block;
-    opacity: .3;
     max-width: 170px;
     width: 100%;
     padding: 0px 23px;
@@ -46,7 +45,15 @@
     transition: all 0.2s ease-out; 
 }
 
-.headshotStatusQuo:hover {
+.photoBank:hover .headshotStatusQuo {
+    opacity: .3;
+    -moz-transition: all 0.2s ease-out;  /* FF4+ */
+    -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
+    -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
+    -ms-transition: all 0.2s ease-out;  /* IE10? */
+    transition: all 0.2s ease-out;  
+}
+.photoBank .headshotStatusQuo:hover {
     opacity: 1;
     -moz-transition: all 0.2s ease-out;  /* FF4+ */
     -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
