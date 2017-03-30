@@ -1,6 +1,8 @@
-body{
+body, figure {
     margin: 0px;
 }
+
+
 #stretch {
   width: 100%;
   top: 0;
@@ -18,20 +20,17 @@ body{
     right:0;
 }
 
-.postActivateIntro1 {
+/*.postActivateIntro1 {
     position: absolute;
     top: auto;
     bottom: 0px;
-}
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}*/
 
 #intro1b {
     opacity: 0;
-}
-
-#intro2{
-    position: relative;
-    z-index: 99;
-    background-color: red;
 }
 
 #intro3 {
@@ -43,9 +42,9 @@ body{
     cursor: pointer;
     display: inline-block;
     pointer-events: none;
-    max-width: 170px;
+    max-width: 190px;
     width: 100%;
-    padding: 0px 23px;
+    padding: 0px 10px;
     -moz-transition: all 0.2s ease-out;  /* FF4+ */
     -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
     -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
@@ -118,7 +117,7 @@ p {
 
 #statusQuoPhotos {
     text-align: center;
-    padding-top: 60px;
+    padding-top: 20px;
 }
 
 .photoBankShell{

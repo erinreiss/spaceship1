@@ -1,17 +1,28 @@
+// //GETTING A BASTARD TO COUNT UP ON SCROLL DOWN
+//   $(document).scroll(function(){
+//     console.log('window.scrollY: '+ window.scrollY)
+//     console.log("position relative to window: " + (window.scrollY - activateI2start));
+//       var scrollPercent3 = (window.scrollY - activateI2start) / 300;
+//         console.log(scrollPercent3);
+//       $('#intro1b').css('opacity', scrollPercent3);
+//   });
+
 // Set up some variables. Do I need this? What is matchdata??
 var headshot = $(".headshot");
 var headshotStatusQuo = $(".headshotStatusQuo");
 var matchData;
 var intro1_Top = $('#intro1').offset().top;
 var intro2_Top = $('#intro2').offset().top;  
+var intro2_Top_2 = $('#wrapperIntro2').offset().top;  
 
 //Delayed fading landing with scroll
 var intro1Activate = $('#intro1').waypoint(function (direction) {
+  //GETTING A BASTARD TO COUNT DOWN ON SCROLL DOWN
   $(document).scroll(function(e){
       // console.log("position relative to window: " + (intro1_Top - window.scrollY));
-    var scrollPercent = ((intro1_Top - window.scrollY)) / 350;
-      if(scrollPercent >= 0){
-          $('#intro0').css('opacity', scrollPercent);
+    var scrollPercent1 = (intro1_Top - window.scrollY) / 350;
+      if(scrollPercent1 >= 0){
+          $('#intro0').css('opacity', scrollPercent1);
       }
   });
 }, {offset: 350});
@@ -26,20 +37,20 @@ var intro1Activate = $('#intro1').waypoint(function (direction) {
 //   }
 // }, {offset: 200});
 
-//First attempt at sticky: #intro1
-var sticky = new Waypoint.Sticky({
+//Sticky for #intro1
+var sticky_1 = new Waypoint.Sticky({
   element: $('#wrapperIntro1')[0]
 })
 
-//Bring Intro1 Photos into existence and make them clickable
+//Fade Intro1 Photos into existence and make them clickable
 var activateI1 = $('#intro1').waypoint(function (direction) {
-  console.log('ba-boomba-boom!');
+  // console.log('ba-boomba-boom!');
   $(document).scroll(function(){
       // console.log("position relative to window: " + (intro1_Top - window.scrollY));
-      var scrollPercent = ((intro1_Top - window.scrollY) * -1) / 300;
-      // console.log(scrollPercent);
-      $('#intro1b').css('opacity', scrollPercent);
-      if (scrollPercent >= .94){
+      var scrollPercent2 = ((intro1_Top - window.scrollY) * -1) / 300;
+      // console.log(scrollPercent2);
+      $('#intro1b').css('opacity', scrollPercent2);
+      if (scrollPercent2 >= .94){
         $('.headshotStatusQuo').css('pointer-events', 'auto')
       }
       else {
@@ -48,10 +59,39 @@ var activateI1 = $('#intro1').waypoint(function (direction) {
   });
 });
 
-// //De-activate #intro1 try 1
+// photoBank Click Listener try 3 - from stackoverflow, zer00ne
+$('.photoBank').on('click', 'img', function(e) {
+  var player = document.getElementById('player');
+  var ID = $(this).attr('id');
+  // For testing on local server vvVVvvV
+  var path = 'http://localhost:8000/audio/';
+  // var path = 'https://erinreiss.github.io/spaceship1/audio/';
+  var SRC = path + ID + '.mp3';
+  // console.log(this)
+  // console.log('and')
+  // console.log(SRC)
+  // console.log(player.src)
+  // This is lazy coding, I should be able to give a common class to .headshotStatusQuo and .headshotInteractions
+  $('.headshotStatusQuo').css('opacity','.3');
+  $('.headshotInteractions').css('opacity','.3');
+  $(this).css('opacity','1');
+  if (player.paused && (player.src === SRC)) {
+    player.play();
+  } else if (!player.paused && (player.src === SRC)) {
+    player.pause();
+  } else {
+    player.pause();
+    player.currentTime = 0;
+    player.src = SRC;
+    player.load();
+    player.play();
+  }
+});
+
+// //De-activate through positioning #intro1 try 1
 // var deActiveIntro1 = $('#intro1').waypoint(function (direction) {
 //   if(direction == 'down'){
-//     sticky.destroy()
+//     sticky_1.destroy()
 //     $('#wrapperIntro1').addClass("postActivateIntro1");
 //   } 
 //   else {
@@ -59,7 +99,7 @@ var activateI1 = $('#intro1').waypoint(function (direction) {
 //   }
 // }, {offset: 'bottom-in-view'});
 
-// //De-activate #intro1 try 2
+// //De-activate through dimming #intro1 try 2
 // var intro2inview = new Waypoint.Inview({
 //   element: $('#intro2')[0],
 //   enter: function(direction) {
@@ -91,34 +131,34 @@ var activateI1 = $('#intro1').waypoint(function (direction) {
 //   // }
 // })
 
-// photoBank Click Listener try 3 - from stackoverflow, zer00ne
-$('.photoBank').on('click', 'img', function(e) {
-  var player = document.getElementById('player');
-  var ID = $(this).attr('id');
-  // For testing on local server vvVVvvV
-  var path = 'http://localhost:8000/audio/';
-  // var path = 'https://erinreiss.github.io/spaceship1/audio/';
-  var SRC = path + ID + '.mp3';
-  // console.log(this)
-  // console.log('and')
-  // console.log(SRC)
-  // console.log(player.src)
-  // This is lazy coding, I should be able to give a common class to .headshotStatusQuo and .headshotInteractions
-  $('.headshotStatusQuo').css('opacity','.3');
-  $('.headshotInteractions').css('opacity','.3');
-  $(this).css('opacity','1');
-  if (player.paused && (player.src === SRC)) {
-    player.play();
-  } else if (!player.paused && (player.src === SRC)) {
-    player.pause();
-  } else {
-    player.pause();
-    player.currentTime = 0;
-    player.src = SRC;
-    player.load();
-    player.play();
-  }
-});
+//Sticky for #intro2
+var sticky_2 = new Waypoint.Sticky({
+  element: $('#wrapperIntro2')[0]
+})
+
+//Fade into intro2 ministory
+var activateI2 = $('#wrapperIntro2').waypoint(function (direction) {
+//My failed attempt at removing and then re-adding stuck class so things weren't just hanging out in the background
+  // if(direction == 'down'){
+  //   sticky_1.destroy()
+  // }
+  // else {
+  //   var sticky_1r = new Waypoint.Sticky({
+  //      element: $('#wrapperIntro1'),
+  //      direction: 'up',
+  //   })
+  // }
+// GETTING A BASTARD TO COUNT DOWN ON SCROLL DOWN
+  $(document).scroll(function(e){
+  //   console.log("intro2_Top_2: " + intro2_Top_2);
+  //   console.log("window.scrollY: " + window.scrollY);
+    var scrollPercent3 = (intro2_Top_2 - window.scrollY) / 100;
+    // console.log(scrollPercent3);
+      if(scrollPercent3 >= 0){
+          $('#intro2_sub0, #intro2_sub00').css('opacity', scrollPercent3);
+      }
+  });
+},{offset: 100});
 
 // Interactions Click Listener for quotes (should be able to combine with photoBank click listner, above)
 $('#interactionsPhotos').on('click', 'img', function(e) {
