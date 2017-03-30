@@ -2,6 +2,27 @@ body, figure {
     margin: 0px;
 }
 
+p {
+    width: 500px;
+    font-family: "Droid+Serif";
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    font-style: normal;
+    color: #333;
+    display: block;
+    margin:auto;
+}
+
+.stuck{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+}
 
 #stretch {
   width: 100%;
@@ -13,13 +34,12 @@ body, figure {
     position:relative;
 }
 
-.stuck{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
+/*A CRAZY ATTEMPT - UNTESTED
+.sticky-surpassed{
+    position: absolute;
+    bottom: 0;
 }
-
+*/
 /*.postActivateIntro1 {
     position: absolute;
     top: auto;
@@ -31,11 +51,6 @@ body, figure {
 
 #intro1b {
     opacity: 0;
-}
-
-#intro3 {
-    padding: 300px 0px;
-    opacity: 1;
 }
 
 .headshotStatusQuo{
@@ -84,21 +99,6 @@ body, figure {
     color: #000;
 }
 
-p {
-    width: 500px;
-	font-family: "Droid+Serif";
-    font-weight: 400;
-	text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-weight: 400;
-    font-style: normal;
-    color: #333;
-    display: block;
-    margin:auto;
-}
-
 .sectionheader{
     font-family: "Bevan";
     max-width: 950px;
@@ -118,6 +118,47 @@ p {
 #statusQuoPhotos {
     text-align: center;
     padding-top: 20px;
+}
+
+#alert1{
+    right: 6%;
+    top: 200px;
+}
+
+.secretStuck{
+    position: fixed;
+    -moz-transition: all 0.2s ease-out;  /* FF4+ */
+    -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
+    -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
+    -ms-transition: all 0.2s ease-out;  /* IE10? */
+    transition: all 1s ease-out;  
+}
+.secretStuck_x{
+    visibility: hidden;
+    -moz-transition: all 0.2s ease-out;  /* FF4+ */
+    -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
+    -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
+    -ms-transition: all 0.2s ease-out;  /* IE10? */
+    transition: all 1s ease-out;  
+}
+
+#indexButton{
+    font-family: "Bevan";
+    cursor: pointer;
+    font-size: 13px;
+    color: #65328f;
+    text-align: center;
+    background-color: #d5b2f4;
+    border-radius: 7px;
+    width: 176px;
+    height: 32px;
+    vertical-align: middle;
+    line-height: 34px;
+}
+
+#intro3 {
+    padding: 300px 0px;
+    opacity: 1;
 }
 
 .photoBankShell{

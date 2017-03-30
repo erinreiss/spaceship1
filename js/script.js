@@ -37,10 +37,20 @@ var intro1Activate = $('#intro1').waypoint(function (direction) {
 //   }
 // }, {offset: 200});
 
-//Sticky for #intro1
+//Sticky for #intro1 
 var sticky_1 = new Waypoint.Sticky({
   element: $('#wrapperIntro1')[0]
 })
+
+// Re-stcking intro1 for scroll away (A CRAZY ATTEMPT - untested)
+// $('intro2').waypoint(function(direction){
+//   $('.wrapperIntro1').toggleclass('stuck', direction === 'up');
+//   $('.wrapperIntro1').toggleclass('sticky-surpassed', direction === 'down');
+// }, {
+//   offset: function() {
+//     return $('#intro2').outerHeight();
+//   }
+// });
 
 //Fade Intro1 Photos into existence and make them clickable
 var activateI1 = $('#intro1').waypoint(function (direction) {
@@ -88,49 +98,6 @@ $('.photoBank').on('click', 'img', function(e) {
   }
 });
 
-// //De-activate through positioning #intro1 try 1
-// var deActiveIntro1 = $('#intro1').waypoint(function (direction) {
-//   if(direction == 'down'){
-//     sticky_1.destroy()
-//     $('#wrapperIntro1').addClass("postActivateIntro1");
-//   } 
-//   else {
-//     $('#wrapperIntro1').removeClass("postActivateIntro1");
-//   }
-// }, {offset: 'bottom-in-view'});
-
-// //De-activate through dimming #intro1 try 2
-// var intro2inview = new Waypoint.Inview({
-//   element: $('#intro2')[0],
-//   enter: function(direction) {
-//     $(document).scroll(function(){
-//       console.log("introTop2: " + intro2_Top);
-//       console.log("window.scrollY: " + window.scrollY);
-//       console.log("Position2 relative to window: " + (intro2_Top - window.scrollY));
-//       var winheight = $(window).height()
-//       console.log("Window height: " + winheight);
-//       var scrollPercent2 = (intro2_Top - window.scrollY)/ (4 * winheight);
-//       console.log(scrollPercent2);
-//       $('#intro1').css('opacity', scrollPercent2);
-//       // if (scrollPercent >= .94){
-//       //   $('.headshotStatusQuo').css('pointer-events', 'auto')
-//       // }
-//       // else {
-//       //   $('.headshotStatusQuo').css('pointer-events', 'none')
-//       // }
-//   });
-//   },
-//   // entered: function(direction) {
-//   //   notify('Entered triggered with direction ' + direction)
-//   // },
-//   // exit: function(direction) {
-//   //   notify('Exit triggered with direction ' + direction)
-//   // },
-//   // exited: function(direction) {
-//   //   notify('Exited triggered with direction ' + direction)
-//   // }
-// })
-
 //Sticky for #intro2
 var sticky_2 = new Waypoint.Sticky({
   element: $('#wrapperIntro2')[0]
@@ -138,6 +105,7 @@ var sticky_2 = new Waypoint.Sticky({
 
 //Fade into intro2 ministory
 var activateI2 = $('#wrapperIntro2').waypoint(function (direction) {
+  console.log('1st r -');
 //My failed attempt at removing and then re-adding stuck class so things weren't just hanging out in the background
   // if(direction == 'down'){
   //   sticky_1.destroy()
@@ -148,6 +116,12 @@ var activateI2 = $('#wrapperIntro2').waypoint(function (direction) {
   //      direction: 'up',
   //   })
   // }
+  if(direction == 'down'){
+    $('#alert1').addClass('secretStuck');
+  }
+  else {
+    $('#alert1').removeClass('secretStuck');
+  }
 // GETTING A BASTARD TO COUNT DOWN ON SCROLL DOWN
   $(document).scroll(function(e){
   //   console.log("intro2_Top_2: " + intro2_Top_2);
@@ -159,6 +133,28 @@ var activateI2 = $('#wrapperIntro2').waypoint(function (direction) {
       }
   });
 },{offset: 100});
+
+//Bring in alert1
+var activateI2_x = $('#wrapperIntro2').waypoint(function (direction) {
+  console.log('2nd r -');
+  if(direction == 'down'){
+    $("#alert1").fadeIn("slow", function() {
+      $(this).removeClass("secretStuck_x");
+    });
+  }
+  else {
+    $("#alert1").fadeIn("slow", function() {
+      $(this).addClass("secretStuck_x");
+    });
+  }
+}, {offset: -20});
+
+//alert1 click listener 
+// D
+// o
+
+// M
+// e
 
 // Interactions Click Listener for quotes (should be able to combine with photoBank click listner, above)
 $('#interactionsPhotos').on('click', 'img', function(e) {
