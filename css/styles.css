@@ -32,7 +32,10 @@ p {
 
 #wrapperIntro1{
     width: 100%;
-    background-color: blue;
+}
+
+#wrapperIntro2a{
+    width: 100%;
 }
 
 .sticky-surpassed{

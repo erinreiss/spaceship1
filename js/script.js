@@ -13,7 +13,7 @@ var headshotStatusQuo = $(".headshotStatusQuo");
 var matchData;
 var intro1_Top = $('#intro1').offset().top;
 var intro2_Top = $('#intro2').offset().top;  
-var intro2_Top_2 = $('#wrapperIntro2').offset().top;  
+var intro2_Top_2 = $('#wrapperIntro2a').offset().top;  
 
 //Delayed fading landing with scroll
 var intro1Activate = $('#intro1').waypoint(function (direction) {
@@ -42,7 +42,7 @@ var sticky_1 = new Waypoint.Sticky({
   element: $('#wrapperIntro1')[0]
 })
 
-// Re-stcking intro1 for scroll away (A CRAZY ATTEMPT - untested)
+// Re-stcking intro1 for scroll away
 $('#intro2').waypoint(function(direction) {
   if(direction == 'down'){
     $('#wrapperIntro1').removeClass('stuck').addClass('sticky-surpassed');
@@ -101,18 +101,18 @@ $('.photoBank').on('click', 'img', function(e) {
 
 //Sticky for #intro2
 var sticky_2 = new Waypoint.Sticky({
-  element: $('#wrapperIntro2')[0]
+  element: $('#wrapperIntro2a')[0]
 })
 
 //Fade into intro2 ministory
-var activateI2 = $('#wrapperIntro2').waypoint(function (direction) {
-  console.log('1st r -');
-  if(direction == 'down'){
-    $('#alert1').addClass('secretStuck');
-  }
-  else {
-    $('#alert1').removeClass('secretStuck');
-  }
+var activateI2 = $('#wrapperIntro2a').waypoint(function (direction) {
+  console.log('1st - 100px above trigger');
+  // if(direction == 'down'){
+  //   $('#alert1').addClass('secretStuck');
+  // }
+  // else {
+  //   $('#alert1').removeClass('secretStuck');
+  // }
 // GETTING A BASTARD TO COUNT DOWN ON SCROLL DOWN
   $(document).scroll(function(e){
   //   console.log("intro2_Top_2: " + intro2_Top_2);
@@ -125,20 +125,20 @@ var activateI2 = $('#wrapperIntro2').waypoint(function (direction) {
   });
 },{offset: 100});
 
-//Bring in alert1
-var activateI2_x = $('#wrapperIntro2').waypoint(function (direction) {
-  console.log('2nd r -');
-  if(direction == 'down'){
-    $("#alert1").fadeIn("slow", function() {
-      $(this).removeClass("secretStuck_x");
-    });
-  }
-  else {
-    $("#alert1").fadeIn("slow", function() {
-      $(this).addClass("secretStuck_x");
-    });
-  }
-}, {offset: -20});
+// //Bring in alert1
+// var activateI2_x = $('#wrapperIntro2a').waypoint(function (direction) {
+//   console.log('2nd r -');
+//   if(direction == 'down'){
+//     $("#alert1").fadeIn("slow", function() {
+//       $(this).removeClass("secretStuck_x");
+//     });
+//   }
+//   else {
+//     $("#alert1").fadeIn("slow", function() {
+//       $(this).addClass("secretStuck_x");
+//     });
+//   }
+// }, {offset: -20});
 
 //alert1 click listener 
 // D
@@ -146,6 +146,18 @@ var activateI2_x = $('#wrapperIntro2').waypoint(function (direction) {
 
 // M
 // e
+
+// //Resticking intro2 for scrollaway and Bring in intro3
+var activateI2_x = $('#wrapperIntro2a').waypoint(function (direction) {
+  console.log('2nd - 125 after trigger');
+  if(direction == 'down'){
+    $('#wrapperIntro2a').removeClass('stuck').addClass('sticky-surpassed');
+    // console.log ('Who,s bad going DOWNtown?');
+  } else {
+    $('#wrapperIntro2a').removeClass('sticky-surpassed').addClass('stuck');
+    // console.log ('Who,s bad going UPtown?');
+  }
+}, {offset: -125});
 
 // Interactions Click Listener for quotes (should be able to combine with photoBank click listner, above)
 $('#interactionsPhotos').on('click', 'img', function(e) {
