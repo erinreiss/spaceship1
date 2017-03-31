@@ -30,24 +30,19 @@ p {
   left: 0;
 }
 
-#intro1inner {
-    position:relative;
+#wrapperIntro1{
+    width: 100%;
+    background-color: blue;
 }
 
-/*A CRAZY ATTEMPT - UNTESTED
 .sticky-surpassed{
     position: absolute;
     bottom: 0;
 }
-*/
-/*.postActivateIntro1 {
-    position: absolute;
-    top: auto;
-    bottom: 0px;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-}*/
+
+#intro1{
+    position: relative;
+}
 
 #intro1b {
     opacity: 0;

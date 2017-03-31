@@ -43,14 +43,15 @@ var sticky_1 = new Waypoint.Sticky({
 })
 
 // Re-stcking intro1 for scroll away (A CRAZY ATTEMPT - untested)
-// $('intro2').waypoint(function(direction){
-//   $('.wrapperIntro1').toggleclass('stuck', direction === 'up');
-//   $('.wrapperIntro1').toggleclass('sticky-surpassed', direction === 'down');
-// }, {
-//   offset: function() {
-//     return $('#intro2').outerHeight();
-//   }
-// });
+$('#intro2').waypoint(function(direction) {
+  if(direction == 'down'){
+    $('#wrapperIntro1').removeClass('stuck').addClass('sticky-surpassed');
+    // console.log ('Who,s bad going DOWNtown?');
+  } else {
+    $('#wrapperIntro1').removeClass('sticky-surpassed').addClass('stuck');
+    // console.log ('Who,s bad going UPtown?');
+  }
+}, {offset: '100%'});
 
 //Fade Intro1 Photos into existence and make them clickable
 var activateI1 = $('#intro1').waypoint(function (direction) {
@@ -106,16 +107,6 @@ var sticky_2 = new Waypoint.Sticky({
 //Fade into intro2 ministory
 var activateI2 = $('#wrapperIntro2').waypoint(function (direction) {
   console.log('1st r -');
-//My failed attempt at removing and then re-adding stuck class so things weren't just hanging out in the background
-  // if(direction == 'down'){
-  //   sticky_1.destroy()
-  // }
-  // else {
-  //   var sticky_1r = new Waypoint.Sticky({
-  //      element: $('#wrapperIntro1'),
-  //      direction: 'up',
-  //   })
-  // }
   if(direction == 'down'){
     $('#alert1').addClass('secretStuck');
   }
