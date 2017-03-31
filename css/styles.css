@@ -30,11 +30,7 @@ p {
   left: 0;
 }
 
-#wrapperIntro1{
-    width: 100%;
-}
-
-#wrapperIntro2a{
+.wrapper{
     width: 100%;
 }
 
@@ -63,6 +59,10 @@ p {
     -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
     -ms-transition: all 0.2s ease-out;  /* IE10? */
     transition: all 0.2s ease-out; 
+}
+
+.photoBank {
+    text-align: center;
 }
 
 .photoBank:hover .headshotStatusQuo {
@@ -113,11 +113,6 @@ p {
     margin-bottom: 42px;
 }
 
-#statusQuoPhotos {
-    text-align: center;
-    padding-top: 20px;
-}
-
 #alert1{
     right: 6%;
     top: 200px;
@@ -154,9 +149,8 @@ p {
     line-height: 34px;
 }
 
-#intro3 {
-    padding: 300px 0px;
-    opacity: 1;
+#intro3title{
+    opacity: 0;
 }
 
 .photoBankShell{

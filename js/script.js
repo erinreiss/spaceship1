@@ -1,3 +1,6 @@
+// Remove all background colors
+$('*').css('background', 'transparent');
+
 // //GETTING A BASTARD TO COUNT UP ON SCROLL DOWN
 //   $(document).scroll(function(){
 //     console.log('window.scrollY: '+ window.scrollY)
@@ -147,7 +150,7 @@ var activateI2 = $('#wrapperIntro2a').waypoint(function (direction) {
 // M
 // e
 
-// //Resticking intro2 for scrollaway and Bring in intro3
+//Resticking intro2 for scrollaway
 var activateI2_x = $('#wrapperIntro2a').waypoint(function (direction) {
   console.log('2nd - 125 after trigger');
   if(direction == 'down'){
@@ -158,6 +161,21 @@ var activateI2_x = $('#wrapperIntro2a').waypoint(function (direction) {
     // console.log ('Who,s bad going UPtown?');
   }
 }, {offset: -125});
+
+//sticky for #intro3
+var sticky_3 = new Waypoint.Sticky({
+  element: $('#wrapperIntro3')[0]
+})
+
+//Fade in intro3title when #defineHeightIntro2a hits top of screen
+var activateI3 = $('#defineHeightIntro2a').waypoint(function (direction) {
+  console.log('sweet music');
+  if(direction == 'down'){
+    $('#intro3title').animate({"opacity": 1});
+  } else {
+    $('#intro3title').animate({"opacity": 0});
+  }
+});
 
 // Interactions Click Listener for quotes (should be able to combine with photoBank click listner, above)
 $('#interactionsPhotos').on('click', 'img', function(e) {
