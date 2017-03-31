@@ -1,5 +1,5 @@
 // Remove all background colors
-// $('*').css('background', 'transparent');
+$('*').css('background', 'transparent');
 
 // //GETTING A BASTARD TO COUNT UP ON SCROLL DOWN
 //   $(document).scroll(function(){
@@ -167,15 +167,27 @@ var sticky_3 = new Waypoint.Sticky({
   element: $('#wrapperIntro3')[0]
 })
 
-//Fade in intro3title when #defineHeightIntro2a hits top of screen
-var activateI3 = $('#defineHeightIntro2a').waypoint(function (direction) {
+//Fade in/out intro3title and when #defineHeightIntro2a hits top of screen
+var activateI3title = $('#defineHeightIntro2a').waypoint(function (direction) {
   console.log('sweet music');
   if(direction == 'down'){
-    $('#intro3title').animate({"opacity": 1});
+    $('#intro3title').animate({"opacity": 1}, "slow");
+    $("#intro2_sub1, #intro2_sub2").animate({"opacity": 0}, "slow");
   } else {
-    $('#intro3title').animate({"opacity": 0});
+    $('#intro3title').animate({"opacity": 0}, "slow");
+    $("#intro2_sub1, #intro2_sub2").animate({"opacity": 1}, "slow");
   }
 });
+
+//Fade in/out intro3 photos and quotes when #defineHeightIntro2a hits top of screen
+var activateI3banks = $('#defineHeightIntro2a').waypoint(function (direction) {
+  console.log('cypress avenue');
+  if(direction == 'down'){
+    $('#intro3banks').animate({"opacity": 1});
+  } else {
+    $('#intro3banks').animate({"opacity": 0});
+  }
+}, {offset: -150});
 
 // Interactions Click Listener for quotes (should be able to combine with photoBank click listner, above)
 $('#interactionsPhotos').on('click', 'img', function(e) {
