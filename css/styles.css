@@ -65,6 +65,24 @@ p {
     text-align: center;
 }
 
+.quoteBank{
+    display: flex; 
+    padding: 0px 87px;
+}
+
+.quotes{
+    max-width: 155px;
+    padding: 0px 14px;
+    font-family: "Lato";
+    font-weight: 100;
+    margin: 0 auto;
+    font-style: italic;
+    font-size: 1em;
+    line-height: 22px;
+    text-align: justify;
+    visibility: hidden;
+}
+
 .photoBank:hover .headshotStatusQuo {
     opacity: .3;
     -moz-transition: all 0.2s ease-out;  /* FF4+ */

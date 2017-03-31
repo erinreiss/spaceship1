@@ -1,5 +1,5 @@
 // Remove all background colors
-$('*').css('background', 'transparent');
+// $('*').css('background', 'transparent');
 
 // //GETTING A BASTARD TO COUNT UP ON SCROLL DOWN
 //   $(document).scroll(function(){
