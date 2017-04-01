@@ -67,8 +67,6 @@ p {
 
 .quoteBank{
     text-align: center;
-    /*display: flex; 
-    padding: 0px 87px;*/
 }
 
 .quotes{
@@ -82,8 +80,7 @@ p {
     line-height: 22px;
     text-align: center;
     vertical-align: top;
-/*    visibility: hidden;
-*/}
+}
 
 .photoBank:hover .headshotStatusQuo {
     opacity: .3;
@@ -169,19 +166,15 @@ p {
     line-height: 34px;
 }
 
-#intro3title{
+.startOpacity0{
     opacity: 0;
 }
 
-#intro3banks{
-    opacity: 0;
-}
-
-.photoBankShell{
+/*.photoBankShell{
     width: 100%;
     padding-top: 30%;
     padding-bottom: 30%;
-}
+}*/
 
 .headshotQuestion{
     display: inline-block;

@@ -1,5 +1,5 @@
 // Remove all background colors
-$('*').css('background', 'transparent');
+// $('*').css('background', 'transparent');
 
 // //GETTING A BASTARD TO COUNT UP ON SCROLL DOWN
 //   $(document).scroll(function(){
@@ -49,7 +49,7 @@ var sticky_1 = new Waypoint.Sticky({
 $('#intro2').waypoint(function(direction) {
   if(direction == 'down'){
     $('#wrapperIntro1').removeClass('stuck').addClass('sticky-surpassed');
-    // console.log ('Who,s bad going DOWNtown?');
+    console.log ('Who,s bad going DOWNtown 1?');
   } else {
     $('#wrapperIntro1').removeClass('sticky-surpassed').addClass('stuck');
     // console.log ('Who,s bad going UPtown?');
@@ -189,19 +189,56 @@ var activateI3banks = $('#defineHeightIntro2a').waypoint(function (direction) {
   }
 }, {offset: -150});
 
-// Interactions Click Listener for quotes (should be able to combine with photoBank click listner, above)
-$('#interactionsPhotos').on('click', 'img', function(e) {
-  var qID = "#" + $(this).attr('id') + "_quote";
-  console.log(qID)
-  $(qID).css('visibility','visible');
+// Re-stcking intro3 for scroll away
+$('#intro4').waypoint(function(direction) {
+  if(direction == 'down'){
+    $('#wrapperIntro3').removeClass('stuck').addClass('sticky-surpassed');
+    console.log ('Who,s bad going DOWNtown?');
+  } else {
+    $('#wrapperIntro3').removeClass('sticky-surpassed').addClass('stuck');
+    // console.log ('Who,s bad going UPtown?');
+  }
+}, {offset: '100%'});
+
+//Fade in/out intro4title and when #intro4 hits top of screen
+var activateI4title = $('#intro4').waypoint(function (direction) {
+  console.log('爱上你了，对不起');
+  if(direction == 'down'){
+    $('#intro4title').animate({"opacity": 1}, "slow");
+  } else {
+    $('#intro4title').animate({"opacity": 0}, "slow");
+  }
 });
 
-// Attempt 2 at a waypoint to disapear photos in Interactions, more elegant
-var interactionsTitle = $('#interactionsTitle').waypoint(function (direction) {
-  // console.log('bam!');
+//sticky for #intro4
+var sticky_3 = new Waypoint.Sticky({
+  element: $('#wrapperIntro4')[0]
+})
+
+//Fade in/out intro4 photos and quotes when #defineHeightIntro2aMERF hits top of screen
+var activateI4banks = $('#wrapperIntro4').waypoint(function (direction) {
+  console.log('cherry wine');
   if(direction == 'down'){
-    $('#martha_interactions').addClass('headshotInteractions_W');
+    $('#intro4banks').animate({"opacity": 1});
   } else {
-    $('#martha_interactions').removeClass('headshotInteractions_W');
+    $('#intro4banks').animate({"opacity": 0});
   }
-}, {offset: 300});
+}, {offset: 0});
+
+
+// // Interactions Click Listener for quotes (should be able to combine with photoBank click listner, above)
+// $('#interactionsPhotos').on('click', 'img', function(e) {
+//   var qID = "#" + $(this).attr('id') + "_quote";
+//   console.log(qID)
+//   $(qID).css('visibility','visible');
+// });
+
+// // Attempt 2 at a waypoint to disapear photos in Interactions, more elegant
+// var interactionsTitle = $('#interactionsTitle').waypoint(function (direction) {
+//   // console.log('bam!');
+//   if(direction == 'down'){
+//     $('#martha_interactions').addClass('headshotInteractions_W');
+//   } else {
+//     $('#martha_interactions').removeClass('headshotInteractions_W');
+//   }
+// }, {offset: 300});
