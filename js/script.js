@@ -64,12 +64,12 @@ var activateI1 = $('#intro1').waypoint(function (direction) {
       var scrollPercent2 = ((intro1_Top - window.scrollY) * -1) / 300;
       // console.log(scrollPercent2);
       $('#intro1b').css('opacity', scrollPercent2);
-      if (scrollPercent2 >= .94){
-        $('.headshotStatusQuo').css('pointer-events', 'auto')
-      }
-      else {
-        $('.headshotStatusQuo').css('pointer-events', 'none')
-      }
+      // if (scrollPercent2 >= .94){
+      //   $('.headshotStatusQuo').css('pointer-events', 'auto')
+      // }
+      // else {
+      //   $('.headshotStatusQuo').css('pointer-events', 'none')
+      // }
   });
 });
 
@@ -85,10 +85,10 @@ $('.photoBank').on('click', 'img', function(e) {
   // console.log('and')
   // console.log(SRC)
   // console.log(player.src)
-  // This is lazy coding, I should be able to give a common class to .headshotStatusQuo and .headshotInteractions
-  $('.headshotStatusQuo').css('opacity','.3');
-  $('.headshotInteractions').css('opacity','.3');
-  $(this).css('opacity','1');
+  // OG -This is lazy coding, I should be able to give a common class to .headshotStatusQuo and .headshotInteractions
+    // $('.headshotStatusQuo').css('opacity','.3');
+    // $('.headshotInteractions').css('opacity','.3');
+    // $(this).css('opacity','1');
   if (player.paused && (player.src === SRC)) {
     player.play();
   } else if (!player.paused && (player.src === SRC)) {
@@ -100,6 +100,13 @@ $('.photoBank').on('click', 'img', function(e) {
     player.load();
     player.play();
   }
+   // Experiment
+  $('.headshot').click(function(){
+     $('.headshot').not(this).each(function(){
+        $(this).animate({"opacity": .3});
+     });
+     $(this).animate({"opacity": 1});
+  });
 });
 
 //Sticky for #intro2
@@ -215,30 +222,78 @@ var sticky_3 = new Waypoint.Sticky({
   element: $('#wrapperIntro4')[0]
 })
 
-//Fade in/out intro4 photos and quotes when #defineHeightIntro2aMERF hits top of screen
+//Fade in/out intro4 photos and quotes when #wrapperIntro4 hits top of screen
 var activateI4banks = $('#wrapperIntro4').waypoint(function (direction) {
   console.log('cherry wine');
   if(direction == 'down'){
-    $('#intro4banks').animate({"opacity": 1});
+    $('#interactionsPhotos').animate({"opacity": 1}, "slow");
   } else {
-    $('#intro4banks').animate({"opacity": 0});
+    $('#interactionsPhotos').animate({"opacity": 0}, "slow");
   }
-}, {offset: 0});
+}, {offset: -50});
 
+// Interactions Click Listener for QUOTES (should be able to combine with photoBank click listner, above)
+$('#interactionsPhotos').on('click', 'img', function(e) {
+  var qID = "#" + $(this).attr('id') + "_quote";
+  console.log(qID)
+  $(qID).toggleClass("startOpacity0", 400);
+});
 
-// // Interactions Click Listener for quotes (should be able to combine with photoBank click listner, above)
-// $('#interactionsPhotos').on('click', 'img', function(e) {
-//   var qID = "#" + $(this).attr('id') + "_quote";
-//   console.log(qID)
-//   $(qID).css('visibility','visible');
-// });
+//Reset style and audio for intro4banks on scroll away
+$("#intro5").waypoint(function (direction) {
+  console.log('clear intro5');
+  if(direction == 'down'){
+    $('.intro4keep').animate({"opacity": 1}, "slow");
+    $('.intro4leave').animate({"opacity": 0}, "slow");
+    $('.headshotInteractions').css("pointer-events", "none")
+    $('.quote').addClass("startOpacity0", 400);
+      if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+      // player.load();
+      } 
+  } else {
+    $('.headshotInteractions').css("pointer-events", "auto")
+    $('.headshot').animate({"opacity": 1});
+  }
+}, {offset: '90%'});
 
-// // Attempt 2 at a waypoint to disapear photos in Interactions, more elegant
-// var interactionsTitle = $('#interactionsTitle').waypoint(function (direction) {
-//   // console.log('bam!');
+// Re-sticking intro4 for scroll away
+// $('#intro5').waypoint(function(direction) {
 //   if(direction == 'down'){
-//     $('#martha_interactions').addClass('headshotInteractions_W');
+//     $('#wrapperIntro4').removeClass('stuck').addClass('sticky-surpassed');
+//     console.log ('sweet thing');
 //   } else {
-//     $('#martha_interactions').removeClass('headshotInteractions_W');
+//     $('#wrapperIntro4').removeClass('sticky-surpassed').addClass('stuck');
+//     // console.log ('Who,s bad going UPtown?');
 //   }
-// }, {offset: 300});
+// }, {offset: '100%'});
+
+
+//FIRST MOVE TO ANIMATE SCREEN, try one - when i thought it might be a new story
+// $("#intro5").waypoint(function (direction) {
+//   console.log('fade to darius and damontea');
+//   if(direction == 'down'){
+//     $('.intro4leave').animate({"opacity": 0});
+//     $('.intro4keep').animate({"opacity": 1});
+//   } else {
+//     $('.headshot').animate({"opacity": 1});
+//   }
+// }, {offset: '96%'});
+
+// Starting the big animation
+// $('#boob').click(function(e) {
+//   var factor = 2;
+//   console.log("animate ACTIVATED MOTHER FUCKER");
+//   $( ".intro4keep" ).animate({
+//     opacity: 0.17,
+//     left: "+=50",
+//     top: '-=' + $("#damontea_interactions").height() / factor,
+//     left: '-=' + $("#damontea_interactions").width() / factor,
+//     width: $("#damontea_interactions").width() * factor,
+//     height: $("#damontea_interactions").height() * factor,
+//   }, "slow");
+// });

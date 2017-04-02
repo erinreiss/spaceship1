@@ -47,20 +47,6 @@ p {
     opacity: 0;
 }
 
-.headshotStatusQuo{
-    cursor: pointer;
-    display: inline-block;
-    pointer-events: none;
-    max-width: 190px;
-    width: 100%;
-    padding: 0px 10px;
-    -moz-transition: all 0.2s ease-out;  /* FF4+ */
-    -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
-    -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
-    -ms-transition: all 0.2s ease-out;  /* IE10? */
-    transition: all 0.2s ease-out; 
-}
-
 .photoBank {
     text-align: center;
 }
@@ -69,10 +55,8 @@ p {
     text-align: center;
 }
 
-.quotes{
+.quote{
     display: inline-block;
-    max-width: 22%;
-    padding: 0% 2.9%;
     font-family: "Lato";
     font-weight: 100;
     font-style: italic;
@@ -82,21 +66,36 @@ p {
     vertical-align: top;
 }
 
-.photoBank:hover .headshotStatusQuo {
-    opacity: .3;
-    -moz-transition: all 0.2s ease-out;  /* FF4+ */
-    -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
-    -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
-    -ms-transition: all 0.2s ease-out;  /* IE10? */
-    transition: all 0.2s ease-out;  
+.quoteQuestion{
+    max-width: 22%;
+    padding: 0% 2.9%;
 }
-.photoBank .headshotStatusQuo:hover {
-    opacity: 1;
-    -moz-transition: all 0.2s ease-out;  /* FF4+ */
-    -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
-    -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
-    -ms-transition: all 0.2s ease-out;  /* IE10? */
-    transition: all 0.2s ease-out;  
+
+.quoteInteractions{
+    max-width: 14%;
+    padding: 0% 1%;
+}
+
+.headshot{
+    display: inline-block;
+    cursor: pointer;
+}
+.headshotQuestion{
+    max-width: 17%;
+    width: 100%;
+    padding: 0% 5%;
+}
+
+.headshotInteractions{
+    max-width: 14%;
+    width: 100%;
+    padding: 0% 1%;
+}
+
+.headshotStatusQuo{
+    max-width: 190px;
+    width: 100%;
+    padding: 0px 10px;
 }
 
 .paraheader{
@@ -170,22 +169,15 @@ p {
     opacity: 0;
 }
 
+.startOpacity_3{
+    opacity: .3;
+}
+
 /*.photoBankShell{
     width: 100%;
     padding-top: 30%;
     padding-bottom: 30%;
 }*/
-
-.headshotQuestion{
-    display: inline-block;
-    max-width: 17%;
-    width: 100%;
-    padding: 0% 5%;
-}
-
-#interactionsPhotos{
-    text-align: center;
-}
 
 /*.interactionsQuotes{
     max-width: 155px;
@@ -200,7 +192,7 @@ p {
     visibility: hidden;
 }*/
 
-.headshotInteractions{
+/*.headshotInteractions{
     display: inline-block;
     visibility: visible;
     opacity: .3;
@@ -208,10 +200,6 @@ p {
     width: 100%;
     border: solid 3px transparent;
     padding: 6px;
-    -moz-transition: all 0.2s ease-out;  /* FF4+ */
-    -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
-    -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
-    -ms-transition: all 0.2s ease-out;  /* IE10? */
     transition: all 0.6s ease-out; 
 }
 
@@ -223,12 +211,8 @@ p {
     width: 100%;
     border: solid 3px transparent;
     padding: 6px;
-    -moz-transition: all 0.2s ease-out;  /* FF4+ */
-    -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
-    -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
-    -ms-transition: all 0.2s ease-out;  /* IE10? */
     transition: all 0.6s ease-out; 
-}
+}*/
 
 .headshotInteractions:hover {
     opacity: 1;
