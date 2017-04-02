@@ -1,5 +1,5 @@
 // Remove all background colors
-// $('*').css('background', 'transparent');
+$('*').css('background', 'transparent');
 
 // //GETTING A BASTARD TO COUNT UP ON SCROLL DOWN
 //   $(document).scroll(function(){
@@ -218,7 +218,7 @@ var activateI4title = $('#intro4').waypoint(function (direction) {
 });
 
 //sticky for #intro4
-var sticky_3 = new Waypoint.Sticky({
+var sticky_4 = new Waypoint.Sticky({
   element: $('#wrapperIntro4')[0]
 })
 
@@ -230,7 +230,7 @@ var activateI4banks = $('#wrapperIntro4').waypoint(function (direction) {
   } else {
     $('#interactionsPhotos').animate({"opacity": 0}, "slow");
   }
-}, {offset: -50});
+}, {offset: -40});
 
 // Interactions Click Listener for QUOTES (should be able to combine with photoBank click listner, above)
 $('#interactionsPhotos').on('click', 'img', function(e) {
@@ -258,8 +258,9 @@ $("#intro5").waypoint(function (direction) {
   } else {
     $('.headshotInteractions').css("pointer-events", "auto")
     $('.headshot').animate({"opacity": 1});
+    $('.quote').addClass("startOpacity0", 400);
   }
-}, {offset: '90%'});
+}, {offset: '120%'});
 
 // Re-sticking intro4 for scroll away
 // $('#intro5').waypoint(function(direction) {
@@ -270,7 +271,7 @@ $("#intro5").waypoint(function (direction) {
 //     $('#wrapperIntro4').removeClass('sticky-surpassed').addClass('stuck');
 //     // console.log ('Who,s bad going UPtown?');
 //   }
-// }, {offset: '100%'});
+// }, {offset: '90%'});
 
 
 //FIRST MOVE TO ANIMATE SCREEN, try one - when i thought it might be a new story
@@ -284,16 +285,38 @@ $("#intro5").waypoint(function (direction) {
 //   }
 // }, {offset: '96%'});
 
-// Starting the big animation
-// $('#boob').click(function(e) {
-//   var factor = 2;
+// Ugly, Working, Abandonded Try 2 at animation
+// $('#animate').click(function() {
 //   console.log("animate ACTIVATED MOTHER FUCKER");
-//   $( ".intro4keep" ).animate({
-//     opacity: 0.17,
-//     left: "+=50",
-//     top: '-=' + $("#damontea_interactions").height() / factor,
-//     left: '-=' + $("#damontea_interactions").width() / factor,
-//     width: $("#damontea_interactions").width() * factor,
-//     height: $("#damontea_interactions").height() * factor,
-//   }, "slow");
+//   $(".intro4keep").animate({
+//       opacity: 0.17,
+//       width: $("#damontea_interactions").width() * 2,
+//       height: $("#damontea_interactions").height() * 2,
+//   }, { duration: 200, queue: false });
+//   $(".intro4leave").animate({
+//       width: '0px',
+//   }, { duration: 200, queue: false });
+//   $('.intro4leave').css("display", 'none');
+//   $('.photoBank').css("text-align", 'left');
+//   $('.headshotInteractions').css("max-width", 'none');
 // });
+
+//sticky for #intro5
+var sticky_5 = new Waypoint.Sticky({
+  element: $('#wrapperIntro5')[0]
+})
+
+//Fade in/out intro5 100 px after intro 5 hits top of screen
+var activateI5 = $('#wrapperIntro5').waypoint(function (direction) {
+  console.log('Some fun stuff now');
+  if(direction == 'down'){
+    $('.intro4keep').animate({"opacity": 0}, "slow");
+    $('#intro4title').animate({"opacity": 0}, "slow");
+    $('#wrapperIntro5').animate({"opacity": 1}, "slow");
+  } else {
+    $('.intro4keep').animate({"opacity": 1}, "slow");
+    $('#intro4title').animate({"opacity": 1}, "slow");
+    $('#wrapperIntro5').animate({"opacity": 0}, "slow");
+  }
+}, {offset: -100});
+

@@ -17,6 +17,13 @@ p {
     margin:auto;
 }
 
+.leftP{
+    margin-left: 9%;
+    top: 241px;
+    position: absolute;
+    font-size: 1.12em;
+}
+
 .stuck{
     position:fixed;
     top:0;
@@ -98,7 +105,14 @@ p {
     padding: 0px 10px;
 }
 
-.paraheader{
+.bg{
+    width: 31%;
+    opacity: .17;
+    position: absolute;
+    bottom: 0%;
+}
+
+.paraHeader{
     font-family: "Bevan";
     font-style: normal;
     font-weight: 700;
@@ -111,6 +125,16 @@ p {
     width: 500px;
     margin: 0px auto 20px;
     color: #000;
+}
+
+.paraSubHeader{
+    font-family: "Bevan";
+    font-size: .9em;
+    line-height: 1.7em;
+}
+
+.right{
+        margin: 0% 0% 0% 50%;
 }
 
 .sectionheader{
