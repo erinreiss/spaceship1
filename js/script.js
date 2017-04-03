@@ -78,8 +78,8 @@ $('.photoBank').on('click', 'img', function(e) {
   var player = document.getElementById('player');
   var ID = $(this).attr('id');
   // For testing on local server vvVVvvV
-  // var path = 'http://localhost:8000/audio/';
-  var path = 'https://erinreiss.github.io/spaceship1/audio/';
+  var path = 'http://localhost:8000/audio/';
+  // var path = 'https://erinreiss.github.io/spaceship1/audio/';
   var SRC = path + ID + '.mp3';
   // console.log(this)
   // console.log('and')
@@ -225,10 +225,20 @@ var sticky_4 = new Waypoint.Sticky({
 //Fade in/out intro4 photos and quotes when #intro5 is 85% from top of screen
 var activateI4banks = $('#intro5').waypoint(function (direction) {
   console.log('cherry wine');
+   if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+      } 
   if(direction == 'down'){
     $('#interactionsPhotos').animate({"opacity": 1}, "slow");
   } else {
     $('#interactionsPhotos').animate({"opacity": 0}, "slow");
+    $('.quote').addClass("startOpacity0", 400);
+    $('.headshot').animate({"opacity": 1}, "slow");
+
   }
 }, {offset: '85%'});
 
@@ -242,22 +252,21 @@ $('#interactionsPhotos').on('click', 'img', function(e) {
 // Reset style and audio for intro4banks on scroll away when intro5 is 50% from top
 $("#intro5").waypoint(function (direction) {
   console.log('clear intro5');
-  if(direction == 'down'){
-    $('.headshot.intro4keep').animate({"opacity": 1}, "slow");
-    $('.headshot.intro4leave').animate({"opacity": 0}, "slow");
-    $('.quote.intro4keep').removeClass("startOpacity0", 400);
-    $('.quote.intro4leave').addClass("startOpacity0", 400);
-    $('.headshotInteractions').css("pointer-events", "none")
-      if (player.play) {
+  if (player.play) {
       //is this volume animation even working???
       player.animate({volume: 0.0}, 1000);
       player.pause();
       player.currentTime = 0;
       player.animate({volume: 1.0}, 0);
-      // player.load();
       } 
+  if(direction == 'down'){
+    $('.headshot.intro4keep').animate({"opacity": 1}, "slow");
+    $('.headshot.intro4leave').animate({"opacity": 0}, "slow");
+    $('.quote.intro4keep').removeClass("startOpacity0", 400);
+    $('.quote.intro4leave').addClass("startOpacity0", 400);
+    $('.headshotInteractions').css("pointer-events", "none");
   } else {
-    $('.headshotInteractions').css("pointer-events", "auto")
+    $('.headshotInteractions').css("pointer-events", "auto");
     $('.headshot').animate({"opacity": 1}, "slow");
     $('.quote.intro4keep').addClass("startOpacity0", 400);
   }
@@ -321,16 +330,26 @@ var activateI5 = $('#wrapperIntro5a').waypoint(function (direction) {
 
 //Fade in/out intro5b 20% before intro5a2para hits, and Un-sticking intro4
 var activateI5b = $('#intro5a2para').waypoint(function (direction) {
+  if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+      } 
   console.log('Police React');
   $('.headshot').css("opacity", 1);
   if(direction == 'down'){
     $('#intro5a2para').animate({"opacity": 0}, "slow");
     $('#wrapperIntro5b, #wrapperIntro5c').animate({"opacity": 1}, "slow");
     $('#wrapperIntro4').removeClass('stuck').addClass('sticky-surpassed');
+    $('.headshot').animate({"opacity": 1}, "slow");
   } else {
     $('#intro5a2para').animate({"opacity": 1}, "slow");
     $('#wrapperIntro5b, #wrapperIntro5c').animate({"opacity": 0}, "slow");
     $('#wrapperIntro4').removeClass('sticky-surpassed').addClass('stuck');
+    $('.headshot').animate({"opacity": 1}, "slow");
+
   }
 }, {offset: '20%'});
     
@@ -353,9 +372,16 @@ $('#wrapperIntro5b').waypoint(function(direction) {
   }
 });
 
-// sticky for wrapperIntro5d
+// sticky for wrapperIntro5d and let wrapperIntro5c go
 $('#start5d').waypoint(function(direction) {
   console.log('start5d')
+  if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+      } 
   if(direction == 'down'){
     // var intro5cHeight = $("#wrapperIntro5d").height();
     // $('#fauxSticky5d').css('height', intro5cHeight);
@@ -363,14 +389,41 @@ $('#start5d').waypoint(function(direction) {
     $('#wrapperIntro5d').animate({"opacity": 1}, "slow");
     $('#wrapperIntro5d').addClass('stuck22')
     $('#wrapperIntro5c').removeClass('stuck22').addClass('sticky-surpassed');
-
+    $('.headshot').animate({"opacity": 1}, "slow");
   } else {
     // $('#fauxSticky5d').css('height', '');
     $('#wrapperIntro5d').removeClass('stuck22');
     $('#wrapperIntro5c').animate({"opacity": 1}, "slow");
     $('#wrapperIntro5d').animate({"opacity": 0}, "slow");
     $('#wrapperIntro5c').addClass('stuck22').removeClass('sticky-surpassed');
+    $('.headshot').animate({"opacity": 1}, "slow");
+
   }
 //for whatever reason, the offset is the height of intro5c (450px)
 }, {offset: 475});
+
+// sticky for wrapperIntro5e and let wrapperIntro5d go
+$('#start5e').waypoint(function(direction) {
+  if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+      } 
+  console.log('start5e')
+  if(direction == 'down'){
+    $('#wrapperIntro5d').animate({"opacity": 0}, "slow"); 
+    $('#wrapperIntro5e').animate({"opacity": 1}, "slow");
+    $('#wrapperIntro5e').addClass('stuck22')
+    $('#wrapperIntro5d').removeClass('stuck22').addClass('sticky-surpassed');
+
+  } else {
+    $('#wrapperIntro5e').removeClass('stuck22');
+    $('#wrapperIntro5d').animate({"opacity": 1}, "slow");
+    $('#wrapperIntro5e').animate({"opacity": 0}, "slow");
+    $('#wrapperIntro5d').addClass('stuck22').removeClass('sticky-surpassed');
+  }
+//I didn't even bother to figure out why this is 600px
+}, {offset: 600});
 
