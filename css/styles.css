@@ -20,7 +20,6 @@ p {
 .leftP{
     margin-left: 9%;
     top: 241px;
-    position: absolute;
     font-size: 1.12em;
 }
 
@@ -103,6 +102,12 @@ p {
     max-width: 190px;
     width: 100%;
     padding: 0px 10px;
+}
+
+.headshotReaction1a{
+    max-width: 36%;
+    width: 100%;
+    padding: 0px 6%;
 }
 
 .bg{
@@ -238,11 +243,7 @@ p {
     transition: all 0.6s ease-out; 
 }*/
 
-.headshotInteractions:hover {
+/*.headshotInteractions:hover {
     opacity: 1;
-    -moz-transition: all 0.2s ease-out;  /* FF4+ */
-    -o-transition: all 0.2s ease-out;  /* Opera 10.5+ */
-    -webkit-transition: all 0.2s ease-out;  /* Saf3.2+, Chrome */
-    -ms-transition: all 0.2s ease-out;  /* IE10? */
     transition: all 0.2s ease-out;  
-}
+}*/

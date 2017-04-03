@@ -1,5 +1,5 @@
 // Remove all background colors
-$('*').css('background', 'transparent');
+// $('*').css('background', 'transparent');
 
 // //GETTING A BASTARD TO COUNT UP ON SCROLL DOWN
 //   $(document).scroll(function(){
@@ -196,7 +196,7 @@ var activateI3banks = $('#defineHeightIntro2a').waypoint(function (direction) {
   }
 }, {offset: -150});
 
-// Re-stcking intro3 for scroll away
+// Un-sticking intro3 for scroll away
 $('#intro4').waypoint(function(direction) {
   if(direction == 'down'){
     $('#wrapperIntro3').removeClass('stuck').addClass('sticky-surpassed');
@@ -222,7 +222,7 @@ var sticky_4 = new Waypoint.Sticky({
   element: $('#wrapperIntro4')[0]
 })
 
-//Fade in/out intro4 photos and quotes when #wrapperIntro4 hits top of screen
+//Fade in/out intro4 photos and quotes 20px #wrapperIntro4 hits top of screen
 var activateI4banks = $('#wrapperIntro4').waypoint(function (direction) {
   console.log('cherry wine');
   if(direction == 'down'){
@@ -230,7 +230,7 @@ var activateI4banks = $('#wrapperIntro4').waypoint(function (direction) {
   } else {
     $('#interactionsPhotos').animate({"opacity": 0}, "slow");
   }
-}, {offset: -40});
+}, {offset: -20});
 
 // Interactions Click Listener for QUOTES (should be able to combine with photoBank click listner, above)
 $('#interactionsPhotos').on('click', 'img', function(e) {
@@ -301,22 +301,41 @@ $("#intro5").waypoint(function (direction) {
 //   $('.headshotInteractions').css("max-width", 'none');
 // });
 
-//sticky for #intro5
+//sticky for #intro5a
 var sticky_5 = new Waypoint.Sticky({
-  element: $('#wrapperIntro5')[0]
+  element: $('#wrapperIntro5a')[0]
 })
 
-//Fade in/out intro5 100 px after intro 5 hits top of screen
-var activateI5 = $('#wrapperIntro5').waypoint(function (direction) {
+//Fade in/out intro5 10 px after intro5a hits top of screen
+var activateI5 = $('#wrapperIntro5a').waypoint(function (direction) {
   console.log('Some fun stuff now');
   if(direction == 'down'){
     $('.intro4keep').animate({"opacity": 0}, "slow");
     $('#intro4title').animate({"opacity": 0}, "slow");
-    $('#wrapperIntro5').animate({"opacity": 1}, "slow");
+    $('#wrapperIntro5a').animate({"opacity": 1}, "slow");
   } else {
     $('.intro4keep').animate({"opacity": 1}, "slow");
     $('#intro4title').animate({"opacity": 1}, "slow");
-    $('#wrapperIntro5').animate({"opacity": 0}, "slow");
+    $('#wrapperIntro5a').animate({"opacity": 0}, "slow");
   }
-}, {offset: -100});
+}, {offset: -10});
+
+//Fade in/out intro5b 20% before intro5a2para hits, and Un-sticking intro4
+var activateI5b = $('#intro5a2para').waypoint(function (direction) {
+  console.log('Police React');
+  if(direction == 'down'){
+    $('#intro5a2para').animate({"opacity": 0}, "slow");
+    $('#wrapperIntro5b').animate({"opacity": 1}, "slow");
+    $('#wrapperIntro4').removeClass('stuck').addClass('sticky-surpassed');
+  } else {
+    $('#intro5a2para').animate({"opacity": 1}, "slow");
+    $('#wrapperIntro5b').animate({"opacity": 0}, "slow");
+    $('#wrapperIntro4').removeClass('sticky-surpassed').addClass('stuck');
+  }
+}, {offset: '20%'});
+    
+//sticky for #intro5b
+var sticky_5 = new Waypoint.Sticky({
+  element: $('#wrapperIntro5b')[0]
+})
 
