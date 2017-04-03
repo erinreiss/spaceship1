@@ -1,5 +1,5 @@
 // Remove all background colors
-$('*').css('background', 'transparent');
+// $('*').css('background', 'transparent');
 
 // //GETTING A BASTARD TO COUNT UP ON SCROLL DOWN
 //   $(document).scroll(function(){
@@ -17,61 +17,6 @@ var matchData;
 var intro1_Top = $('#intro1').offset().top;
 var intro2_Top = $('#intro2').offset().top;  
 var intro2_Top_2 = $('#wrapperIntro2a').offset().top;  
-
-//Delayed fading landing with scroll
-var intro1Activate = $('#intro1').waypoint(function (direction) {
-  //GETTING A BASTARD TO COUNT DOWN ON SCROLL DOWN
-  $(document).scroll(function(e){
-      // console.log("position relative to window: " + (intro1_Top - window.scrollY));
-    var scrollPercent1 = (intro1_Top - window.scrollY) / 350;
-      if(scrollPercent1 >= 0){
-          $('#intro0').css('opacity', scrollPercent1);
-      }
-  });
-}, {offset: 350});
-
-//Autoscroll to #intro1 THIS WORKS
-// var interactionsTitle = $('#intro1').waypoint(function (direction) {
-//   // console.log('ba-boom!');
-//   if(direction == 'down'){
-//     $('html, body').animate({
-//         scrollTop: $("#intro1").offset().top
-//     }, 2000);
-//   }
-// }, {offset: 200});
-
-//Sticky for #intro1 
-var sticky_1 = new Waypoint.Sticky({
-  element: $('#wrapperIntro1')[0]
-})
-
-// Re-stcking intro1 for scroll away
-$('#intro2').waypoint(function(direction) {
-  if(direction == 'down'){
-    $('#wrapperIntro1').removeClass('stuck').addClass('sticky-surpassed');
-    console.log ('Who,s bad going DOWNtown 1?');
-  } else {
-    $('#wrapperIntro1').removeClass('sticky-surpassed').addClass('stuck');
-    // console.log ('Who,s bad going UPtown?');
-  }
-}, {offset: '100%'});
-
-//Fade Intro1 Photos into existence and make them clickable
-var activateI1 = $('#intro1').waypoint(function (direction) {
-  // console.log('ba-boomba-boom!');
-  $(document).scroll(function(){
-      // console.log("position relative to window: " + (intro1_Top - window.scrollY));
-      var scrollPercent2 = ((intro1_Top - window.scrollY) * -1) / 300;
-      // console.log(scrollPercent2);
-      $('#intro1b').css('opacity', scrollPercent2);
-      // if (scrollPercent2 >= .94){
-      //   $('.headshotStatusQuo').css('pointer-events', 'auto')
-      // }
-      // else {
-      //   $('.headshotStatusQuo').css('pointer-events', 'none')
-      // }
-  });
-});
 
 // photoBank Click Listener try 3 - from stackoverflow, zer00ne
 $('.photoBank').on('click', 'img', function(e) {
@@ -108,6 +53,79 @@ $('.photoBank').on('click', 'img', function(e) {
      $(this).animate({"opacity": 1});
   });
 });
+
+//Delayed fading landing with scroll
+var intro1Activate = $('#intro1').waypoint(function (direction) {
+  //GETTING A BASTARD TO COUNT DOWN ON SCROLL DOWN
+  $(document).scroll(function(e){
+      // console.log("position relative to window: " + (intro1_Top - window.scrollY));
+    var scrollPercent1 = (intro1_Top - window.scrollY) / 350;
+      if(scrollPercent1 >= 0){
+          $('#intro0').css('opacity', scrollPercent1);
+      }
+  });
+}, {offset: 350});
+
+//Autoscroll to #intro1 THIS WORKS
+// var interactionsTitle = $('#intro1').waypoint(function (direction) {
+//   // console.log('ba-boom!');
+//   if(direction == 'down'){
+//     $('html, body').animate({
+//         scrollTop: $("#intro1").offset().top
+//     }, 2000);
+//   }
+// }, {offset: 200});
+
+//Sticky for #intro1 
+var sticky_1 = new Waypoint.Sticky({
+  element: $('#wrapperIntro1')[0]
+})
+
+//Fade in/out Intro1 Photos (Status Quo)
+$('#intro2').waypoint(function (direction) {
+  console.log("bring in statusQuoPhotos")
+  if(direction == 'down'){
+    $('#statusQuoPhotos').animate({"opacity": 1}, "slow");
+  } else {
+    $('#statusQuoPhotos').animate({"opacity": 0}, "slow");
+    $('.headshot').animate({"opacity": 1}, "slow");
+      if (player.play) {
+        //is this volume animation even working???
+        player.animate({volume: 0.0}, 1000);
+        player.pause();
+        player.currentTime = 0;
+        player.animate({volume: 1.0}, 0);
+      } 
+  }
+}, {offset: "130%"});
+
+
+// Re-sticking intro1 for scroll away
+$('#intro2').waypoint(function(direction) {
+  if(direction == 'down'){
+    $('#wrapperIntro1').removeClass('stuck').addClass('sticky-surpassed');
+    console.log ('Restick intro1 - Status Quo');
+  } else {
+    $('#wrapperIntro1').removeClass('sticky-surpassed').addClass('stuck');
+  }
+}, {offset: '100%'});
+
+// Resetting intro1 Photos and sound on scroll away
+$('#defineHeightIntro1').waypoint(function(direction) {
+  console.log ('Resest intro1 sound and opacity');
+  if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+      } 
+  if(direction == 'down'){
+    $('.headshot').animate({"opacity": 1}, "slow");
+  }
+});
+
+
 
 //Sticky for #intro2
 var sticky_2 = new Waypoint.Sticky({
