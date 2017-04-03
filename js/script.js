@@ -1,5 +1,5 @@
 // Remove all background colors
-// $('*').css('background', 'transparent');
+$('*').css('background', 'transparent');
 
 // //GETTING A BASTARD TO COUNT UP ON SCROLL DOWN
 //   $(document).scroll(function(){
@@ -78,8 +78,8 @@ $('.photoBank').on('click', 'img', function(e) {
   var player = document.getElementById('player');
   var ID = $(this).attr('id');
   // For testing on local server vvVVvvV
-  var path = 'http://localhost:8000/audio/';
-  // var path = 'https://erinreiss.github.io/spaceship1/audio/';
+  // var path = 'http://localhost:8000/audio/';
+  var path = 'https://erinreiss.github.io/spaceship1/audio/';
   var SRC = path + ID + '.mp3';
   // console.log(this)
   // console.log('and')
@@ -222,15 +222,15 @@ var sticky_4 = new Waypoint.Sticky({
   element: $('#wrapperIntro4')[0]
 })
 
-//Fade in/out intro4 photos and quotes 20px #wrapperIntro4 hits top of screen
-var activateI4banks = $('#wrapperIntro4').waypoint(function (direction) {
+//Fade in/out intro4 photos and quotes when #intro5 is 85% from top of screen
+var activateI4banks = $('#intro5').waypoint(function (direction) {
   console.log('cherry wine');
   if(direction == 'down'){
     $('#interactionsPhotos').animate({"opacity": 1}, "slow");
   } else {
     $('#interactionsPhotos').animate({"opacity": 0}, "slow");
   }
-}, {offset: -20});
+}, {offset: '85%'});
 
 // Interactions Click Listener for QUOTES (should be able to combine with photoBank click listner, above)
 $('#interactionsPhotos').on('click', 'img', function(e) {
@@ -239,14 +239,15 @@ $('#interactionsPhotos').on('click', 'img', function(e) {
   $(qID).toggleClass("startOpacity0", 400);
 });
 
-//Reset style and audio for intro4banks on scroll away
+// Reset style and audio for intro4banks on scroll away when intro5 is 50% from top
 $("#intro5").waypoint(function (direction) {
   console.log('clear intro5');
   if(direction == 'down'){
-    $('.intro4keep').animate({"opacity": 1}, "slow");
-    $('.intro4leave').animate({"opacity": 0}, "slow");
+    $('.headshot.intro4keep').animate({"opacity": 1}, "slow");
+    $('.headshot.intro4leave').animate({"opacity": 0}, "slow");
+    $('.quote.intro4keep').removeClass("startOpacity0", 400);
+    $('.quote.intro4leave').addClass("startOpacity0", 400);
     $('.headshotInteractions').css("pointer-events", "none")
-    $('.quote').addClass("startOpacity0", 400);
       if (player.play) {
       //is this volume animation even working???
       player.animate({volume: 0.0}, 1000);
@@ -257,12 +258,12 @@ $("#intro5").waypoint(function (direction) {
       } 
   } else {
     $('.headshotInteractions').css("pointer-events", "auto")
-    $('.headshot').animate({"opacity": 1});
-    $('.quote').addClass("startOpacity0", 400);
+    $('.headshot').animate({"opacity": 1}, "slow");
+    $('.quote.intro4keep').addClass("startOpacity0", 400);
   }
-}, {offset: '120%'});
+}, {offset: '50%'});
 
-// Re-sticking intro4 for scroll away
+// Un-sticking intro4 for scroll away - was muted...
 // $('#intro5').waypoint(function(direction) {
 //   if(direction == 'down'){
 //     $('#wrapperIntro4').removeClass('stuck').addClass('sticky-surpassed');
@@ -310,12 +311,10 @@ var sticky_5 = new Waypoint.Sticky({
 var activateI5 = $('#wrapperIntro5a').waypoint(function (direction) {
   console.log('Some fun stuff now');
   if(direction == 'down'){
-    $('.intro4keep').animate({"opacity": 0}, "slow");
-    $('#intro4title').animate({"opacity": 0}, "slow");
+    $('#wrapperIntro4').animate({"opacity": 0}, "slow");
     $('#wrapperIntro5a').animate({"opacity": 1}, "slow");
   } else {
-    $('.intro4keep').animate({"opacity": 1}, "slow");
-    $('#intro4title').animate({"opacity": 1}, "slow");
+    $('#wrapperIntro4').animate({"opacity": 1}, "slow");
     $('#wrapperIntro5a').animate({"opacity": 0}, "slow");
   }
 }, {offset: -10});
@@ -323,6 +322,7 @@ var activateI5 = $('#wrapperIntro5a').waypoint(function (direction) {
 //Fade in/out intro5b 20% before intro5a2para hits, and Un-sticking intro4
 var activateI5b = $('#intro5a2para').waypoint(function (direction) {
   console.log('Police React');
+  $('.headshot').css("opacity", 1);
   if(direction == 'down'){
     $('#intro5a2para').animate({"opacity": 0}, "slow");
     $('#wrapperIntro5b').animate({"opacity": 1}, "slow");
