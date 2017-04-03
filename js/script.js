@@ -325,11 +325,11 @@ var activateI5b = $('#intro5a2para').waypoint(function (direction) {
   $('.headshot').css("opacity", 1);
   if(direction == 'down'){
     $('#intro5a2para').animate({"opacity": 0}, "slow");
-    $('#wrapperIntro5b').animate({"opacity": 1}, "slow");
+    $('#wrapperIntro5b, #wrapperIntro5c').animate({"opacity": 1}, "slow");
     $('#wrapperIntro4').removeClass('stuck').addClass('sticky-surpassed');
   } else {
     $('#intro5a2para').animate({"opacity": 1}, "slow");
-    $('#wrapperIntro5b').animate({"opacity": 0}, "slow");
+    $('#wrapperIntro5b, #wrapperIntro5c').animate({"opacity": 0}, "slow");
     $('#wrapperIntro4').removeClass('sticky-surpassed').addClass('stuck');
   }
 }, {offset: '20%'});
@@ -338,4 +338,39 @@ var activateI5b = $('#intro5a2para').waypoint(function (direction) {
 var sticky_5 = new Waypoint.Sticky({
   element: $('#wrapperIntro5b')[0]
 })
+
+// sticky for wrapperIntro5c - fauxStickyWrapper22
+$('#wrapperIntro5b').waypoint(function(direction) {
+  if(direction == 'down'){
+    // var intro5cHeight = $("#wrapperIntro5c").height();
+    // $('#fauxSticky5c').css('height', intro5cHeight);
+    $('#wrapperIntro5c').addClass('stuck22')
+    console.log ('fauxSticky5c going down');
+  } 
+  else {
+    // $('#fauxSticky5c').css('height', '');
+    $('#wrapperIntro5c').removeClass('stuck22');  
+  }
+});
+
+// sticky for wrapperIntro5d
+$('#start5d').waypoint(function(direction) {
+  console.log('start5d')
+  if(direction == 'down'){
+    // var intro5cHeight = $("#wrapperIntro5d").height();
+    // $('#fauxSticky5d').css('height', intro5cHeight);
+    $('#wrapperIntro5c').animate({"opacity": 0}, "slow"); 
+    $('#wrapperIntro5d').animate({"opacity": 1}, "slow");
+    $('#wrapperIntro5d').addClass('stuck22')
+    $('#wrapperIntro5c').removeClass('stuck22').addClass('sticky-surpassed');
+
+  } else {
+    // $('#fauxSticky5d').css('height', '');
+    $('#wrapperIntro5d').removeClass('stuck22');
+    $('#wrapperIntro5c').animate({"opacity": 1}, "slow");
+    $('#wrapperIntro5d').animate({"opacity": 0}, "slow");
+    $('#wrapperIntro5c').addClass('stuck22').removeClass('sticky-surpassed');
+  }
+//for whatever reason, the offset is the height of intro5c (450px)
+}, {offset: 475});
 
