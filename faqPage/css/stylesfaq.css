@@ -1,26 +1,3 @@
-.quoteBankVertical{
-    background-color: dodgerblue;
-    position: fixed;
-    top: 19vh;
-    width: 50vw;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.quoteVertical{
-    background-color: goldenrod;
-    font-family: lato;
-    width: 35vw;
-    margin: 0 auto;
-    color: #B36AE2;
-    font-size: 22px;
-    font-weight: 200;
-    line-height: 1.8rem;
-    font-style: italic;
-    top: 41vh;
-}
-
-
 body, figure {
     margin: 0px;
 }
@@ -33,10 +10,11 @@ p {
     -webkit-font-smoothing: antialiased;
     font-size: 1rem;
     line-height: 1.5rem;
+    font-weight: 400;
     font-style: normal;
     color: #333;
     display: block;
-    margin: auto;
+    margin:auto;
 }
 
 .leftP{
@@ -237,6 +215,7 @@ p {
 
 .faqQ{
     color: #B36AE2;
+    margin:0;
 }
 
 

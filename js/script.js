@@ -261,7 +261,7 @@ var activateI4banks = $('#intro5').waypoint(function (direction) {
 }, {offset: '85%'});
 
 // Interactions Click Listener for QUOTES (should be able to combine with photoBank click listner, above)
-$('#interactionsPhotos').on('click', 'img', function(e) {
+$('.photoBank').on('click', 'img', function(e) {
   var qID = "#" + $(this).attr('id') + "_quote";
   console.log(qID)
   $(qID).toggleClass("startOpacity0", 400);
@@ -444,4 +444,31 @@ $('#start5e').waypoint(function(direction) {
   }
 //I didn't even bother to figure out why this is 600px
 }, {offset: 600});
+
+// Reset style and audio for wrapperIntro5e Darin and Alicea on scroll away when WrapperIntro6 is 50% from top
+$("#wrapperIntro6b").waypoint(function (direction) {
+  console.log('begin fading Police React');
+  if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+      } 
+  if(direction == 'down'){
+    $('.headshot').animate({"opacity": 1}, "slow");
+    $('#textIntro5e, #wrapperIntro5a, #wrapperIntro5b').animate({"opacity": 0}, "slow");
+    // $('#wrapperIntro5a').animate({"opacity": 0}, "slow");
+    // $('#wrapperIntro5b').animate({"opacity": 0}, "slow");
+
+    // $('#wrapperIntro5a').toggleClass('startOpacity0');
+    // Quotes
+    // $('.quote.intro4leave').addClass("startOpacity0", 400);
+    $('.headshotReaction1b').css("pointer-events", "none");
+  } else {
+    $('.headshotReaction1b').css("pointer-events", "auto");
+    $('#textIntro5e, #wrapperIntro5a, #wrapperIntro5b').animate({"opacity": 1}, "slow");
+  }
+//I didn't even bother to figure out why this is 600px, prob bc its the whole intro5
+}, {offset: 1500});
 
