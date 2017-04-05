@@ -376,3 +376,23 @@ $('#wrapperIntro5e').waypoint(function (direction) {
 var sticky_5e = new Waypoint.Sticky({
   element: $('#wrapperIntro5e')[0]
 })
+
+//Un/Re-stick wrapperIntro5a, 5b, 5e 10% before wrapperIntro6a hits
+$('#wrapperIntro6a').waypoint(function (direction) {
+  console.log("Bye 5a and 5b finally, and bye 5e");
+  if(direction == 'down'){
+    $('#wrapperIntro5a, #wrapperIntro5b, #wrapperIntro5e').removeClass('stuck').addClass('sticky-surpassed');
+  } else {
+    $('#wrapperIntro5a, #wrapperIntro5b, #wrapperIntro5e').removeClass('sticky-surpassed').addClass('stuck');
+  }
+}, {offset: '10%'});
+
+//sticky for #intro6a
+var sticky_6a = new Waypoint.Sticky({
+  element: $('#wrapperIntro6a')[0]
+})
+
+//sticky for #intro6a
+var sticky_6b = new Waypoint.Sticky({
+  element: $('#wrapperIntro6b')[0]
+})
