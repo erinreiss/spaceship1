@@ -1,6 +1,9 @@
 // Remove all background colors
 $('*').css('background', 'transparent');
 
+// Give my babies a white background
+$('.babies').css('background', '');
+
 // //GETTING A BASTARD TO COUNT UP ON SCROLL DOWN
 //   $(document).scroll(function(){
 //     console.log('window.scrollY: '+ window.scrollY)
@@ -303,7 +306,7 @@ $("#intro5").waypoint(function (direction) {
 // });
 
 //sticky for #intro5a
-var sticky_5 = new Waypoint.Sticky({
+var sticky_5a = new Waypoint.Sticky({
   element: $('#wrapperIntro5a')[0]
 })
 
@@ -335,7 +338,41 @@ var activateI5b = $('#intro5a2para').waypoint(function (direction) {
 }, {offset: '20%'});
     
 //sticky for #intro5b
-var sticky_5 = new Waypoint.Sticky({
+var sticky_5b = new Waypoint.Sticky({
   element: $('#wrapperIntro5b')[0]
 })
 
+//sticky for #intro5c
+var sticky_5c = new Waypoint.Sticky({
+  element: $('#wrapperIntro5c')[0]
+})
+
+//Un/Re-stick wrapperIntro5c
+$('#wrapperIntro5d').waypoint(function (direction) {
+  console.log("Bye 5c, hello 5d");
+  if(direction == 'down'){
+    $('#wrapperIntro5c').removeClass('stuck').addClass('sticky-surpassed');
+  } else {
+    $('#wrapperIntro5c').removeClass('sticky-surpassed').addClass('stuck');
+  }
+}, {offset: '50%'});
+
+//sticky for #intro5d
+var sticky_5d = new Waypoint.Sticky({
+  element: $('#wrapperIntro5d')[0]
+})
+
+//Un/Re-stick wrapperIntro5d
+$('#wrapperIntro5e').waypoint(function (direction) {
+  console.log("Bye 5d, hello 5e");
+  if(direction == 'down'){
+    $('#wrapperIntro5d').removeClass('stuck').addClass('sticky-surpassed');
+  } else {
+    $('#wrapperIntro5d').removeClass('sticky-surpassed').addClass('stuck');
+  }
+}, {offset: '25%'});
+
+//sticky for #intro5e
+var sticky_5e = new Waypoint.Sticky({
+  element: $('#wrapperIntro5e')[0]
+})
