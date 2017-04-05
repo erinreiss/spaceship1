@@ -1,6 +1,6 @@
 .quoteBankVertical{
-    background-color: dodgerblue;
-    position: fixed;
+/*    background-color: dodgerblue;
+*/    position: fixed;
     top: 19vh;
     width: 50vw;
     margin: 0 auto;
@@ -8,7 +8,7 @@
 }
 
 .quoteVertical{
-    background-color: goldenrod;
+    /*background-color: goldenrod;*/
     font-family: lato;
     width: 35vw;
     margin: 0 auto;
@@ -141,6 +141,12 @@ p {
     padding: 0px 6%;
 }
 
+.headshotReaction2{
+    max-width: 28%;
+    width: 100%;
+    padding: 0px 2%;
+}
+
 .bg{
     width: 31%;
     opacity: .17;
@@ -170,7 +176,11 @@ p {
 }
 
 .right{
-        margin: 0% 0% 0% 50%;
+     margin: 0% 0% 0% 50%;
+}
+
+.left{
+    margin: 0% 50% 0% 2.5%;
 }
 
 .sectionheader{

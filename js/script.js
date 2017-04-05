@@ -377,7 +377,7 @@ var sticky_5 = new Waypoint.Sticky({
 })
 
 // sticky for wrapperIntro5c - fauxStickyWrapper22
-$('#wrapperIntro5b').waypoint(function(direction) {
+var gobble = $('#wrapperIntro5b').waypoint(function(direction) {
   if(direction == 'down'){
     // var intro5cHeight = $("#wrapperIntro5c").height();
     // $('#fauxSticky5c').css('height', intro5cHeight);
@@ -391,7 +391,7 @@ $('#wrapperIntro5b').waypoint(function(direction) {
 });
 
 // sticky for wrapperIntro5d and let wrapperIntro5c go
-$('#start5d').waypoint(function(direction) {
+var gibble = $('#start5d').waypoint(function(direction) {
   console.log('start5d')
   if (player.play) {
       //is this volume animation even working???
@@ -421,7 +421,7 @@ $('#start5d').waypoint(function(direction) {
 }, {offset: 475});
 
 // sticky for wrapperIntro5e and let wrapperIntro5d go
-$('#start5e').waypoint(function(direction) {
+var booble = $('#start5e').waypoint(function(direction) {
   if (player.play) {
       //is this volume animation even working???
       player.animate({volume: 0.0}, 1000);
@@ -446,7 +446,7 @@ $('#start5e').waypoint(function(direction) {
 }, {offset: 600});
 
 // Reset style and audio for wrapperIntro5e Darin and Alicea on scroll away when WrapperIntro6 is 50% from top
-$("#wrapperIntro6b").waypoint(function (direction) {
+var snooker = $("#wrapperIntro6b").waypoint(function (direction) {
   console.log('begin fading Police React');
   if (player.play) {
       //is this volume animation even working???
@@ -458,10 +458,6 @@ $("#wrapperIntro6b").waypoint(function (direction) {
   if(direction == 'down'){
     $('.headshot').animate({"opacity": 1}, "slow");
     $('#textIntro5e, #wrapperIntro5a, #wrapperIntro5b').animate({"opacity": 0}, "slow");
-    // $('#wrapperIntro5a').animate({"opacity": 0}, "slow");
-    // $('#wrapperIntro5b').animate({"opacity": 0}, "slow");
-
-    // $('#wrapperIntro5a').toggleClass('startOpacity0');
     // Quotes
     // $('.quote.intro4leave').addClass("startOpacity0", 400);
     $('.headshotReaction1b').css("pointer-events", "none");
@@ -470,5 +466,56 @@ $("#wrapperIntro6b").waypoint(function (direction) {
     $('#textIntro5e, #wrapperIntro5a, #wrapperIntro5b').animate({"opacity": 1}, "slow");
   }
 //I didn't even bother to figure out why this is 600px, prob bc its the whole intro5
-}, {offset: 1500});
+}, {offset: 1810});
+
+//Remove sticky from big photos of darius and damontea (WrapperIntro5a) 15 pixles after the function above
+var dodo = $("#wrapperIntro6b").waypoint(function(direction) {
+  console.log('Remove sticky for WrapperIntro5a')
+  if(direction == 'down'){
+    $('#wrapperIntro5a').removeClass('stuck').addClass('sticky-surpassed');
+// lil test
+    $('#wrapperIntro5e').removeClass('stuck22').addClass('sticky-surpassed');
+  } else {
+    $('#wrapperIntro5a').addClass('stuck').removeClass('sticky-surpassed');
+  }
+}, {offset: 1790});
+
+
+
+//Fade in/out intro6 titles and intro 6a 10 px after wrapper intro6a hits top of screen
+// $('#wrapperIntro6b').waypoint(function (direction) {
+//   console.log('intro 6 and intro 6a start - Sutdents respond');
+//   if(direction == 'down'){
+//     $('#reaction1bPhotos').animate({"opacity": 0}, "slow");
+//     $('#wrapperIntro6a').animate({"opacity": 1}, "slow");
+//   } else {
+//     $('#wrapperIntro6a').animate({"opacity": 0}, "slow");
+//     $('#reaction1bPhotos').animate({"opacity": 1}, "slow");
+//   }
+// }, {offset: 1300});
+
+//sticky for #intro6a
+// var sticky_6 = new Waypoint.Sticky({
+//   element: $('#wrapperIntro6a')[0]
+// })
+
+//Try two for sticky intro6a
+var dodo3333 = $("#wrapperIntro6b").waypoint(function(direction) {
+  console.log('Stick wrapperIntro6a')
+  if(direction == 'down'){
+    $('#wrapperIntro6a').addClass('stuck').removeClass('sticky-surpassed');
+  } else {
+    $('#wrapperIntro6a').addClass('sticky-surpassed').removeClass('stuck');
+  }
+}, {offset: 1620});
+
+//Fade in/out intro6 10 px after intro5a hits top of screen
+// $('#wrapperIntro6a').waypoint(function (direction) {
+//   console.log('Some fun stuff now 2');
+//   if(direction == 'down'){
+//     $('#wrapperIntro4').animate({"opacity": 0}, "slow");
+//   } else {
+//     $('#wrapperIntro6a').animate({"opacity": 0}, "slow");
+//   }
+// }, {offset: -10});
 
