@@ -48,20 +48,18 @@ var sticky_1 = new Waypoint.Sticky({
   element: $('#wrapperIntro1')[0]
 })
 
-// Re-stcking intro1 for scroll away
+// Re-sticking intro1 for scroll away
 $('#intro2').waypoint(function(direction) {
   if(direction == 'down'){
     $('#wrapperIntro1').removeClass('stuck').addClass('sticky-surpassed');
-    console.log ('Who,s bad going DOWNtown 1?');
+    console.log ('Bye intro1');
   } else {
     $('#wrapperIntro1').removeClass('sticky-surpassed').addClass('stuck');
-    // console.log ('Who,s bad going UPtown?');
   }
 }, {offset: '100%'});
 
 //Fade Intro1 Photos into existence and make them clickable
-var activateI1 = $('#intro1').waypoint(function (direction) {
-  // console.log('ba-boomba-boom!');
+$('#intro1').waypoint(function (direction) {
   $(document).scroll(function(){
       // console.log("position relative to window: " + (intro1_Top - window.scrollY));
       var scrollPercent2 = ((intro1_Top - window.scrollY) * -1) / 300;
@@ -161,14 +159,12 @@ var activateI2 = $('#wrapperIntro2a').waypoint(function (direction) {
 // e
 
 //Resticking intro2 for scrollaway
-var activateI2_x = $('#wrapperIntro2a').waypoint(function (direction) {
-  console.log('2nd - 125 after trigger');
+$('#wrapperIntro2a').waypoint(function (direction) {
+  console.log('Bye intro2');
   if(direction == 'down'){
     $('#wrapperIntro2a').removeClass('stuck').addClass('sticky-surpassed');
-    // console.log ('Who,s bad going DOWNtown?');
   } else {
     $('#wrapperIntro2a').removeClass('sticky-surpassed').addClass('stuck');
-    // console.log ('Who,s bad going UPtown?');
   }
 }, {offset: -125});
 
@@ -178,8 +174,8 @@ var sticky_3 = new Waypoint.Sticky({
 })
 
 //Fade in/out intro3title and when #defineHeightIntro2a hits top of screen
-var activateI3title = $('#defineHeightIntro2a').waypoint(function (direction) {
-  console.log('sweet music');
+$('#defineHeightIntro2a').waypoint(function (direction) {
+  console.log('Hello intro3title');
   if(direction == 'down'){
     $('#intro3title').animate({"opacity": 1}, "slow");
     $("#intro2_sub1, #intro2_sub2").animate({"opacity": 0}, "slow");
@@ -190,8 +186,8 @@ var activateI3title = $('#defineHeightIntro2a').waypoint(function (direction) {
 });
 
 //Fade in/out intro3 photos and quotes when #defineHeightIntro2a hits top of screen
-var activateI3banks = $('#defineHeightIntro2a').waypoint(function (direction) {
-  console.log('cypress avenue');
+$('#defineHeightIntro2a').waypoint(function (direction) {
+  console.log('hello intro3 photos and quotes');
   if(direction == 'down'){
     $('#intro3banks').animate({"opacity": 1});
   } else {
@@ -201,9 +197,9 @@ var activateI3banks = $('#defineHeightIntro2a').waypoint(function (direction) {
 
 // Un-sticking intro3 for scroll away
 $('#intro4').waypoint(function(direction) {
+  console.log ('Bye intro3');
   if(direction == 'down'){
     $('#wrapperIntro3').removeClass('stuck').addClass('sticky-surpassed');
-    console.log ('Who,s bad going DOWNtown?');
   } else {
     $('#wrapperIntro3').removeClass('sticky-surpassed').addClass('stuck');
     // console.log ('Who,s bad going UPtown?');
@@ -211,8 +207,8 @@ $('#intro4').waypoint(function(direction) {
 }, {offset: '100%'});
 
 //Fade in/out intro4title and when #intro4 hits top of screen
-var activateI4title = $('#intro4').waypoint(function (direction) {
-  console.log('爱上你了，对不起');
+$('#intro4').waypoint(function (direction) {
+  console.log('hello intro4title');
   if(direction == 'down'){
     $('#intro4title').animate({"opacity": 1}, "slow");
   } else {
@@ -225,13 +221,23 @@ var sticky_4 = new Waypoint.Sticky({
   element: $('#wrapperIntro4')[0]
 })
 
-//Fade in/out intro4 photos and quotes when #intro5 is 85% from top of screen
-var activateI4banks = $('#intro5').waypoint(function (direction) {
-  console.log('cherry wine');
+//Fade in/out intro4 photos and quotes when #intro5a is 85% from top of screen
+$('#intro5a').waypoint(function (direction) {
+  console.log('hello intro4 photos and quotes');
+  if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+      } 
   if(direction == 'down'){
     $('#interactionsPhotos').animate({"opacity": 1}, "slow");
   } else {
     $('#interactionsPhotos').animate({"opacity": 0}, "slow");
+    $('.quote').addClass("startOpacity0", 400);
+    $('.headshot').animate({"opacity": 1}, "slow");
+
   }
 }, {offset: '85%'});
 
@@ -243,7 +249,7 @@ $('#interactionsPhotos').on('click', 'img', function(e) {
 });
 
 // Reset style and audio for intro4banks on scroll away when intro5 is 50% from top
-$("#intro5").waypoint(function (direction) {
+$("#intro5a").waypoint(function (direction) {
   console.log('clear intro5');
   if(direction == 'down'){
     $('.headshot.intro4keep').animate({"opacity": 1}, "slow");
@@ -311,7 +317,7 @@ var sticky_5a = new Waypoint.Sticky({
 })
 
 //Fade in/out intro5 10 px after intro5a hits top of screen
-var activateI5 = $('#wrapperIntro5a').waypoint(function (direction) {
+$('#wrapperIntro5a').waypoint(function (direction) {
   console.log('Some fun stuff now');
   if(direction == 'down'){
     $('#wrapperIntro4').animate({"opacity": 0}, "slow");
