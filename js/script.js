@@ -250,7 +250,7 @@ $('#interactionsPhotos').on('click', 'img', function(e) {
 
 // Reset style and audio for intro4banks on scroll away when intro5 is 50% from top
 $("#intro5a").waypoint(function (direction) {
-  console.log('clear intro5');
+  console.log('???');
   if(direction == 'down'){
     $('.headshot.intro4keep').animate({"opacity": 1}, "slow");
     $('.headshot.intro4leave').animate({"opacity": 0}, "slow");
@@ -316,9 +316,9 @@ var sticky_5a = new Waypoint.Sticky({
   element: $('#wrapperIntro5a')[0]
 })
 
-//Fade in/out intro5 10 px after intro5a hits top of screen
+//Fade in/out intro4 10 px after intro5a hits top of screen
 $('#wrapperIntro5a').waypoint(function (direction) {
-  console.log('Some fun stuff now');
+  console.log('Bye intro 4, hello intro5a - big photos of kids');
   if(direction == 'down'){
     $('#wrapperIntro4').animate({"opacity": 0}, "slow");
     $('#wrapperIntro5a').animate({"opacity": 1}, "slow");
@@ -329,8 +329,8 @@ $('#wrapperIntro5a').waypoint(function (direction) {
 }, {offset: -10});
 
 //Fade in/out intro5b 20% before intro5a2para hits, and Un-sticking intro4
-var activateI5b = $('#intro5a2para').waypoint(function (direction) {
-  console.log('Police React');
+$('#intro5a2para').waypoint(function (direction) {
+  console.log('???');
   $('.headshot').css("opacity", 1);
   if(direction == 'down'){
     $('#intro5a2para').animate({"opacity": 0}, "slow");
