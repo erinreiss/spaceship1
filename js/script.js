@@ -1,5 +1,5 @@
 // Remove all background colors
-$('*').css('background', 'transparent');
+// $('*').css('background', 'transparent');
 
 // Give my babies a white background
 $('.babies').css('background', '');
@@ -20,6 +20,8 @@ var matchData;
 var intro1_Top = $('#intro1').offset().top;
 var intro2_Top = $('#intro2').offset().top;  
 var intro2_Top_2 = $('#wrapperIntro2a').offset().top;  
+var intro8_Top = $('#wrapperIntro8').offset().top;  
+
 
 //Delayed fading landing with scroll
 var intro1Activate = $('#intro1').waypoint(function (direction) {
@@ -348,6 +350,12 @@ var sticky_5b = new Waypoint.Sticky({
   element: $('#wrapperIntro5b')[0]
 })
 
+//Fading in/out intro5c
+$('#wrapperIntro5c').waypoint(function (direction) {
+  console.log("Intro5 fades in/out");
+  $('#wrapperIntro5c').toggleClass("startOpacity0", 400);
+}, {offset: '50%'});
+
 //sticky for #intro5c
 var sticky_5c = new Waypoint.Sticky({
   element: $('#wrapperIntro5c')[0]
@@ -361,7 +369,7 @@ $('#wrapperIntro5d').waypoint(function (direction) {
   } else {
     $('#wrapperIntro5c').removeClass('sticky-surpassed').addClass('stuck');
   }
-}, {offset: '50%'});
+}, {offset: '100%'});
 
 //sticky for #intro5d
 var sticky_5d = new Waypoint.Sticky({
@@ -376,22 +384,44 @@ $('#wrapperIntro5e').waypoint(function (direction) {
   } else {
     $('#wrapperIntro5d').removeClass('sticky-surpassed').addClass('stuck');
   }
-}, {offset: '25%'});
+}, {offset: '100%'});
 
 //sticky for #intro5e
 var sticky_5e = new Waypoint.Sticky({
   element: $('#wrapperIntro5e')[0]
 })
 
-//Un/Re-stick wrapperIntro5a, 5b, 5e 10% before wrapperIntro6a hits
-$('#wrapperIntro6a').waypoint(function (direction) {
-  console.log("Bye 5a and 5b finally, and bye 5e");
+//Fade out/in intro5a (big student photos)
+$('#wrapperIntro6b').waypoint(function (direction) {
+  console.log("Fade out/in 5a");
   if(direction == 'down'){
-    $('#wrapperIntro5a, #wrapperIntro5b, #wrapperIntro5e').removeClass('stuck').addClass('sticky-surpassed');
+    $('#wrapperIntro5a').animate({"opacity": 0}, "slow");
   } else {
-    $('#wrapperIntro5a, #wrapperIntro5b, #wrapperIntro5e').removeClass('sticky-surpassed').addClass('stuck');
+    $('#wrapperIntro5a').animate({"opacity": 1}, "slow");
   }
-}, {offset: '10%'});
+}, {offset: '110%'});
+
+//Fade out/in intro5b, 5c and fade in/out 6a (big cop photos)
+$('#wrapperIntro6b').waypoint(function (direction) {
+  console.log("Fade out/in 5a and 5b finally, and bye 5e and fade in/out 6a");
+  if(direction == 'down'){
+    $('#wrapperIntro5b, #wrapperIntro5e').animate({"opacity": 0}, 800);
+    $('#wrapperIntro6a').animate({"opacity": 1}, 800);
+  } else {
+    $('#wrapperIntro5b, #wrapperIntro5e').animate({"opacity": 1}, 800);
+    $('#wrapperIntro6a').animate({"opacity": 0}, 800);
+  }
+}, {offset: '100%'});
+
+//Un/Re-stick wrapperIntro5a, 5b, 5e 10% before wrapperIntro6a hits
+// $('#wrapperIntro6a').waypoint(function (direction) {
+//   console.log("Bye 5a and 5b finally, and bye 5e");
+//   if(direction == 'down'){
+//     $('#wrapperIntro5a, #wrapperIntro5b, #wrapperIntro5e').removeClass('stuck').addClass('sticky-surpassed');
+//   } else {
+//     $('#wrapperIntro5a, #wrapperIntro5b, #wrapperIntro5e').removeClass('sticky-surpassed').addClass('stuck');
+//   }
+// }, {offset: '10%'});
 
 //sticky for #intro6a
 var sticky_6a = new Waypoint.Sticky({
@@ -423,3 +453,23 @@ var sticky_6c = new Waypoint.Sticky({
   element: $('#wrapperIntro8')[0]
 })
 
+//Fade Intro8 Gene and Rolleri Quotes into existence
+$('#intro8').waypoint(function (e) {
+  console.log('start fading gene and rolleri in')
+  $(document).scroll(function(){
+      // console.log("position relative to window: " + (intro1_Top - window.scrollY));
+      var scrollPercent3 = ((intro8_Top +50 - window.scrollY) * -1) / 200;
+      // console.log(scrollPercent3);
+      $('#intro8banks').css('opacity', scrollPercent3);
+  });
+}, {offset: -50});
+
+//Fading thankyou photo down for the final view
+$('#defineTimeIntro8').waypoint(function (direction) {
+  console.log("Fade thank you photo, but not fully");
+  if(direction == 'down'){
+    $('#thankYouPhoto').animate({"opacity": .3}, 800);
+  } else {
+    $('#thankYouPhoto').animate({"opacity": 1}, 800);
+  }
+}, {offset: '90%'});
