@@ -9,12 +9,12 @@
 
 .quoteVertical{
     /*background-color: goldenrod;*/
-    font-family: lato;
+    font-family: 'Cormorant', serif;
     width: 35vw;
     margin: 0 auto;
     color: #B36AE2;
     font-size: 22px;
-    font-weight: 200;
+    font-weight: 300;
     line-height: 1.8rem;
     font-style: italic;
     top: 41vh;
@@ -23,6 +23,31 @@
 .babies{
     background-color: blue;
     z-index: 100005
+}
+
+.headshotThankYou{
+    width: 17vw;
+    padding: 0px 11vw;
+}
+
+.quoteThankYou{
+    width: 32vw;
+    padding: 0px 3.4vw;
+}
+
+.paraHeaderThanks{
+    text-align: center;
+    font-family: 'Cormorant', serif;
+    color: #000;
+    font-weight: 700;
+    font-size: 3.2rem;
+    margin: 0px auto;
+}
+
+.paraThanks{
+    font-family: "Lato";
+    width: 56vw;
+    text-align: center;
 }
 
 body, figure {

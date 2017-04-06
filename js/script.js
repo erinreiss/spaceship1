@@ -398,7 +398,28 @@ var sticky_6a = new Waypoint.Sticky({
   element: $('#wrapperIntro6a')[0]
 })
 
-//sticky for #intro6a
+//sticky for #intro6b
 var sticky_6b = new Waypoint.Sticky({
   element: $('#wrapperIntro6b')[0]
 })
+
+//sticky for #intro6c
+var sticky_6c = new Waypoint.Sticky({
+  element: $('#wrapperIntro6c')[0]
+})
+
+//Un/Re-stick wrapperIntro6a, 6b, 6c 30% before intro7 hits
+$('#intro7').waypoint(function (direction) {
+  console.log("Bye 6a, 6b, and 6c");
+  if(direction == 'down'){
+    $('#wrapperIntro6a, #wrapperIntro6b, #wrapperIntro6c').removeClass('stuck').addClass('sticky-surpassed');
+  } else {
+    $('#wrapperIntro6a, #wrapperIntro6b, #wrapperIntro6c').removeClass('sticky-surpassed').addClass('stuck');
+  }
+}, {offset: '30%'});
+
+//sticky for #intro8
+var sticky_6c = new Waypoint.Sticky({
+  element: $('#wrapperIntro8')[0]
+})
+
