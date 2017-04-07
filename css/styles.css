@@ -1,5 +1,5 @@
 .quoteBankVertical{
-    visibility: hidden;
+    pointer-events: none;
     position: fixed;
     top: 19vh;
     width: 50vw;
@@ -8,7 +8,6 @@
 }
 
 .quoteVertical{
-    /*background-color: goldenrod;*/
     font-family: 'Cormorant', serif;
     width: 35vw;
     margin: 0 auto;
@@ -21,7 +20,6 @@
 }
 
 .babies{
-    background-color: white;
     z-index: 100005
 }
 
@@ -90,8 +88,7 @@ p {
 
 .wrapper{
     width: 100%;
-/*    position: relative;
-*/}
+}
 
 .sticky-surpassed{
     position: absolute;
@@ -169,6 +166,12 @@ p {
     max-width: 28%;
     width: 100%;
     padding: 0px 2%;
+}
+
+.headshotReaction3{
+    max-width: 29%;
+    width: 100%;
+    padding: 0px 6%;
 }
 
 .bg{

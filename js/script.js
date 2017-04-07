@@ -60,6 +60,24 @@ $('#intro2').waypoint(function(direction) {
   }
 }, {offset: '100%'});
 
+// Re-set audio and opacity after scrolling away from intro1
+$('#intro2').waypoint(function(direction) {
+  if(direction == 'down'){
+    console.log("Reseting audio and photos after intro1");
+    if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+    } 
+    $('.headshot').css("opacity", 1);
+    $('#statusQuoPhotos').css("pointer-events", "none");
+  } else {
+    $('#statusQuoPhotos').css('pointer-events', 'auto');  
+  }
+}, {offset: '50%'});
+
 //Fade Intro1 Photos into existence and make them clickable
 $('#intro1').waypoint(function (direction) {
   $(document).scroll(function(){
@@ -81,8 +99,8 @@ $('.photoBank').on('click', 'img', function(e) {
   var player = document.getElementById('player');
   var ID = $(this).attr('id');
   // For testing on local server vvVVvvV
-  // var path = 'http://localhost:8000/audio/';
-  var path = 'https://erinreiss.github.io/spaceship1/audio/';
+  var path = 'http://localhost:8000/audio/';
+  // var path = 'https://erinreiss.github.io/spaceship1/audio/';
   var SRC = path + ID + '.mp3';
   // console.log(this)
   // console.log('and')
@@ -103,6 +121,9 @@ $('.photoBank').on('click', 'img', function(e) {
     player.load();
     player.play();
   }
+  var qID = "#" + $(this).attr('id') + "_quote";
+  console.log(qID)
+  $(qID).toggleClass("startOpacity0", 400);
    // Experiment
   $('.headshot').click(function(){
      $('.headshot').not(this).each(function(){
@@ -243,13 +264,6 @@ $('#intro5a').waypoint(function (direction) {
   }
 }, {offset: '85%'});
 
-// Interactions Click Listener for QUOTES (should be able to combine with photoBank click listner, above)
-$('#interactionsPhotos').on('click', 'img', function(e) {
-  var qID = "#" + $(this).attr('id') + "_quote";
-  console.log(qID)
-  $(qID).toggleClass("startOpacity0", 400);
-});
-
 // Reset style and audio for intro4banks on scroll away when intro5 is 50% from top
 $("#intro5a").waypoint(function (direction) {
   console.log('???');
@@ -345,29 +359,60 @@ $('#intro5a2para').waypoint(function (direction) {
   }
 }, {offset: '20%'});
     
+// Changing Police React 1 header to/from white background
+$('#intro5b').waypoint(function (direction){
+  console.log('changing Police React 1 header to/from white background')
+  if(direction == 'down'){
+    $("#wrapperIntro5b").css("background-color", "white");
+  } else {
+    $("#wrapperIntro5b").css("background-color", "");
+  }
+});
+
 //sticky for #intro5b
 var sticky_5b = new Waypoint.Sticky({
   element: $('#wrapperIntro5b')[0]
 })
-
-//Fading in/out intro5c
-$('#wrapperIntro5c').waypoint(function (direction) {
-  console.log("Intro5 fades in/out");
-  $('#wrapperIntro5c').toggleClass("startOpacity0", 400);
-}, {offset: '50%'});
 
 //sticky for #intro5c
 var sticky_5c = new Waypoint.Sticky({
   element: $('#wrapperIntro5c')[0]
 })
 
+//Reset audio and headshots when scrolling up from intro5c
+$('#wrapperIntro5b').waypoint(function (direction) {
+  if(direction == 'up'){
+  console.log('reseting 5c audio')
+    if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+    } 
+    $('.headshot').css("opacity", 1);
+    $('.quoteVertical').addClass('startOpacity0');
+  }
+}, {offset: '10%'});
+
 //Un/Re-stick wrapperIntro5c
 $('#wrapperIntro5d').waypoint(function (direction) {
   console.log("Bye 5c, hello 5d");
+  if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+      } 
+  $('.headshot').css("opacity", 1);
+  $('.quoteVertical').addClass('startOpacity0');
   if(direction == 'down'){
     $('#wrapperIntro5c').removeClass('stuck').addClass('sticky-surpassed');
+    $('#reaction1aPhotos').css("pointer-events", "none");
   } else {
     $('#wrapperIntro5c').removeClass('sticky-surpassed').addClass('stuck');
+    $('#reaction1aPhotos').css('pointer-events', 'auto');
   }
 }, {offset: '100%'});
 
@@ -391,6 +436,22 @@ var sticky_5e = new Waypoint.Sticky({
   element: $('#wrapperIntro5e')[0]
 })
 
+//Reset audio and headshots when scrolling up from intro5e THIS NEEDS A DIFF WAYPOINT
+$('#wrapperIntro5e').waypoint(function (direction) {
+  if(direction == 'up'){
+  console.log('reseting 5e audio')
+    if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+    } 
+    $('.headshot').css("opacity", 1);
+    $('.quoteVertical').addClass('startOpacity0');
+  }
+});
+
 //Fade out/in intro5a (big student photos)
 $('#wrapperIntro6b').waypoint(function (direction) {
   console.log("Fade out/in 5a");
@@ -399,14 +460,23 @@ $('#wrapperIntro6b').waypoint(function (direction) {
   } else {
     $('#wrapperIntro5a').animate({"opacity": 1}, "slow");
   }
-}, {offset: '110%'});
+}, {offset: '120%'});
 
-//Fade out/in intro5b, 5c and fade in/out 6a (big cop photos)
+//Fade out/in intro5b, 5c and fade in/out 6a (big cop photos) and reset 5e audio
 $('#wrapperIntro6b').waypoint(function (direction) {
   console.log("Fade out/in 5a and 5b finally, and bye 5e and fade in/out 6a");
   if(direction == 'down'){
     $('#wrapperIntro5b, #wrapperIntro5e').animate({"opacity": 0}, 800);
     $('#wrapperIntro6a').animate({"opacity": 1}, 800);
+    if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+    } 
+    $('.headshot').css("opacity", 1);
+    $('.quoteVertical').addClass('startOpacity0');
   } else {
     $('#wrapperIntro5b, #wrapperIntro5e').animate({"opacity": 1}, 800);
     $('#wrapperIntro6a').animate({"opacity": 0}, 800);
@@ -428,6 +498,16 @@ var sticky_6a = new Waypoint.Sticky({
   element: $('#wrapperIntro6a')[0]
 })
 
+// Changing Students React header to/from white background
+$('#intro6b').waypoint(function (direction){
+  console.log('changing Students React header to/from white background')
+  if(direction == 'down'){
+    $("#wrapperIntro6b").css("background-color", "white");
+  } else {
+    $("#wrapperIntro6b").css("background-color", "");
+  }
+});
+
 //sticky for #intro6b
 var sticky_6b = new Waypoint.Sticky({
   element: $('#wrapperIntro6b')[0]
@@ -438,8 +518,39 @@ var sticky_6c = new Waypoint.Sticky({
   element: $('#wrapperIntro6c')[0]
 })
 
+//Fade out/in intro6a (big police photos)
+$('#wrapperIntro7b').waypoint(function (direction) {
+  console.log("Fade out/in 6a");
+  if(direction == 'down'){
+    $('#wrapperIntro6a').animate({"opacity": 0}, "slow");
+  } else {
+    $('#wrapperIntro6a').animate({"opacity": 1}, "slow");
+  }
+}, {offset: '120%'});
+
+//Fade out/in intro6b, 6c and fade in/out 7a (big student2 photos) and reset 6c audio
+$('#wrapperIntro7b').waypoint(function (direction) {
+  console.log("Fade out/in 6b and 6c finally, and reset audio 6c and fade in/out 7a");
+  if(direction == 'down'){
+    $('#wrapperIntro6b, #wrapperIntro6c').animate({"opacity": 0}, 800);
+    $('#wrapperIntro7a').animate({"opacity": 1}, 800);
+    if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+    } 
+    $('.headshot').css("opacity", 1);
+    $('.quoteVertical').addClass('startOpacity0');
+  } else {
+    $('#wrapperIntro6b, #wrapperIntro6c').animate({"opacity": 1}, 800);
+    $('#wrapperIntro7a').animate({"opacity": 0}, 800);
+  }
+}, {offset: '100%'});
+
 //Un/Re-stick wrapperIntro6a, 6b, 6c 30% before intro7 hits
-$('#intro7').waypoint(function (direction) {
+$('#wrapperIntro7b').waypoint(function (direction) {
   console.log("Bye 6a, 6b, and 6c");
   if(direction == 'down'){
     $('#wrapperIntro6a, #wrapperIntro6b, #wrapperIntro6c').removeClass('stuck').addClass('sticky-surpassed');
@@ -448,10 +559,29 @@ $('#intro7').waypoint(function (direction) {
   }
 }, {offset: '30%'});
 
-//sticky for #intro8
+var sticky_7b = new Waypoint.Sticky({
+  element: $('#wrapperIntro7b')[0]
+})
+
+//sticky for #intro7c
 var sticky_6c = new Waypoint.Sticky({
+  element: $('#wrapperIntro7c')[0]
+})
+
+//sticky for #intro8
+var sticky_8 = new Waypoint.Sticky({
   element: $('#wrapperIntro8')[0]
 })
+
+//Fade out/in intro7a,b, c
+$('#intro8').waypoint(function (direction) {
+  console.log('start fading gene and rolleri in')
+  if(direction == 'down'){
+    $('#wrapperIntro7a, #wrapperIntro7b, #wrapperIntro7c').animate({"opacity": 0}, 800);
+  } else {
+    $('#wrapperIntro7a, #wrapperIntro7b, #wrapperIntro7c').animate({"opacity": 1}, 800);
+  }
+}, {offset: "100%"});
 
 //Fade Intro8 Gene and Rolleri Quotes into existence
 $('#intro8').waypoint(function (e) {
