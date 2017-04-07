@@ -1,5 +1,23 @@
 // Remove all background colors
-// $('*').css('background', 'transparent');
+$('*').css('background', 'transparent');
+
+//Refresh on window resize - seems to only work the first time...
+$(window).resize(function() {
+    if(this.resizeTO) clearTimeout(this.resizeTO);
+    this.resizeTO = setTimeout(function() {
+        $(this).trigger('resizeEnd');
+    }, 500);
+});
+
+$(window).bind('resizeEnd', function() {
+  console.log("Window was resized");
+  location.reload();
+});
+
+$(document).ready(function(){
+    $(this).scrollTop(0);
+});
+
 
 // Give my babies a white background
 $('.babies').css('background', '');
@@ -63,7 +81,7 @@ $('#intro2').waypoint(function(direction) {
 // Re-set audio and opacity after scrolling away from intro1
 $('#intro2').waypoint(function(direction) {
   if(direction == 'down'){
-    console.log("Reseting audio and photos after intro1");
+    console.log("Resetting audio and photos after intro1");
     if (player.play) {
       //is this volume animation even working???
       player.animate({volume: 0.0}, 1000);
@@ -210,7 +228,7 @@ $('#defineHeightIntro2a').waypoint(function (direction) {
 
 //Fade in/out intro3 photos and quotes when #defineHeightIntro2a hits top of screen
 $('#defineHeightIntro2a').waypoint(function (direction) {
-  console.log('hello intro3 photos and quotes');
+  console.log('Hello intro3 photos and quotes');
   if(direction == 'down'){
     $('#intro3banks').animate({"opacity": 1});
   } else {
@@ -246,7 +264,7 @@ var sticky_4 = new Waypoint.Sticky({
 
 //Fade in/out intro4 photos and quotes when #intro5a is 85% from top of screen
 $('#intro5a').waypoint(function (direction) {
-  console.log('hello intro4 photos and quotes');
+  console.log('Hello intro4 photos and quotes');
   if (player.play) {
       //is this volume animation even working???
       player.animate({volume: 0.0}, 1000);
@@ -288,45 +306,6 @@ $("#intro5a").waypoint(function (direction) {
   }
 }, {offset: '50%'});
 
-// Un-sticking intro4 for scroll away - was muted...
-// $('#intro5').waypoint(function(direction) {
-//   if(direction == 'down'){
-//     $('#wrapperIntro4').removeClass('stuck').addClass('sticky-surpassed');
-//     console.log ('sweet thing');
-//   } else {
-//     $('#wrapperIntro4').removeClass('sticky-surpassed').addClass('stuck');
-//     // console.log ('Who,s bad going UPtown?');
-//   }
-// }, {offset: '90%'});
-
-
-//FIRST MOVE TO ANIMATE SCREEN, try one - when i thought it might be a new story
-// $("#intro5").waypoint(function (direction) {
-//   console.log('fade to darius and damontea');
-//   if(direction == 'down'){
-//     $('.intro4leave').animate({"opacity": 0});
-//     $('.intro4keep').animate({"opacity": 1});
-//   } else {
-//     $('.headshot').animate({"opacity": 1});
-//   }
-// }, {offset: '96%'});
-
-// Ugly, Working, Abandonded Try 2 at animation
-// $('#animate').click(function() {
-//   console.log("animate ACTIVATED MOTHER FUCKER");
-//   $(".intro4keep").animate({
-//       opacity: 0.17,
-//       width: $("#damontea_interactions").width() * 2,
-//       height: $("#damontea_interactions").height() * 2,
-//   }, { duration: 200, queue: false });
-//   $(".intro4leave").animate({
-//       width: '0px',
-//   }, { duration: 200, queue: false });
-//   $('.intro4leave').css("display", 'none');
-//   $('.photoBank').css("text-align", 'left');
-//   $('.headshotInteractions').css("max-width", 'none');
-// });
-
 //sticky for #intro5a
 var sticky_5a = new Waypoint.Sticky({
   element: $('#wrapperIntro5a')[0]
@@ -361,7 +340,7 @@ $('#intro5a2para').waypoint(function (direction) {
     
 // Changing Police React 1 header to/from white background
 $('#intro5b').waypoint(function (direction){
-  console.log('changing Police React 1 header to/from white background')
+  console.log('Changing Police React 1 header to/from white background')
   if(direction == 'down'){
     $("#wrapperIntro5b").css("background-color", "white");
   } else {
@@ -395,9 +374,9 @@ $('#wrapperIntro5b').waypoint(function (direction) {
   }
 }, {offset: '10%'});
 
-//Un/Re-stick wrapperIntro5c
+//Un/Re-stick wrapperIntro5c reseting audio
 $('#wrapperIntro5d').waypoint(function (direction) {
-  console.log("Bye 5c, hello 5d");
+  console.log("Bye 5c, hello 5d reset audio 5c");
   if (player.play) {
       //is this volume animation even working???
       player.animate({volume: 0.0}, 1000);
@@ -405,6 +384,7 @@ $('#wrapperIntro5d').waypoint(function (direction) {
       player.currentTime = 0;
       player.animate({volume: 1.0}, 0);
       } 
+  //Headshot opacity reset not working
   $('.headshot').css("opacity", 1);
   $('.quoteVertical').addClass('startOpacity0');
   if(direction == 'down'){
@@ -439,7 +419,7 @@ var sticky_5e = new Waypoint.Sticky({
 //Reset audio and headshots when scrolling up from intro5e THIS NEEDS A DIFF WAYPOINT
 $('#wrapperIntro5e').waypoint(function (direction) {
   if(direction == 'up'){
-  console.log('reseting 5e audio')
+  console.log('Resetting 5e audio on scroll up')
     if (player.play) {
       //is this volume animation even working???
       player.animate({volume: 0.0}, 1000);
@@ -449,6 +429,10 @@ $('#wrapperIntro5e').waypoint(function (direction) {
     } 
     $('.headshot').css("opacity", 1);
     $('.quoteVertical').addClass('startOpacity0');
+    $('#reaction1bPhotos').css("pointer-events", "none");
+  } else {
+    console.log("Restoring pointer-events for reaction1bPhotos");
+    $('#reaction1bPhotos').css("pointer-events", "auto");
   }
 });
 
@@ -462,10 +446,10 @@ $('#wrapperIntro6b').waypoint(function (direction) {
   }
 }, {offset: '120%'});
 
-//Fade out/in intro5b, 5c and fade in/out 6a (big cop photos) and reset 5e audio
+//Fade out/in intro5b, 5e and fade in/out 6a (big cop photos) and reset 5e audio
 $('#wrapperIntro6b').waypoint(function (direction) {
-  console.log("Fade out/in 5a and 5b finally, and bye 5e and fade in/out 6a");
   if(direction == 'down'){
+    console.log("Fade out/in 5b and 5e and fade in/out 6a reset audio 5e");
     $('#wrapperIntro5b, #wrapperIntro5e').animate({"opacity": 0}, 800);
     $('#wrapperIntro6a').animate({"opacity": 1}, 800);
     if (player.play) {
@@ -478,29 +462,40 @@ $('#wrapperIntro6b').waypoint(function (direction) {
     $('.headshot').css("opacity", 1);
     $('.quoteVertical').addClass('startOpacity0');
   } else {
+    console.log("Fade out/in 5a and 5e and fade in/out 6a");
     $('#wrapperIntro5b, #wrapperIntro5e').animate({"opacity": 1}, 800);
     $('#wrapperIntro6a').animate({"opacity": 0}, 800);
   }
 }, {offset: '100%'});
-
-//Un/Re-stick wrapperIntro5a, 5b, 5e 10% before wrapperIntro6a hits
-// $('#wrapperIntro6a').waypoint(function (direction) {
-//   console.log("Bye 5a and 5b finally, and bye 5e");
-//   if(direction == 'down'){
-//     $('#wrapperIntro5a, #wrapperIntro5b, #wrapperIntro5e').removeClass('stuck').addClass('sticky-surpassed');
-//   } else {
-//     $('#wrapperIntro5a, #wrapperIntro5b, #wrapperIntro5e').removeClass('sticky-surpassed').addClass('stuck');
-//   }
-// }, {offset: '10%'});
 
 //sticky for #intro6a
 var sticky_6a = new Waypoint.Sticky({
   element: $('#wrapperIntro6a')[0]
 })
 
+// Reset audio and headshots when scrolling up from intro6c
+$('#wrapperIntro6b').waypoint(function (direction) {
+  if(direction == 'up'){
+  console.log('Resetting 6c audio and remove pointer-events')
+    if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+    } 
+    $('.headshot').css("opacity", 1);
+    $('.quoteVertical').addClass('startOpacity0');
+    $('#reaction2Photos').css("pointer-events", "none");
+  } else{
+    console.log('Restore 6c pointer-events')
+    $('#reaction2Photos').css("pointer-events", "auto");
+  }
+}, {offset: '10%'});
+
 // Changing Students React header to/from white background
 $('#intro6b').waypoint(function (direction){
-  console.log('changing Students React header to/from white background')
+  console.log('Changing Students React header to/from white background')
   if(direction == 'down'){
     $("#wrapperIntro6b").css("background-color", "white");
   } else {
@@ -568,15 +563,44 @@ var sticky_6c = new Waypoint.Sticky({
   element: $('#wrapperIntro7c')[0]
 })
 
+// Reset audio and headshots when scrolling up from intro7c
+$('#wrapperIntro7b').waypoint(function (direction) {
+  if(direction == 'up'){
+  console.log('Resetting 7c audio and remove pointer-events')
+    if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+    } 
+    $('.headshot').css("opacity", 1);
+    $('.quoteVerticalQuad').addClass('startOpacity0');
+    $('#reaction3Photos').css("pointer-events", "none");
+  } else{
+    console.log('Restore 7c pointer-events')
+    $('#reaction3Photos').css("pointer-events", "auto");
+  }
+}, {offset: '10%'});
+
 //sticky for #intro8
 var sticky_8 = new Waypoint.Sticky({
   element: $('#wrapperIntro8')[0]
 })
 
-//Fade out/in intro7a,b, c
-$('#intro8').waypoint(function (direction) {
-  console.log('start fading gene and rolleri in')
+//Fade out/in intro7a,b, c and reset audio 7c
+$('#intro7d').waypoint(function (direction) {
+  console.log("Fade out/in 7a,b,c and reset audio 6c")
   if(direction == 'down'){
+    if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+    } 
+    $('.headshot').css("opacity", 1);
+    $('.quoteVerticalQuad').addClass('startOpacity0');
     $('#wrapperIntro7a, #wrapperIntro7b, #wrapperIntro7c').animate({"opacity": 0}, 800);
   } else {
     $('#wrapperIntro7a, #wrapperIntro7b, #wrapperIntro7c').animate({"opacity": 1}, 800);
@@ -585,7 +609,7 @@ $('#intro8').waypoint(function (direction) {
 
 //Fade Intro8 Gene and Rolleri Quotes into existence
 $('#intro8').waypoint(function (e) {
-  console.log('start fading gene and rolleri in')
+  console.log('Start fading gene and rolleri in')
   $(document).scroll(function(){
       // console.log("position relative to window: " + (intro1_Top - window.scrollY));
       var scrollPercent3 = ((intro8_Top +50 - window.scrollY) * -1) / 200;
@@ -603,3 +627,13 @@ $('#defineTimeIntro8').waypoint(function (direction) {
     $('#thankYouPhoto').animate({"opacity": 1}, 800);
   }
 }, {offset: '90%'});
+
+//I should redo my reset audio and headshot code with this type of waypoint definitions
+$('#reaction1bPhotos').waypoint(function (direction) {
+  if(direction == 'down'){
+  console.log("Reaction1bPhotos come into view");
+  } else {
+  console.log("Reaction1bPhotos leave view");
+  }
+}, {offset: '100%'});
+
