@@ -68,15 +68,15 @@ var sticky_1 = new Waypoint.Sticky({
   element: $('#wrapperIntro1')[0]
 })
 
-// Fade in/out intro1b photos
-$('#defineHeightIntro1').waypoint(function(direction) {
-  if(direction == 'down'){
-    $('#statusQuoPhotos').animate({"opacity": 1}, "slow");
-    console.log ('Hello intro1 photobank');
-  } else {
-    $('#statusQuoPhotos').animate({"opacity": 0}, "slow");
-  }
-}, {offset: '90%'});
+// Fade in/out intro1b photos - muted for now, for reseting triggers test
+// $('#defineHeightIntro1').waypoint(function(direction) {
+//   if(direction == 'down'){
+//     $('#statusQuoPhotos').animate({"opacity": 1}, "slow");
+//     console.log ('Hello intro1 photobank');
+//   } else {
+//     $('#statusQuoPhotos').animate({"opacity": 0}, "slow");
+//   }
+// }, {offset: '90%'});
 
 // Re-sticking intro1 for scroll away
 $('#intro2').waypoint(function(direction) {
@@ -88,7 +88,7 @@ $('#intro2').waypoint(function(direction) {
   }
 }, {offset: '100%'});
 
-// Re-set audio and opacity after scrolling away from intro1
+// Re-set audio and opacity after scrolling away from intro1 - muted for now, for reseting triggers test
 // $('#intro2').waypoint(function(direction) {
 //   if(direction == 'down'){
 //     console.log("Resetting audio and photos after intro1");
@@ -106,7 +106,7 @@ $('#intro2').waypoint(function(direction) {
 //   }
 // }, {offset: '50%'});
 
-//Fade Intro1 Photos into existence and make them clickable
+//Fade Intro1 Photos into existence and make them clickable - muted for now, for reseting triggers test
 // $('#intro1').waypoint(function (direction) {
 //   $(document).scroll(function(){
 //       // console.log("position relative to window: " + (intro1_Top - window.scrollY));
@@ -116,7 +116,7 @@ $('#intro2').waypoint(function(direction) {
 //   });
 // });
 
-// photoBank Click Listener try 3 - from stackoverflow, zer00ne
+// Universal click listener for audio and quotes (not Vertical quotes)
 $('.photoBank').on('click', 'img', function(e) {
   var player = document.getElementById('player');
   var ID = $(this).attr('id');
@@ -128,10 +128,6 @@ $('.photoBank').on('click', 'img', function(e) {
   // console.log('and')
   // console.log(SRC)
   // console.log(player.src)
-  // OG -This is lazy coding, I should be able to give a common class to .headshotStatusQuo and .headshotInteractions
-    // $('.headshotStatusQuo').css('opacity','.3');
-    // $('.headshotInteractions').css('opacity','.3');
-    // $(this).css('opacity','1');
   if (player.paused && (player.src === SRC)) {
     player.play();
   } else if (!player.paused && (player.src === SRC)) {
@@ -146,13 +142,46 @@ $('.photoBank').on('click', 'img', function(e) {
   var qID = "#" + $(this).attr('id') + "_quote";
   console.log(qID)
   $(qID).toggleClass("startOpacity0", 400);
-   // Experiment
-  $('.headshot').click(function(){
-     $('.headshot').not(this).each(function(){
-        $(this).animate({"opacity": .3});
-     });
-     $(this).animate({"opacity": 1});
-  });
+});
+
+//Click listener for Interactions Headshots
+$('#interactionsPhotos').on('click', 'img', function(e) {
+  $('.headshotInteractions').click(function(){
+       $('.headshotInteractions').not(this).each(function(){
+          $(this).animate({"opacity": .3});
+       });
+       $(this).animate({"opacity": 1});
+    });
+});
+
+//Click listener for Reactions1a Headshots
+$('#reaction1aPhotos').on('click', 'img', function(e) {
+  $('.headshotReaction1a').click(function(){
+       $('.headshotReaction1a').not(this).each(function(){
+          $(this).animate({"opacity": .3});
+       });
+       $(this).animate({"opacity": 1});
+    });
+});
+
+//Click listener for Reactions1b Headshots
+$('#reaction1bPhotos').on('click', 'img', function(e) {
+  $('.headshotReaction1b').click(function(){
+       $('.headshotReaction1b').not(this).each(function(){
+          $(this).animate({"opacity": .3});
+       });
+       $(this).animate({"opacity": 1});
+    });
+});
+
+//Click listener for Reactions2 Headshots
+$('#reaction2Photos').on('click', 'img', function(e) {
+  $('.headshotReaction2').click(function(){
+       $('.headshotReaction2').not(this).each(function(){
+          $(this).animate({"opacity": .3});
+       });
+       $(this).animate({"opacity": 1});
+    });
 });
 
 //Sticky for #intro2
@@ -161,8 +190,8 @@ var sticky_2 = new Waypoint.Sticky({
 })
 
 //Fade into intro2 ministory
-var activateI2 = $('#wrapperIntro2a').waypoint(function (direction) {
-  console.log('1st - 100px above trigger');
+$('#wrapperIntro2a').waypoint(function (direction) {
+  console.log('Begin intro 2 - all text - fading its first couple paragraphs');
   // if(direction == 'down'){
   //   $('#alert1').addClass('secretStuck');
   // }
@@ -230,15 +259,15 @@ $('#defineHeightIntro2a').waypoint(function (direction) {
   }
 });
 
-//Fade in/out intro3 photos and quotes when #defineHeightIntro2a hits top of screen
-$('#defineHeightIntro2a').waypoint(function (direction) {
-  console.log('Hello intro3 photos and quotes');
-  if(direction == 'down'){
-    $('#intro3banks').animate({"opacity": 1});
-  } else {
-    $('#intro3banks').animate({"opacity": 0});
-  }
-}, {offset: -150});
+//Fade in/out intro3 photos and quotes when #defineHeightIntro2a hits top of screen- muted for now, for reseting triggers test
+// $('#defineHeightIntro2a').waypoint(function (direction) {
+//   console.log('Hello intro3 photos and quotes');
+//   if(direction == 'down'){
+//     $('#intro3banks').animate({"opacity": 1});
+//   } else {
+//     $('#intro3banks').animate({"opacity": 0});
+//   }
+// }, {offset: -150});
 
 // Un-sticking intro3 for scroll away
 $('#intro4').waypoint(function(direction) {
@@ -268,28 +297,32 @@ var sticky_4 = new Waypoint.Sticky({
 
 //Fade in/out intro4 photos and quotes when #intro5a is 85% from top of screen
 $('#intro5a').waypoint(function (direction) {
-  console.log('Hello intro4 photos and quotes');
-  if (player.play) {
+  if(direction == 'down'){
+    console.log('Hello intro4 photos and quotes');
+    $('#interactionsPhotos').animate({"opacity": 1}, "slow");
+    $('#interactionsPhotos').css("pointer-events", "auto")
+    //FADE IN "CLICK ME"
+  } else {
+    if (player.play) {
       //is this volume animation even working???
       player.animate({volume: 0.0}, 1000);
       player.pause();
       player.currentTime = 0;
       player.animate({volume: 1.0}, 0);
-      } 
-  if(direction == 'down'){
-    $('#interactionsPhotos').animate({"opacity": 1}, "slow");
-  } else {
+    } 
+    console.log('Goodbye intro4 photos and quotes');
     $('#interactionsPhotos').animate({"opacity": 0}, "slow");
+    $('.headshotInteractions').animate({"opacity": 1}, "slow");
     $('.quote').addClass("startOpacity0", 400);
-    $('.headshot').animate({"opacity": 1}, "slow");
-
+    $('#interactionsPhotos').css("pointer-events", "none")
+      //FADE OUT "CLICK ME"
   }
 }, {offset: '85%'});
 
 // Reset style and audio for intro4banks on scroll away when intro5 is 50% from top
 $("#intro5a").waypoint(function (direction) {
-  console.log('???');
   if(direction == 'down'){
+  console.log('Darius and Damontae quote highlight and audio/visual reset on intro4');
     $('.headshot.intro4keep').animate({"opacity": 1}, "slow");
     $('.headshot.intro4leave').animate({"opacity": 0}, "slow");
     $('.quote.intro4keep').removeClass("startOpacity0", 400);
@@ -305,8 +338,9 @@ $("#intro5a").waypoint(function (direction) {
       } 
   } else {
     $('.headshotInteractions').css("pointer-events", "auto")
-    $('.headshot').animate({"opacity": 1}, "slow");
+    $('.headshotInteractions').animate({"opacity": 1}, "slow");
     $('.quote.intro4keep').addClass("startOpacity0", 400);
+    //FADE IN CLICK ME
   }
 }, {offset: '50%'});
 
@@ -329,7 +363,7 @@ $('#wrapperIntro5a').waypoint(function (direction) {
 
 //Fade in/out intro5b 20% before intro5a2para hits, and Un-sticking intro4
 $('#intro5a2para').waypoint(function (direction) {
-  console.log('???');
+  console.log('Fade out/in that little baby paragraph after interactions');
   $('.headshot').css("opacity", 1);
   if(direction == 'down'){
     $('#intro5a2para').animate({"opacity": 0}, "slow");
@@ -362,43 +396,62 @@ var sticky_5c = new Waypoint.Sticky({
   element: $('#wrapperIntro5c')[0]
 })
 
-//Reset audio and headshots when scrolling up from intro5c
-$('#wrapperIntro5b').waypoint(function (direction) {
-  if(direction == 'up'){
-  console.log('reseting 5c audio')
-    if (player.play) {
-      //is this volume animation even working???
-      player.animate({volume: 0.0}, 1000);
-      player.pause();
-      player.currentTime = 0;
-      player.animate({volume: 1.0}, 0);
-    } 
-    $('.headshot').css("opacity", 1);
-    $('.quoteVertical').addClass('startOpacity0');
-  }
-}, {offset: '10%'});
-
-//Un/Re-stick wrapperIntro5c reseting audio
-$('#wrapperIntro5d').waypoint(function (direction) {
-  console.log("Bye 5c, hello 5d reset audio 5c");
-  if (player.play) {
-      //is this volume animation even working???
-      player.animate({volume: 0.0}, 1000);
-      player.pause();
-      player.currentTime = 0;
-      player.animate({volume: 1.0}, 0);
-      } 
-  //Headshot opacity reset not working
-  $('.headshot').css("opacity", 1);
-  $('.quoteVertical').addClass('startOpacity0');
+//Fade in/out intro5c photos and audio on entrance
+$('#defineTimeIntro5c').waypoint(function (direction) {
   if(direction == 'down'){
-    $('#wrapperIntro5c').removeClass('stuck').addClass('sticky-surpassed');
-    $('#reaction1aPhotos').css("pointer-events", "none");
+    console.log('Hello intro5c photos and quotes');
+    $('#reaction1aPhotos').animate({"opacity": 1}, "slow");
+    $('#reaction1aPhotos').css("pointer-events", "auto")
+    //FADE IN "CLICK ME"
   } else {
+      if (player.play) {
+        //is this volume animation even working???
+        player.animate({volume: 0.0}, 1000);
+        player.pause();
+        player.currentTime = 0;
+        player.animate({volume: 1.0}, 0);
+      } 
+    console.log('Goodbye intro5c photos and quotes scrolling up');
+    $('#reaction1aPhotos').animate({"opacity": 0}, "slow");
+    $('.headshotReaction1a').animate({"opacity": 1}, "slow");
+    $('.quoteVertical').addClass('startOpacity0');
+    $('#reaction1aPhotos').css("pointer-events", "none")
+      //FADE OUT "CLICK ME"
+  }
+  }, {offset: '85%'});
+
+//Un/Re-stick wrapperIntro5c
+$('#wrapperIntro5d').waypoint(function (direction) {
+  if(direction == 'down'){
+    console.log("Un-sticking 5c");
+    $('#wrapperIntro5c').removeClass('stuck').addClass('sticky-surpassed');
+  } else {
+    console.log("Re-sticking 5c");
     $('#wrapperIntro5c').removeClass('sticky-surpassed').addClass('stuck');
-    $('#reaction1aPhotos').css('pointer-events', 'auto');
   }
 }, {offset: '100%'});
+
+//Fading out/in intro5c photos and audio on exit
+$('#wrapperIntro5d').waypoint(function (direction) {
+  if(direction == 'down'){
+      console.log("Goodbye intro5c photos and quotes scrolling down");
+      if (player.play) {
+        //is this volume animation even working???
+        player.animate({volume: 0.0}, 1000);
+        player.pause();
+        player.currentTime = 0;
+        player.animate({volume: 1.0}, 0);
+      }
+      $('#reaction1aPhotos').css("pointer-events", "none")
+      $('.quoteVertical').addClass('startOpacity0');
+      $('.headshotReaction1a').animate({"opacity": 1}, "slow");
+      //FADE OUT "CLICK ME"
+  } else {
+      console.log("Hello intro5c photos and quotes scrolling up");
+      $('#reaction1aPhotos').css("pointer-events", "auto")
+      //FADE IN "CLICK ME"
+  }
+}, {offset: '60%'});
 
 //sticky for #intro5d
 var sticky_5d = new Waypoint.Sticky({
@@ -420,25 +473,29 @@ var sticky_5e = new Waypoint.Sticky({
   element: $('#wrapperIntro5e')[0]
 })
 
-//Reset audio and headshots when scrolling up from intro5e THIS NEEDS A DIFF WAYPOINT
-$('#wrapperIntro5e').waypoint(function (direction) {
-  if(direction == 'up'){
-  console.log('Resetting 5e audio on scroll up')
-    if (player.play) {
-      //is this volume animation even working???
-      player.animate({volume: 0.0}, 1000);
-      player.pause();
-      player.currentTime = 0;
-      player.animate({volume: 1.0}, 0);
-    } 
-    $('.headshot').css("opacity", 1);
-    $('.quoteVertical').addClass('startOpacity0');
-    $('#reaction1bPhotos').css("pointer-events", "none");
+//Fade in/out intro5e photos and audio on entrance
+$('#defineTimeIntro5e').waypoint(function (direction) {
+  if(direction == 'down'){
+    console.log('Hello intro5e photos and quotes');
+    $('#reaction1bPhotos').animate({"opacity": 1}, "slow");
+    $('#reaction1bPhotos').css("pointer-events", "auto")
+    //FADE IN "CLICK ME"
   } else {
-    console.log("Restoring pointer-events for reaction1bPhotos");
-    $('#reaction1bPhotos').css("pointer-events", "auto");
+      if (player.play) {
+        //is this volume animation even working???
+        player.animate({volume: 0.0}, 1000);
+        player.pause();
+        player.currentTime = 0;
+        player.animate({volume: 1.0}, 0);
+      } 
+    console.log('Goodbye intro5e photos and quotes scrolling up');
+    $('#reaction1bPhotos').animate({"opacity": 0}, "slow");
+    $('.headshotReaction1b').animate({"opacity": 1}, "slow");
+    $('.quoteVertical').addClass('startOpacity0');
+    $('#reaction1bPhotos').css("pointer-events", "none")
+      //FADE OUT "CLICK ME"
   }
-});
+  }, {offset: '85%'});
 
 //Fade out/in intro5a (big student photos)
 $('#wrapperIntro6b').waypoint(function (direction) {
@@ -448,27 +505,53 @@ $('#wrapperIntro6b').waypoint(function (direction) {
   } else {
     $('#wrapperIntro5a').animate({"opacity": 1}, "slow");
   }
-}, {offset: '120%'});
+}, {offset: '110%'});
 
-//Fade out/in intro5b, 5e and fade in/out 6a (big cop photos) and reset 5e audio
-$('#wrapperIntro6b').waypoint(function (direction) {
+// Fade out/in intro5b
+$('#defineTimeIntro5e').waypoint(function (direction) {
   if(direction == 'down'){
-    console.log("Fade out/in 5b and 5e and fade in/out 6a reset audio 5e");
-    $('#wrapperIntro5b, #wrapperIntro5e').animate({"opacity": 0}, 800);
-    $('#wrapperIntro6a').animate({"opacity": 1}, 800);
-    if (player.play) {
-      //is this volume animation even working???
-      player.animate({volume: 0.0}, 1000);
-      player.pause();
-      player.currentTime = 0;
-      player.animate({volume: 1.0}, 0);
-    } 
-    $('.headshot').css("opacity", 1);
-    $('.quoteVertical').addClass('startOpacity0');
+    console.log("Fade out 5b");
+    $('#wrapperIntro5b').animate({"opacity": 0}, 800);
   } else {
-    console.log("Fade out/in 5a and 5e and fade in/out 6a");
-    $('#wrapperIntro5b, #wrapperIntro5e').animate({"opacity": 1}, 800);
-    $('#wrapperIntro6a').animate({"opacity": 0}, 800);
+    console.log("Fade in 5b");
+    $('#wrapperIntro5b').animate({"opacity": 1}, 800);
+  }
+}, {offset: '65%'});
+
+//Un/Re-stick wrapperIntro5e
+$('#wrapperIntro6b').waypoint(function (direction) {
+  console.log("Un-sticking 5e");
+  if(direction == 'down'){
+    $('#wrapperIntro5e').removeClass('stuck').addClass('sticky-surpassed');
+  } else {
+    $('#wrapperIntro5e').removeClass('sticky-surpassed').addClass('stuck');
+  }
+}, {offset: '100%'});
+
+//Fading out/in intro5e photos and audio on exit, fade in/out introa, un/restick intro5b
+$('#wrapperIntro6b').waypoint(function (direction) {
+  console.log("Fading out/in intro5e photos and audio on exit, fade in/out introa, un/restick intro5bscrolling up");
+  if(direction == 'down'){
+      if (player.play) {
+        //is this volume animation even working???
+        player.animate({volume: 0.0}, 1000);
+        player.pause();
+        player.currentTime = 0;
+        player.animate({volume: 1.0}, 0);
+      }
+      $('#wrapperIntro5e').animate({"opacity": 0}, 800);
+      $('#wrapperIntro6a').animate({"opacity": 1}, 800);
+      $('#wrapperIntro5b').removeClass('stuck').addClass('sticky-surpassed');
+      $('#reaction1bPhotos').css("pointer-events", "none");
+      $('.quoteVertical').addClass('startOpacity0');
+      $('.headshotReaction1b').animate({"opacity": 1}, "slow");
+      //FADE OUT "CLICK ME"
+  } else {
+      $('#reaction1bPhotos').css("pointer-events", "auto");
+      $('#wrapperIntro5e').animate({"opacity": 1}, 800);
+      $('#wrapperIntro6a').animate({"opacity": 0}, 800);
+      $('#wrapperIntro5b').removeClass('sticky-surpassed').addClass('stuck');
+      //FADE IN "CLICK ME"
   }
 }, {offset: '100%'});
 
@@ -476,6 +559,92 @@ $('#wrapperIntro6b').waypoint(function (direction) {
 var sticky_6a = new Waypoint.Sticky({
   element: $('#wrapperIntro6a')[0]
 })
+
+//Fade in/out intro6c photos and audio on entrance
+$('#defineTimeIntro6c').waypoint(function (direction) {
+  if(direction == 'down'){
+    console.log('Hello intro6c photos and quotes');
+    $('#reaction2Photos').animate({"opacity": 1}, "slow");
+    $('#reaction2Photos').css("pointer-events", "auto")
+    //FADE IN "CLICK ME"
+  } else {
+      if (player.play) {
+        //is this volume animation even working???
+        player.animate({volume: 0.0}, 1000);
+        player.pause();
+        player.currentTime = 0;
+        player.animate({volume: 1.0}, 0);
+      } 
+    console.log('Goodbye intro6c photos and quotes scrolling up');
+    $('#reaction2Photos').animate({"opacity": 0}, "slow");
+    $('.headshotReaction2').animate({"opacity": 1}, "slow");
+    $('.quoteVertical').addClass('startOpacity0');
+    $('#reaction2Photos').css("pointer-events", "none")
+      //FADE OUT "CLICK ME"
+  }
+  }, {offset: '85%'});
+
+//BOOO
+
+//Fade out/in intro6a (big student photos)
+$('#wrapperIntro7b').waypoint(function (direction) {
+  console.log("Fade out/in 6a");
+  if(direction == 'down'){
+    $('#wrapperIntro6a').animate({"opacity": 0}, "slow");
+  } else {
+    $('#wrapperIntro6a').animate({"opacity": 1}, "slow");
+  }
+}, {offset: '110%'});
+
+// Fade out/in intro6b - Maybe don't need this
+// $('#defineTimeIntro5e').waypoint(function (direction) {
+//   if(direction == 'down'){
+//     console.log("Fade out 6b");
+//     $('#wrapperIntro6b').animate({"opacity": 0}, 800);
+//   } else {
+//     console.log("Fade in 6b");
+//     $('#wrapperIntro6b').animate({"opacity": 1}, 800);
+//   }
+// }, {offset: '65%'});
+
+//Un/Re-stick wrapperIntro6c
+$('#wrapperIntro7b').waypoint(function (direction) {
+  console.log("Un-sticking 6c");
+  if(direction == 'down'){
+    $('#wrapperIntro6c').removeClass('stuck').addClass('sticky-surpassed');
+  } else {
+    $('#wrapperIntro6c').removeClass('sticky-surpassed').addClass('stuck');
+  }
+}, {offset: '100%'});
+
+//Fading out/in intro5e photos and audio on exit, fade in/out introa, un/restick intro5b
+$('#wrapperIntro7b').waypoint(function (direction) {
+  console.log("Fading out/in intro6c photos and audio on exit, fade in/out intro7a, un/restick intro6bscrolling up");
+  if(direction == 'down'){
+      if (player.play) {
+        //is this volume animation even working???
+        player.animate({volume: 0.0}, 1000);
+        player.pause();
+        player.currentTime = 0;
+        player.animate({volume: 1.0}, 0);
+      }
+      $('#wrapperIntro6c').animate({"opacity": 0}, 800);
+      $('#wrapperIntro7a').animate({"opacity": 1}, 800);
+      $('#wrapperIntro6b').removeClass('stuck').addClass('sticky-surpassed');
+      $('#reaction2Photos').css("pointer-events", "none");
+      $('.quoteVertical').addClass('startOpacity0');
+      $('.headshotReaction2').animate({"opacity": 1}, "slow");
+      //FADE OUT "CLICK ME"
+  } else {
+      $('#reaction2Photos').css("pointer-events", "auto");
+      $('#wrapperIntro6c').animate({"opacity": 1}, 800);
+      $('#wrapperIntro7a').animate({"opacity": 0}, 800);
+      $('#wrapperIntro6b').removeClass('sticky-surpassed').addClass('stuck');
+      //FADE IN "CLICK ME"
+  }
+}, {offset: '100%'});
+
+//BOO
 
 // Reset audio and headshots when scrolling up from intro6c
 $('#wrapperIntro6b').waypoint(function (direction) {
