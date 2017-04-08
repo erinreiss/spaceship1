@@ -1,22 +1,22 @@
 // Remove all background colors
-$('*').css('background', 'transparent');
+// $('*').css('background', 'transparent');
 
 //Refresh on window resize - seems to only work the first time...
-$(window).resize(function() {
-    if(this.resizeTO) clearTimeout(this.resizeTO);
-    this.resizeTO = setTimeout(function() {
-        $(this).trigger('resizeEnd');
-    }, 500);
-});
+// $(window).resize(function() {
+//     if(this.resizeTO) clearTimeout(this.resizeTO);
+//     this.resizeTO = setTimeout(function() {
+//         $(this).trigger('resizeEnd');
+//     }, 500);
+// });
 
-$(window).bind('resizeEnd', function() {
-  console.log("Window was resized");
-  location.reload();
-});
+// $(window).bind('resizeEnd', function() {
+//   console.log("Window was resized");
+//   location.reload();
+// });
 
-$(document).ready(function(){
-    $(this).scrollTop(0);
-});
+// $(document).ready(function(){
+//     $(this).scrollTop(0);
+// });
 
 
 // Give my babies a white background
@@ -68,6 +68,16 @@ var sticky_1 = new Waypoint.Sticky({
   element: $('#wrapperIntro1')[0]
 })
 
+// Fade in/out intro1b photos
+$('#defineHeightIntro1').waypoint(function(direction) {
+  if(direction == 'down'){
+    $('#statusQuoPhotos').animate({"opacity": 1}, "slow");
+    console.log ('Hello intro1 photobank');
+  } else {
+    $('#statusQuoPhotos').animate({"opacity": 0}, "slow");
+  }
+}, {offset: '90%'});
+
 // Re-sticking intro1 for scroll away
 $('#intro2').waypoint(function(direction) {
   if(direction == 'down'){
@@ -79,38 +89,32 @@ $('#intro2').waypoint(function(direction) {
 }, {offset: '100%'});
 
 // Re-set audio and opacity after scrolling away from intro1
-$('#intro2').waypoint(function(direction) {
-  if(direction == 'down'){
-    console.log("Resetting audio and photos after intro1");
-    if (player.play) {
-      //is this volume animation even working???
-      player.animate({volume: 0.0}, 1000);
-      player.pause();
-      player.currentTime = 0;
-      player.animate({volume: 1.0}, 0);
-    } 
-    $('.headshot').css("opacity", 1);
-    $('#statusQuoPhotos').css("pointer-events", "none");
-  } else {
-    $('#statusQuoPhotos').css('pointer-events', 'auto');  
-  }
-}, {offset: '50%'});
+// $('#intro2').waypoint(function(direction) {
+//   if(direction == 'down'){
+//     console.log("Resetting audio and photos after intro1");
+//     if (player.play) {
+//       //is this volume animation even working???
+//       player.animate({volume: 0.0}, 1000);
+//       player.pause();
+//       player.currentTime = 0;
+//       player.animate({volume: 1.0}, 0);
+//     } 
+//     $('.headshot').css("opacity", 1);
+//     $('#statusQuoPhotos').css("pointer-events", "none");
+//   } else {
+//     $('#statusQuoPhotos').css('pointer-events', 'auto');  
+//   }
+// }, {offset: '50%'});
 
 //Fade Intro1 Photos into existence and make them clickable
-$('#intro1').waypoint(function (direction) {
-  $(document).scroll(function(){
-      // console.log("position relative to window: " + (intro1_Top - window.scrollY));
-      var scrollPercent2 = ((intro1_Top - window.scrollY) * -1) / 300;
-      // console.log(scrollPercent2);
-      $('#intro1b').css('opacity', scrollPercent2);
-      // if (scrollPercent2 >= .94){
-      //   $('.headshotStatusQuo').css('pointer-events', 'auto')
-      // }
-      // else {
-      //   $('.headshotStatusQuo').css('pointer-events', 'none')
-      // }
-  });
-});
+// $('#intro1').waypoint(function (direction) {
+//   $(document).scroll(function(){
+//       // console.log("position relative to window: " + (intro1_Top - window.scrollY));
+//       var scrollPercent2 = ((intro1_Top - window.scrollY) * -1) / 300;
+//       // console.log(scrollPercent2);
+//       $('#intro1b').css('opacity', scrollPercent2);
+//   });
+// });
 
 // photoBank Click Listener try 3 - from stackoverflow, zer00ne
 $('.photoBank').on('click', 'img', function(e) {
