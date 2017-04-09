@@ -41,8 +41,21 @@ var intro8_Top = $('#wrapperIntro8').offset().top;
 
 //Sticky for TopNav 
 var sticky_topNav = new Waypoint.Sticky({
-  element: $('#myTopnav')[0]
+  element: $('.topnav')[0]
 })
+
+//Fade top nav
+$('#intro1').waypoint(function (direction) {
+  if(direction == 'down'){
+    console.log("topnav recede");
+    //make slow
+    $('.topnav').addClass("hiddenBar", 1000);
+  } else {
+    //make slow
+    console.log("topnav Full");
+    $('.topnav').removeClass("hiddenBar", 1000);
+  }
+}, {offset: '20%'});
 
 //Delayed fading landing with scroll
 var intro1Activate = $('#intro1').waypoint(function (direction) {
@@ -792,6 +805,19 @@ var sticky_7b = new Waypoint.Sticky({
 var sticky_6c = new Waypoint.Sticky({
   element: $('#wrapperIntro7c')[0]
 })
+
+//Fade in/out top nav
+$('#intro8').waypoint(function (direction) {
+  if(direction == 'up'){
+    console.log("topnav recede");
+    //make slow
+    $('.topnav').addClass("hiddenBar", 1000);
+  } else {
+    //make slow
+    console.log("topnav Full");
+    $('.topnav').removeClass("hiddenBar", 1000);
+  }
+}, {offset: '20%'});
 
 //sticky for #intro8
 var sticky_8 = new Waypoint.Sticky({

@@ -1,9 +1,12 @@
 /*TopNav*/
 
 /* Add a background color to the top navigation */
-#myTopnav{
-    position: fixed
-    top:0;
+.topnav:hover {
+    height: 41px;
+}
+
+.hiddenBar{
+    height: 6px;
 }
 
 .topnav {
@@ -14,6 +17,8 @@
     font-family: "Cormorant";
     font-weight: 700;
     text-transform: uppercase;
+    transition: height 0.5s;
+    -webkit-transition: height 0.5s;
 }
 
 /* Style the links inside the navigation bar */
