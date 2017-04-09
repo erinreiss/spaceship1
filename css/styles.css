@@ -1,6 +1,11 @@
 /*TopNav*/
 
 /* Add a background color to the top navigation */
+#myTopnav{
+    position: fixed
+    top:0;
+}
+
 .topnav {
     background-color: #B36AE2;
     overflow: hidden;
