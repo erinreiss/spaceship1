@@ -223,6 +223,28 @@ $('#defineHeightIntro2a').waypoint(function (direction) {
   }
 });
 
+//Fade intro3 photos a lil bit on quote scroll in
+$('#defineTimeIntro3').waypoint(function (direction) {
+  if(direction == 'down'){
+    console.log("fade out a lil intro 3 photos");
+    $('#questionPhotos').animate({"opacity": .3}, "slow");
+  } else {
+    console.log("fade in a lil intro 3 photos");
+    $('#questionPhotos').animate({"opacity": 1}, "slow");
+  }
+}, {offset: '60%'});
+
+//Re/un-stick Intro3
+$('#intro4').waypoint(function (direction) {
+  if(direction == 'down'){
+    $('#wrapperIntro3').removeClass('stuck').addClass('sticky-surpassed');
+    console.log ('Un-stick intro 3');
+  } else {
+    $('#wrapperIntro3').removeClass('sticky-surpassed').addClass('stuck');
+    console.log ('Re-stick intro 3');
+  }
+}, {offset: '100%'});
+
 //Fade in/out intro3 photos and quotes when #defineHeightIntro2a hits top of screen- muted for now, for reseting triggers test
 // $('#defineHeightIntro2a').waypoint(function (direction) {
 //   console.log('Hello intro3 photos and quotes');
@@ -234,15 +256,15 @@ $('#defineHeightIntro2a').waypoint(function (direction) {
 // }, {offset: -150});
 
 // Un-sticking intro3 for scroll away
-$('#intro4').waypoint(function(direction) {
-  console.log ('Bye intro3');
-  if(direction == 'down'){
-    $('#wrapperIntro3').removeClass('stuck').addClass('sticky-surpassed');
-  } else {
-    $('#wrapperIntro3').removeClass('sticky-surpassed').addClass('stuck');
-    // console.log ('Who,s bad going UPtown?');
-  }
-}, {offset: '100%'});
+// $('#intro4').waypoint(function(direction) {
+//   console.log ('Bye intro3');
+//   if(direction == 'down'){
+//     $('#wrapperIntro3').removeClass('stuck').addClass('sticky-surpassed');
+//   } else {
+//     $('#wrapperIntro3').removeClass('sticky-surpassed').addClass('stuck');
+//     // console.log ('Who,s bad going UPtown?');
+//   }
+// }, {offset: '100%'});
 
 //Fade in/out intro4title and when #intro4 hits top of screen
 $('#intro4').waypoint(function (direction) {

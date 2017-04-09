@@ -133,8 +133,17 @@ p {
 }
 
 .quoteQuestion{
-    max-width: 22%;
-    padding: 0% 2.9%;
+    max-width: 26%;
+    padding: 0% 2%;
+    display: inline-block;
+    font-family: "Lato";
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.3em;
+    line-height: 27px;
+    text-align: center;
+    vertical-align: top;
+}
 }
 
 .quoteInteractions{
@@ -147,9 +156,9 @@ p {
     cursor: pointer;
 }
 .headshotQuestion{
-    max-width: 17%;
+    max-width: 19%;
     width: 100%;
-    padding: 0% 5%;
+    padding: 0% 5.5%;
 }
 
 .headshotInteractions{
