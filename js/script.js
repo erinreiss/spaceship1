@@ -1,6 +1,3 @@
-// Remove all background colors
-$('*').css('background', 'transparent');
-
 //Refresh on window resize - seems to only work the first time...
 // $(window).resize(function() {
 //     if(this.resizeTO) clearTimeout(this.resizeTO);
@@ -14,13 +11,24 @@ $('*').css('background', 'transparent');
 //   location.reload();
 // });
 
-// $(document).ready(function(){
-//     $(this).scrollTop(0);
-// });
+// Set up some FAQ variables.
+var faqsSections = $('.cd-faq-group');
+var faqTrigger = $('.cd-faq-trigger');
+var faqsContainer = $('.cd-faq-items');
+var faqsCategoriesContainer = $('.cd-faq-categories');
+var faqsCategories = faqsCategoriesContainer.find('a');
+var closeFaqsContainer = $('.cd-close-panel');
 
+//show FAQ content clicking on faqTrigger
+  faqTrigger.on('click', function(event){
+    console.log("hello!")
+    event.preventDefault();
+    $(this).next('.cd-faq-content').slideToggle(200).end().parent('li').toggleClass('content-visible');
+  });
 
-// Give my babies a white background
-$('.babies').css('background', '');
+$(document).ready(function(){
+    $(this).scrollTop(0);
+});
 
 // Set up some variables. Do I need this? What is matchdata??
 var headshot = $(".headshot");
@@ -31,6 +39,10 @@ var intro2_Top = $('#intro2').offset().top;
 var intro2_Top_2 = $('#wrapperIntro2a').offset().top;  
 var intro8_Top = $('#wrapperIntro8').offset().top;  
 
+//Sticky for TopNav 
+var sticky_topNav = new Waypoint.Sticky({
+  element: $('#myTopnav')[0]
+})
 
 //Delayed fading landing with scroll
 var intro1Activate = $('#intro1').waypoint(function (direction) {
@@ -815,4 +827,3 @@ $('#reaction1bPhotos').waypoint(function (direction) {
   console.log("Reaction1bPhotos leave view");
   }
 }, {offset: '100%'});
-
