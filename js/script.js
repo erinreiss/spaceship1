@@ -1,5 +1,5 @@
 // Remove all background colors
-// $('*').css('background', 'transparent');
+$('*').css('background', 'transparent');
 
 //Refresh on window resize - seems to only work the first time...
 // $(window).resize(function() {
@@ -178,6 +178,16 @@ $('#reaction1bPhotos').on('click', 'img', function(e) {
 $('#reaction2Photos').on('click', 'img', function(e) {
   $('.headshotReaction2').click(function(){
        $('.headshotReaction2').not(this).each(function(){
+          $(this).animate({"opacity": .3});
+       });
+       $(this).animate({"opacity": 1});
+    });
+});
+
+//Click listener for Reactions3 Headshots
+$('#reaction3Photos').on('click', 'img', function(e) {
+  $('.headshotReaction3').click(function(){
+       $('.headshotReaction3').not(this).each(function(){
           $(this).animate({"opacity": .3});
        });
        $(this).animate({"opacity": 1});
@@ -582,45 +592,46 @@ $('#defineTimeIntro6c').waypoint(function (direction) {
     $('#reaction2Photos').css("pointer-events", "none")
       //FADE OUT "CLICK ME"
   }
-  }, {offset: '85%'});
+  }, {offset: '90%'});
 
 //BOOO
 
-//Fade out/in intro6a (big student photos)
+//Fade out/in intro6a (big cop photos)
 $('#wrapperIntro7b').waypoint(function (direction) {
-  console.log("Fade out/in 6a");
   if(direction == 'down'){
+    console.log("Fade out 6a - big photos of cops");
     $('#wrapperIntro6a').animate({"opacity": 0}, "slow");
   } else {
+    console.log("Fade in 6a - big photos of cops");
     $('#wrapperIntro6a').animate({"opacity": 1}, "slow");
   }
 }, {offset: '110%'});
 
-// Fade out/in intro6b - Maybe don't need this
-// $('#defineTimeIntro5e').waypoint(function (direction) {
-//   if(direction == 'down'){
-//     console.log("Fade out 6b");
-//     $('#wrapperIntro6b').animate({"opacity": 0}, 800);
-//   } else {
-//     console.log("Fade in 6b");
-//     $('#wrapperIntro6b').animate({"opacity": 1}, 800);
-//   }
-// }, {offset: '65%'});
-
-//Un/Re-stick wrapperIntro6c
-$('#wrapperIntro7b').waypoint(function (direction) {
-  console.log("Un-sticking 6c");
+// Fade out/in intro6b
+$('#defineTimeIntro6c').waypoint(function (direction) {
   if(direction == 'down'){
-    $('#wrapperIntro6c').removeClass('stuck').addClass('sticky-surpassed');
+    console.log("Fade out 6b - Students React Header");
+    $('#wrapperIntro6b').animate({"opacity": 0}, 800);
   } else {
-    $('#wrapperIntro6c').removeClass('sticky-surpassed').addClass('stuck');
+    console.log("Fade in 6b - Students React Header");
+    $('#wrapperIntro6b').animate({"opacity": 1}, 800);
+  }
+}, {offset: '65%'});
+
+//Un/Re-stick wrapperIntro6c and 6a
+$('#wrapperIntro7b').waypoint(function (direction) {
+  console.log("Un-sticking 6c and 6a");
+  if(direction == 'down'){
+    $('#wrapperIntro6c, #wrapperIntro6a').removeClass('stuck').addClass('sticky-surpassed');
+  } else {
+    $('#wrapperIntro6c, #wrapperIntro6a').removeClass('sticky-surpassed').addClass('stuck');
   }
 }, {offset: '100%'});
 
-//Fading out/in intro5e photos and audio on exit, fade in/out introa, un/restick intro5b
+//Fading out/in intro6c photos and audio on exit, fade in/out intro7a, un/restick intro6b
 $('#wrapperIntro7b').waypoint(function (direction) {
-  console.log("Fading out/in intro6c photos and audio on exit, fade in/out intro7a, un/restick intro6bscrolling up");
   if(direction == 'down'){
+    console.log("Fading out 6c photos and audio, fade in intro7a, Unstick 6b - scrolling up");
       if (player.play) {
         //is this volume animation even working???
         player.animate({volume: 0.0}, 1000);
@@ -636,35 +647,121 @@ $('#wrapperIntro7b').waypoint(function (direction) {
       $('.headshotReaction2').animate({"opacity": 1}, "slow");
       //FADE OUT "CLICK ME"
   } else {
+      console.log("Fading in 6c photos and audio, fade out intro7a, Restick 6b - scrolling up");
       $('#reaction2Photos').css("pointer-events", "auto");
       $('#wrapperIntro6c').animate({"opacity": 1}, 800);
       $('#wrapperIntro7a').animate({"opacity": 0}, 800);
       $('#wrapperIntro6b').removeClass('sticky-surpassed').addClass('stuck');
       //FADE IN "CLICK ME"
   }
+}, {offset: '95%'});
+
+//BOOOO
+
+//Fade in/out intro7c photos and audio on entrance
+$('#defineTimeIntro7c').waypoint(function (direction) {
+  if(direction == 'down'){
+    console.log('Hello intro7c photos and quotes');
+    $('#reaction3Photos').animate({"opacity": 1}, "slow");
+    $('#reaction3Photos').css("pointer-events", "auto")
+    //FADE IN "CLICK ME"
+  } else {
+      if (player.play) {
+        //is this volume animation even working???
+        player.animate({volume: 0.0}, 1000);
+        player.pause();
+        player.currentTime = 0;
+        player.animate({volume: 1.0}, 0);
+      } 
+    console.log('Goodbye intro7c photos and quotes scrolling up');
+    $('#reaction3Photos').animate({"opacity": 0}, "slow");
+    $('.headshotReaction3').animate({"opacity": 1}, "slow");
+    $('.quoteVertical').addClass('startOpacity0');
+    $('#reaction3Photos').css("pointer-events", "none")
+      //FADE OUT "CLICK ME"
+  }
+  }, {offset: '90%'});
+
+//Fade out/in intro7a (big student photos)
+$('#wrapperIntro7d').waypoint(function (direction) {
+  if(direction == 'down'){
+    console.log("Fade out 7a - big photos of students2");
+    $('#wrapperIntro7a').animate({"opacity": 0}, "slow");
+  } else {
+    console.log("Fade in 7a - big photos of students2");
+    $('#wrapperIntro7a').animate({"opacity": 1}, "slow");
+  }
+}, {offset: '110%'});
+
+// Fade out/in intro7b
+$('#defineTimeIntro7c').waypoint(function (direction) {
+  if(direction == 'down'){
+    console.log("Fade out 7b - Police React Header 2");
+    $('#wrapperIntro7b').animate({"opacity": 0}, 800);
+  } else {
+    console.log("Fade in 7b - Police React Header 2");
+    $('#wrapperIntro7b').animate({"opacity": 1}, 800);
+  }
+}, {offset: '65%'});
+
+//Un/Re-stick wrapperIntro7c and wrapperIntro7a - good waypoint?
+$('#wrapperIntro7d').waypoint(function (direction) {
+  console.log("Un-sticking 7c and 7a");
+  if(direction == 'down'){
+    $('#wrapperIntro7c, #wrapperIntro7a').removeClass('stuck').addClass('sticky-surpassed');
+  } else {
+    $('#wrapperIntro7c, #wrapperIntro7a').removeClass('sticky-surpassed').addClass('stuck');
+  }
 }, {offset: '100%'});
 
-//BOO
-
-// Reset audio and headshots when scrolling up from intro6c
-$('#wrapperIntro6b').waypoint(function (direction) {
-  if(direction == 'up'){
-  console.log('Resetting 6c audio and remove pointer-events')
-    if (player.play) {
-      //is this volume animation even working???
-      player.animate({volume: 0.0}, 1000);
-      player.pause();
-      player.currentTime = 0;
-      player.animate({volume: 1.0}, 0);
-    } 
-    $('.headshot').css("opacity", 1);
-    $('.quoteVertical').addClass('startOpacity0');
-    $('#reaction2Photos').css("pointer-events", "none");
-  } else{
-    console.log('Restore 6c pointer-events')
-    $('#reaction2Photos').css("pointer-events", "auto");
+//Fading out/in intro7c photos and audio on exit, un/restick intro7b
+$('#wrapperIntro7d').waypoint(function (direction) {
+  if(direction == 'down'){
+    console.log("Fading out 7c photos and audio, Unstick 7b - scrolling up");
+      if (player.play) {
+        //is this volume animation even working???
+        player.animate({volume: 0.0}, 1000);
+        player.pause();
+        player.currentTime = 0;
+        player.animate({volume: 1.0}, 0);
+      }
+      $('#wrapperIntro7c').animate({"opacity": 0}, 800);
+      // $('#wrapperIntro7a').animate({"opacity": 1}, 800);
+      $('#wrapperIntro7b').removeClass('stuck').addClass('sticky-surpassed');
+      $('#reaction3Photos').css("pointer-events", "none");
+      $('.quoteVertical').addClass('startOpacity0');
+      $('.headshotReaction3').animate({"opacity": 1}, "slow");
+      //FADE OUT "CLICK ME"
+  } else {
+      console.log("Fading in 7c photos and audio, Restick 7b - scrolling up");
+      $('#reaction3Photos').css("pointer-events", "auto");
+      $('#wrapperIntro7c').animate({"opacity": 1}, 800);
+      $('#wrapperIntro7b').removeClass('sticky-surpassed').addClass('stuck');
+      //FADE IN "CLICK ME"
   }
-}, {offset: '10%'});
+}, {offset: '95%'});
+
+//BAAA
+
+// // Reset audio and headshots when scrolling up from intro6c - DONT NEED
+// $('#wrapperIntro6b').waypoint(function (direction) {
+//   if(direction == 'up'){
+//   console.log('Resetting 6c audio and remove pointer-events')
+//     if (player.play) {
+//       //is this volume animation even working???
+//       player.animate({volume: 0.0}, 1000);
+//       player.pause();
+//       player.currentTime = 0;
+//       player.animate({volume: 1.0}, 0);
+//     } 
+//     $('.headshot').css("opacity", 1);
+//     $('.quoteVertical').addClass('startOpacity0');
+//     $('#reaction2Photos').css("pointer-events", "none");
+//   } else{
+//     console.log('Restore 6c pointer-events')
+//     $('#reaction2Photos').css("pointer-events", "auto");
+//   }
+// }, {offset: '10%'});
 
 // Changing Students React header to/from white background
 $('#intro6b').waypoint(function (direction){
@@ -686,46 +783,48 @@ var sticky_6c = new Waypoint.Sticky({
   element: $('#wrapperIntro6c')[0]
 })
 
-//Fade out/in intro6a (big police photos)
-$('#wrapperIntro7b').waypoint(function (direction) {
-  console.log("Fade out/in 6a");
-  if(direction == 'down'){
-    $('#wrapperIntro6a').animate({"opacity": 0}, "slow");
-  } else {
-    $('#wrapperIntro6a').animate({"opacity": 1}, "slow");
-  }
-}, {offset: '120%'});
+// //Fade out/in intro6a (big police photos) - DONT NEED
+// $('#wrapperIntro7b').waypoint(function (direction) {
+//   console.log("Fade out/in 6a");
+//   if(direction == 'down'){
+//     $('#wrapperIntro6a').animate({"opacity": 0}, "slow");
+//   } else {
+//     $('#wrapperIntro6a').animate({"opacity": 1}, "slow");
+//   }
+// }, {offset: '120%'});
 
-//Fade out/in intro6b, 6c and fade in/out 7a (big student2 photos) and reset 6c audio
-$('#wrapperIntro7b').waypoint(function (direction) {
-  console.log("Fade out/in 6b and 6c finally, and reset audio 6c and fade in/out 7a");
-  if(direction == 'down'){
-    $('#wrapperIntro6b, #wrapperIntro6c').animate({"opacity": 0}, 800);
-    $('#wrapperIntro7a').animate({"opacity": 1}, 800);
-    if (player.play) {
-      //is this volume animation even working???
-      player.animate({volume: 0.0}, 1000);
-      player.pause();
-      player.currentTime = 0;
-      player.animate({volume: 1.0}, 0);
-    } 
-    $('.headshot').css("opacity", 1);
-    $('.quoteVertical').addClass('startOpacity0');
-  } else {
-    $('#wrapperIntro6b, #wrapperIntro6c').animate({"opacity": 1}, 800);
-    $('#wrapperIntro7a').animate({"opacity": 0}, 800);
-  }
-}, {offset: '100%'});
+// DONT NEED
+// //Fade out/in intro6b, 6c and fade in/out 7a (big student2 photos) and reset 6c audio
+// $('#wrapperIntro7b').waypoint(function (direction) {
+//   console.log("Fade out/in 6b and 6c finally, and reset audio 6c and fade in/out 7a");
+//   if(direction == 'down'){
+//     $('#wrapperIntro6b, #wrapperIntro6c').animate({"opacity": 0}, 800);
+//     $('#wrapperIntro7a').animate({"opacity": 1}, 800);
+//     if (player.play) {
+//       //is this volume animation even working???
+//       player.animate({volume: 0.0}, 1000);
+//       player.pause();
+//       player.currentTime = 0;
+//       player.animate({volume: 1.0}, 0);
+//     } 
+//     $('.headshot').css("opacity", 1);
+//     $('.quoteVertical').addClass('startOpacity0');
+//   } else {
+//     $('#wrapperIntro6b, #wrapperIntro6c').animate({"opacity": 1}, 800);
+//     $('#wrapperIntro7a').animate({"opacity": 0}, 800);
+//   }
+// }, {offset: '100%'});
 
-//Un/Re-stick wrapperIntro6a, 6b, 6c 30% before intro7 hits
-$('#wrapperIntro7b').waypoint(function (direction) {
-  console.log("Bye 6a, 6b, and 6c");
-  if(direction == 'down'){
-    $('#wrapperIntro6a, #wrapperIntro6b, #wrapperIntro6c').removeClass('stuck').addClass('sticky-surpassed');
-  } else {
-    $('#wrapperIntro6a, #wrapperIntro6b, #wrapperIntro6c').removeClass('sticky-surpassed').addClass('stuck');
-  }
-}, {offset: '30%'});
+//DONT NEED
+// //Un/Re-stick wrapperIntro6a, 6b, 6c 30% before intro7 hits
+// $('#wrapperIntro7b').waypoint(function (direction) {
+//   console.log("Bye 6a, 6b, and 6c");
+//   if(direction == 'down'){
+//     $('#wrapperIntro6a, #wrapperIntro6b, #wrapperIntro6c').removeClass('stuck').addClass('sticky-surpassed');
+//   } else {
+//     $('#wrapperIntro6a, #wrapperIntro6b, #wrapperIntro6c').removeClass('sticky-surpassed').addClass('stuck');
+//   }
+// }, {offset: '30%'});
 
 var sticky_7b = new Waypoint.Sticky({
   element: $('#wrapperIntro7b')[0]
@@ -736,49 +835,49 @@ var sticky_6c = new Waypoint.Sticky({
   element: $('#wrapperIntro7c')[0]
 })
 
-// Reset audio and headshots when scrolling up from intro7c
-$('#wrapperIntro7b').waypoint(function (direction) {
-  if(direction == 'up'){
-  console.log('Resetting 7c audio and remove pointer-events')
-    if (player.play) {
-      //is this volume animation even working???
-      player.animate({volume: 0.0}, 1000);
-      player.pause();
-      player.currentTime = 0;
-      player.animate({volume: 1.0}, 0);
-    } 
-    $('.headshot').css("opacity", 1);
-    $('.quoteVerticalQuad').addClass('startOpacity0');
-    $('#reaction3Photos').css("pointer-events", "none");
-  } else{
-    console.log('Restore 7c pointer-events')
-    $('#reaction3Photos').css("pointer-events", "auto");
-  }
-}, {offset: '10%'});
+// Reset audio and headshots when scrolling up from intro7c - NO NEED
+// $('#wrapperIntro7b').waypoint(function (direction) {
+//   if(direction == 'up'){
+//   console.log('Resetting 7c audio and remove pointer-events')
+//     if (player.play) {
+//       //is this volume animation even working???
+//       player.animate({volume: 0.0}, 1000);
+//       player.pause();
+//       player.currentTime = 0;
+//       player.animate({volume: 1.0}, 0);
+//     } 
+//     $('.headshot').css("opacity", 1);
+//     $('.quoteVerticalQuad').addClass('startOpacity0');
+//     $('#reaction3Photos').css("pointer-events", "none");
+//   } else{
+//     console.log('Restore 7c pointer-events')
+//     $('#reaction3Photos').css("pointer-events", "auto");
+//   }
+// }, {offset: '10%'});
 
 //sticky for #intro8
 var sticky_8 = new Waypoint.Sticky({
   element: $('#wrapperIntro8')[0]
 })
 
-//Fade out/in intro7a,b, c and reset audio 7c
-$('#intro7d').waypoint(function (direction) {
-  console.log("Fade out/in 7a,b,c and reset audio 6c")
-  if(direction == 'down'){
-    if (player.play) {
-      //is this volume animation even working???
-      player.animate({volume: 0.0}, 1000);
-      player.pause();
-      player.currentTime = 0;
-      player.animate({volume: 1.0}, 0);
-    } 
-    $('.headshot').css("opacity", 1);
-    $('.quoteVerticalQuad').addClass('startOpacity0');
-    $('#wrapperIntro7a, #wrapperIntro7b, #wrapperIntro7c').animate({"opacity": 0}, 800);
-  } else {
-    $('#wrapperIntro7a, #wrapperIntro7b, #wrapperIntro7c').animate({"opacity": 1}, 800);
-  }
-}, {offset: "100%"});
+//Fade out/in intro7a,b, c and reset audio 7c No NEED
+// $('#intro7d').waypoint(function (direction) {
+//   console.log("Fade out/in 7a,b,c and reset audio 6c")
+//   if(direction == 'down'){
+//     if (player.play) {
+//       //is this volume animation even working???
+//       player.animate({volume: 0.0}, 1000);
+//       player.pause();
+//       player.currentTime = 0;
+//       player.animate({volume: 1.0}, 0);
+//     } 
+//     $('.headshot').css("opacity", 1);
+//     $('.quoteVerticalQuad').addClass('startOpacity0');
+//     $('#wrapperIntro7a, #wrapperIntro7b, #wrapperIntro7c').animate({"opacity": 0}, 800);
+//   } else {
+//     $('#wrapperIntro7a, #wrapperIntro7b, #wrapperIntro7c').animate({"opacity": 1}, 800);
+//   }
+// }, {offset: "100%"});
 
 //Fade Intro8 Gene and Rolleri Quotes into existence
 $('#intro8').waypoint(function (e) {
