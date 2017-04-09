@@ -699,7 +699,7 @@ $('#defineTimeIntro7c').waypoint(function (direction) {
     console.log('Goodbye intro7c photos and quotes scrolling up');
     $('#reaction3Photos').animate({"opacity": 0}, "slow");
     $('.headshotReaction3').animate({"opacity": 1}, "slow");
-    $('.quoteVertical').addClass('startOpacity0');
+    $('.quoteVerticalQuad').addClass('startOpacity0');
     $('#reaction3Photos').css("pointer-events", "none")
       //FADE OUT "CLICK ME"
   }
@@ -752,7 +752,7 @@ $('#wrapperIntro7d').waypoint(function (direction) {
       // $('#wrapperIntro7a').animate({"opacity": 1}, 800);
       $('#wrapperIntro7b').removeClass('stuck').addClass('sticky-surpassed');
       $('#reaction3Photos').css("pointer-events", "none");
-      $('.quoteVertical').addClass('startOpacity0');
+      $('.quoteVerticalQuad').addClass('startOpacity0');
       $('.headshotReaction3').animate({"opacity": 1}, "slow");
       //FADE OUT "CLICK ME"
   } else {
