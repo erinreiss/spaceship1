@@ -94,7 +94,7 @@ p {
 
 #stretch {
   width: 100%;
-  top: 0;
+  top:0;
   left: 0;
 }
 
@@ -107,14 +107,17 @@ p {
     bottom: 0;
 }
 
-#intro1{
-    position: relative;
-}
-
 .photoBank {
     text-align: center;
     pointer-events: none;
     opacity: 0;
+}
+
+#statusQuoPhotos{
+    text-align: center;
+    pointer-events: none;
+    opacity: 0;
+    cursor: pointer;
 }
 
 .quoteBank{
@@ -137,13 +140,12 @@ p {
     padding: 0% 2%;
     display: inline-block;
     font-family: "Lato";
-    font-weight: 300;
+    font-weight: 400;
     font-style: italic;
     font-size: 1.3em;
     line-height: 27px;
     text-align: center;
     vertical-align: top;
-}
 }
 
 .quoteInteractions{
@@ -168,9 +170,9 @@ p {
 }
 
 .headshotStatusQuo{
-    max-width: 190px;
+    max-width: 32vw;
     width: 100%;
-    padding: 0px 10px;
+    padding: 0px 1vw;
 }
 
 .headshotReaction1a{

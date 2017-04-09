@@ -45,47 +45,61 @@ var intro1Activate = $('#intro1').waypoint(function (direction) {
 }, {offset: 350});
 
 //Sticky for #intro1 
-var sticky_1 = new Waypoint.Sticky({
-  element: $('#wrapperIntro1')[0]
+var sticky_1b = new Waypoint.Sticky({
+  element: $('#wrapperIntro1b')[0]
 })
 
-// Fade in/out intro1b photos - muted for now, for reseting triggers test
-// $('#defineHeightIntro1').waypoint(function(direction) {
-//   if(direction == 'down'){
-//     $('#statusQuoPhotos').animate({"opacity": 1}, "slow");
-//     console.log ('Hello intro1 photobank');
-//   } else {
-//     $('#statusQuoPhotos').animate({"opacity": 0}, "slow");
-//   }
-// }, {offset: '90%'});
+// Fade in/out intro1b photos
+$('#defineHeightIntro1').waypoint(function(direction) {
+  if(direction == 'down'){
+    $('#statusQuoPhotos').animate({"opacity": 1}, "slow");
+    $('#statusQuoPhotos').css("pointer-events", "auto");
+    console.log ('Hello intro1 photobank');
+  } else {
+    console.log ('Goodbye intro1 photobank');
+    $('#statusQuoPhotos').animate({"opacity": 0}, "slow");
+    $('#statusQuoPhotos').css("pointer-events", "none");
+    if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+      // player.load();
+    } 
+  }
+}, {offset: '90%'});
 
-// Re-sticking intro1 for scroll away
+// Un/Re-sticking intro1
 $('#intro2').waypoint(function(direction) {
   if(direction == 'down'){
-    $('#wrapperIntro1').removeClass('stuck').addClass('sticky-surpassed');
-    console.log ('Bye intro1');
+    $('#wrapperIntro1b').removeClass('stuck').addClass('sticky-surpassed');
+    console.log ('Un-stick intro1b');
   } else {
-    $('#wrapperIntro1').removeClass('sticky-surpassed').addClass('stuck');
+    $('#wrapperIntro1b').removeClass('sticky-surpassed').addClass('stuck');
+    console.log ('Re-stick intro1b'); 
   }
 }, {offset: '100%'});
 
-// Re-set audio and opacity after scrolling away from intro1 - muted for now, for reseting triggers test
-// $('#intro2').waypoint(function(direction) {
-//   if(direction == 'down'){
-//     console.log("Resetting audio and photos after intro1");
-//     if (player.play) {
-//       //is this volume animation even working???
-//       player.animate({volume: 0.0}, 1000);
-//       player.pause();
-//       player.currentTime = 0;
-//       player.animate({volume: 1.0}, 0);
-//     } 
-//     $('.headshot').css("opacity", 1);
-//     $('#statusQuoPhotos').css("pointer-events", "none");
-//   } else {
-//     $('#statusQuoPhotos').css('pointer-events', 'auto');  
-//   }
-// }, {offset: '50%'});
+
+// Re-set audio and and clickability after scrolling away from intro1
+$('#intro2').waypoint(function(direction) {
+  if(direction == 'down'){
+    console.log("Fading out and Resetting audio and photos on intro1");
+    if (player.play) {
+      //is this volume animation even working???
+      player.animate({volume: 0.0}, 1000);
+      player.pause();
+      player.currentTime = 0;
+      player.animate({volume: 1.0}, 0);
+    } 
+    $('#statusQuoPhotos').animate({"opacity": 0}, "slow");
+    $('#statusQuoPhotos').css("pointer-events", "none");
+  } else {
+    $('#statusQuoPhotos').animate({"opacity": 1}, "slow");
+    $('#statusQuoPhotos').css('pointer-events', 'auto');  
+  }
+}, {offset: '70%'});
 
 //Fade Intro1 Photos into existence and make them clickable - muted for now, for reseting triggers test
 // $('#intro1').waypoint(function (direction) {
@@ -96,6 +110,25 @@ $('#intro2').waypoint(function(direction) {
 //       $('#intro1b').css('opacity', scrollPercent2);
 //   });
 // });
+
+
+// Kyle_statusQuo Hover Listner
+$('#kyle_statusQuo')
+  .mouseenter(function(){
+    $('#kyle_statusQuo').attr("src", "images/kyle_statusQuo2.png");
+  })
+  .mouseleave(function(){
+    $('#kyle_statusQuo').attr("src", "images/kyle_statusQuo.png");
+  });
+
+  // Darin_statusQuo Hover Listner
+$('#darin_statusQuo')
+  .mouseenter(function(){
+    $('#darin_statusQuo').attr("src", "images/darin_statusQuo2.png");
+  })
+  .mouseleave(function(){
+    $('#darin_statusQuo').attr("src", "images/darin_statusQuo.png");
+  });
 
 // Universal click listener for audio and quotes (not Vertical quotes)
 $('.photoBank').on('click', 'img', function(e) {
@@ -123,6 +156,29 @@ $('.photoBank').on('click', 'img', function(e) {
   var qID = "#" + $(this).attr('id') + "_quote";
   console.log(qID)
   $(qID).toggleClass("startOpacity0", 400);
+});
+
+//Click listener for StatusQuo Headshots
+$('#statusQuoPhotos').on('click', 'img', function(e) {
+  var player = document.getElementById('player');
+  var ID = $(this).attr('id');
+  var path = 'https://erinreiss.github.io/spaceship1/audio/';
+  var SRC = path + ID + '.mp3';
+  console.log(this)
+  console.log('and')
+  console.log(SRC)
+  console.log(player.src)
+  if (player.paused && (player.src === SRC)) {
+    player.play();
+  } else if (!player.paused && (player.src === SRC)) {
+    player.pause();
+  } else {
+    player.pause();
+    player.currentTime = 0;
+    player.src = SRC;
+    player.load();
+    player.play();
+  }
 });
 
 //Click listener for Interactions Headshots
@@ -244,27 +300,6 @@ $('#intro4').waypoint(function (direction) {
     console.log ('Re-stick intro 3');
   }
 }, {offset: '100%'});
-
-//Fade in/out intro3 photos and quotes when #defineHeightIntro2a hits top of screen- muted for now, for reseting triggers test
-// $('#defineHeightIntro2a').waypoint(function (direction) {
-//   console.log('Hello intro3 photos and quotes');
-//   if(direction == 'down'){
-//     $('#intro3banks').animate({"opacity": 1});
-//   } else {
-//     $('#intro3banks').animate({"opacity": 0});
-//   }
-// }, {offset: -150});
-
-// Un-sticking intro3 for scroll away
-// $('#intro4').waypoint(function(direction) {
-//   console.log ('Bye intro3');
-//   if(direction == 'down'){
-//     $('#wrapperIntro3').removeClass('stuck').addClass('sticky-surpassed');
-//   } else {
-//     $('#wrapperIntro3').removeClass('sticky-surpassed').addClass('stuck');
-//     // console.log ('Who,s bad going UPtown?');
-//   }
-// }, {offset: '100%'});
 
 //Fade in/out intro4title and when #intro4 hits top of screen
 $('#intro4').waypoint(function (direction) {
