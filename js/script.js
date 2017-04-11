@@ -30,10 +30,24 @@ $(document).ready(function(){
     $(this).scrollTop(0);
 });
 
-// Set up some variables. Do I need this? What is matchdata??
+// Warning message for Mobile
+//initiate as false
+var isMobile = false; 
+// device detection
+if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
+    || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) isMobile = true;
+//Give the message if true
+
+$(document).ready(function(){
+  console.log(isMobile);
+    if (isMobile == true){
+    alert('Sadly, this site does not work on mobile devices. Please visit us using Chrome on a laptop or desktop.');
+    }
+});
+
+// Set up some variables. Do I need these???
 var headshot = $(".headshot");
 var headshotStatusQuo = $(".headshotStatusQuo");
-var matchData;
 var intro1_Top = $('#intro1').offset().top;
 var intro2_Top = $('#intro2').offset().top;  
 var intro2_Top_2 = $('#wrapperIntro2a').offset().top;  
@@ -44,16 +58,18 @@ var sticky_topNav = new Waypoint.Sticky({
   element: $('.topnav')[0]
 })
 
-//Fade top nav
+//Fade top nav and scroll arrow
 $('#intro1').waypoint(function (direction) {
   if(direction == 'down'){
     console.log("topnav recede");
     //make slow
     $('.topnav').addClass("hiddenBar", 1000);
+    $('#scrollArrow').animate({"opacity": 1}, "slow");
   } else {
     //make slow
     console.log("topnav Full");
     $('.topnav').removeClass("hiddenBar", 1000);
+    $('#scrollArrow').animate({"opacity": 0}, "slow");
   }
 }, {offset: '20%'});
 
@@ -75,7 +91,7 @@ var sticky_1b = new Waypoint.Sticky({
 })
 
 // Fade in/out intro1b photos
-$('#defineHeightIntro1').waypoint(function(direction) {
+$('#intro1b').waypoint(function(direction) {
   if(direction == 'down'){
     $('#statusQuoPhotos').animate({"opacity": 1}, "slow");
     $('#statusQuoPhotos').css("pointer-events", "auto");
@@ -93,7 +109,7 @@ $('#defineHeightIntro1').waypoint(function(direction) {
       // player.load();
     } 
   }
-}, {offset: '90%'});
+}, {offset: '20%'});
 
 // Un/Re-sticking intro1
 $('#intro2').waypoint(function(direction) {
@@ -110,7 +126,7 @@ $('#intro2').waypoint(function(direction) {
 // Re-set audio and and clickability after scrolling away from intro1
 $('#intro2').waypoint(function(direction) {
   if(direction == 'down'){
-    console.log("Fading out and Resetting audio and photos on intro1");
+    console.log("Fading out and Resetting audio and photos on intro1b");
     if (player.play) {
       //is this volume animation even working???
       player.animate({volume: 0.0}, 1000);
@@ -118,10 +134,10 @@ $('#intro2').waypoint(function(direction) {
       player.currentTime = 0;
       player.animate({volume: 1.0}, 0);
     } 
-    $('#statusQuoPhotos').animate({"opacity": 0}, "slow");
+    // $('#statusQuoPhotos').animate({"opacity": 0}, "slow");
     $('#statusQuoPhotos').css("pointer-events", "none");
   } else {
-    $('#statusQuoPhotos').animate({"opacity": 1}, "slow");
+    // $('#statusQuoPhotos').animate({"opacity": 1}, "slow");
     $('#statusQuoPhotos').css('pointer-events', 'auto');  
   }
 }, {offset: '70%'});
@@ -257,9 +273,9 @@ $('#reaction3Photos').on('click', 'img', function(e) {
 });
 
 //Sticky for #intro2
-var sticky_2 = new Waypoint.Sticky({
-  element: $('#wrapperIntro2a')[0]
-})
+// var sticky_2 = new Waypoint.Sticky({
+//   element: $('#wrapperIntro2a')[0]
+// })
 
 //Fade into intro2 ministory
 $('#wrapperIntro2a').waypoint(function (direction) {
@@ -274,33 +290,43 @@ $('#wrapperIntro2a').waypoint(function (direction) {
           $('#intro2_sub0, #intro2_sub00').css('opacity', scrollPercent3);
       }
   });
-},{offset: 100});
+}, {offset: "10%"});
 
+//Fade in/out intro3title 
+$('#intro2_sub1').waypoint(function (direction) {
+  console.log('Hello intro3title');
+  if(direction == 'down'){
+    $('#intro3title, .intro2_sub2').animate({"opacity": 1}, "slow");
+    // $("#intro2_sub1, #intro2_sub2").animate({"opacity": 0}, "slow");
+  } else {
+    $('#intro3title, .intro2_sub2').animate({"opacity": 0}, "slow");
+    // $("#intro2_sub1, #intro2_sub2").animate({"opacity": 1}, "slow");
+  }
+}, {offset: "25%"});
 
 //Resticking intro2 for scrollaway
-$('#wrapperIntro2a').waypoint(function (direction) {
-  console.log('Bye intro2');
-  if(direction == 'down'){
-    $('#wrapperIntro2a').removeClass('stuck').addClass('sticky-surpassed');
-  } else {
-    $('#wrapperIntro2a').removeClass('sticky-surpassed').addClass('stuck');
-  }
-}, {offset: -125});
+// $('#wrapperIntro2a').waypoint(function (direction) {
+//   console.log('Bye intro2');
+//   if(direction == 'down'){
+//     $('#wrapperIntro2a').removeClass('stuck').addClass('sticky-surpassed');
+//   } else {
+//     $('#wrapperIntro2a').removeClass('sticky-surpassed').addClass('stuck');
+//   }
+// }, {offset: "1%"});
 
 //sticky for #intro3
 var sticky_3 = new Waypoint.Sticky({
   element: $('#wrapperIntro3')[0]
 })
 
-//Fade in/out intro3title and when #defineHeightIntro2a hits top of screen
-$('#defineHeightIntro2a').waypoint(function (direction) {
-  console.log('Hello intro3title');
+//Fade intro3 photo in/out
+$('#wrapperIntro3').waypoint(function (direction) {
   if(direction == 'down'){
-    $('#intro3title').animate({"opacity": 1}, "slow");
-    $("#intro2_sub1, #intro2_sub2").animate({"opacity": 0}, "slow");
+    console.log("Hello Intro3 Photos");
+    $('#intro3banks').animate({"opacity": 1}, "slow");
   } else {
-    $('#intro3title').animate({"opacity": 0}, "slow");
-    $("#intro2_sub1, #intro2_sub2").animate({"opacity": 1}, "slow");
+    console.log("Goodbye Intro3 Photos");
+    $('#intro3banks').animate({"opacity": 0}, "slow");
   }
 });
 
@@ -327,27 +353,27 @@ $('#intro4').waypoint(function (direction) {
 }, {offset: '100%'});
 
 //Fade in/out intro4title and when #intro4 hits top of screen
-$('#intro4').waypoint(function (direction) {
+$('#wrapperIntro4').waypoint(function (direction) {
   console.log('hello intro4title');
   if(direction == 'down'){
     $('#intro4title').animate({"opacity": 1}, "slow");
   } else {
     $('#intro4title').animate({"opacity": 0}, "slow");
   }
-});
+}, {offset: '40%'});
 
 //sticky for #intro4
 var sticky_4 = new Waypoint.Sticky({
   element: $('#wrapperIntro4')[0]
 })
 
-//Fade in/out intro4 photos and quotes when #intro5a is 85% from top of screen
-$('#intro5a').waypoint(function (direction) {
+//Hello/Goodbye intro4 photos and quotes
+$('#wrapperIntro4').waypoint(function (direction) {
   if(direction == 'down'){
     console.log('Hello intro4 photos and quotes');
     $('#interactionsPhotos').animate({"opacity": 1}, "slow");
     $('#interactionsPhotos').css("pointer-events", "auto")
-    //FADE IN "CLICK ME"
+    // $('#clickPhotos4').animate({"opacity": 1}, "slow");
   } else {
     if (player.play) {
       //is this volume animation even working???
@@ -361,9 +387,20 @@ $('#intro5a').waypoint(function (direction) {
     $('.headshotInteractions').animate({"opacity": 1}, "slow");
     $('.quote').addClass("startOpacity0", 400);
     $('#interactionsPhotos').css("pointer-events", "none")
-      //FADE OUT "CLICK ME"
+    // $('#clickPhotos4').animate({"opacity": 0}, "slow");
   }
-}, {offset: '85%'});
+}, {offset: '20%'});
+
+// Cilck
+$('#intro5a').waypoint(function (direction) {
+  if(direction == 'down'){
+    console.log('Hello Click me');
+    $('#clickPhotos4').animate({"opacity": 1}, "slow");
+  } else {
+    console.log('Goodbye Click me');
+    $('#clickPhotos4').animate({"opacity": 0}, "slow");
+  }
+}, {offset: '99%'});
 
 // Reset style and audio for intro4banks on scroll away when intro5 is 50% from top
 $("#intro5a").waypoint(function (direction) {
@@ -373,7 +410,8 @@ $("#intro5a").waypoint(function (direction) {
     $('.headshot.intro4leave').animate({"opacity": 0}, "slow");
     $('.quote.intro4keep').removeClass("startOpacity0", 400);
     $('.quote.intro4leave').addClass("startOpacity0", 400);
-    $('.headshotInteractions').css("pointer-events", "none")
+    $('.headshotInteractions').css("pointer-events", "none");
+    $('#clickPhotos4').animate({"opacity": 0}, "slow");
       if (player.play) {
       //is this volume animation even working???
       player.animate({volume: 0.0}, 1000);
@@ -384,11 +422,11 @@ $("#intro5a").waypoint(function (direction) {
       } 
   } else {
     $('.headshotInteractions').css("pointer-events", "auto")
+    $('#clickPhotos4').animate({"opacity": 1}, "slow");
     $('.headshotInteractions').animate({"opacity": 1}, "slow");
     $('.quote.intro4keep').addClass("startOpacity0", 400);
-    //FADE IN CLICK ME
   }
-}, {offset: '50%'});
+}, {offset: '80%'});
 
 //sticky for #intro5a
 var sticky_5a = new Waypoint.Sticky({
@@ -405,7 +443,7 @@ $('#wrapperIntro5a').waypoint(function (direction) {
     $('#wrapperIntro4').animate({"opacity": 1}, "slow");
     $('#wrapperIntro5a').animate({"opacity": 0}, "slow");
   }
-}, {offset: -10});
+}, {offset: "40%"});
 
 //Fade in/out intro5b 20% before intro5a2para hits, and Un-sticking intro4
 $('#intro5a2para').waypoint(function (direction) {
@@ -448,7 +486,7 @@ $('#defineTimeIntro5c').waypoint(function (direction) {
     console.log('Hello intro5c photos and quotes');
     $('#reaction1aPhotos').animate({"opacity": 1}, "slow");
     $('#reaction1aPhotos').css("pointer-events", "auto")
-    //FADE IN "CLICK ME"
+    $('#clickPhotos5c').animate({"opacity": 1}, "slow");
   } else {
       if (player.play) {
         //is this volume animation even working???
@@ -462,7 +500,7 @@ $('#defineTimeIntro5c').waypoint(function (direction) {
     $('.headshotReaction1a').animate({"opacity": 1}, "slow");
     $('.quoteVertical').addClass('startOpacity0');
     $('#reaction1aPhotos').css("pointer-events", "none")
-      //FADE OUT "CLICK ME"
+    $('#clickPhotos5c').animate({"opacity": 0}, "slow");
   }
   }, {offset: '85%'});
 
@@ -491,11 +529,11 @@ $('#wrapperIntro5d').waypoint(function (direction) {
       $('#reaction1aPhotos').css("pointer-events", "none")
       $('.quoteVertical').addClass('startOpacity0');
       $('.headshotReaction1a').animate({"opacity": 1}, "slow");
-      //FADE OUT "CLICK ME"
+      $('#clickPhotos5c').animate({"opacity": 0}, "slow");
   } else {
       console.log("Hello intro5c photos and quotes scrolling up");
       $('#reaction1aPhotos').css("pointer-events", "auto")
-      //FADE IN "CLICK ME"
+      $('#clickPhotos5c').animate({"opacity": 1}, "slow");
   }
 }, {offset: '60%'});
 
@@ -525,7 +563,7 @@ $('#defineTimeIntro5e').waypoint(function (direction) {
     console.log('Hello intro5e photos and quotes');
     $('#reaction1bPhotos').animate({"opacity": 1}, "slow");
     $('#reaction1bPhotos').css("pointer-events", "auto")
-    //FADE IN "CLICK ME"
+    $('#clickPhotos5c').animate({"opacity": 1}, "slow");
   } else {
       if (player.play) {
         //is this volume animation even working???
@@ -539,7 +577,7 @@ $('#defineTimeIntro5e').waypoint(function (direction) {
     $('.headshotReaction1b').animate({"opacity": 1}, "slow");
     $('.quoteVertical').addClass('startOpacity0');
     $('#reaction1bPhotos').css("pointer-events", "none")
-      //FADE OUT "CLICK ME"
+    $('#clickPhotos5c').animate({"opacity": 0}, "slow");
   }
   }, {offset: '85%'});
 
@@ -591,13 +629,13 @@ $('#wrapperIntro6b').waypoint(function (direction) {
       $('#reaction1bPhotos').css("pointer-events", "none");
       $('.quoteVertical').addClass('startOpacity0');
       $('.headshotReaction1b').animate({"opacity": 1}, "slow");
-      //FADE OUT "CLICK ME"
+      $('#clickPhotos5c').animate({"opacity": 0}, "slow");
   } else {
       $('#reaction1bPhotos').css("pointer-events", "auto");
       $('#wrapperIntro5e').animate({"opacity": 1}, 800);
       $('#wrapperIntro6a').animate({"opacity": 0}, 800);
       $('#wrapperIntro5b').removeClass('sticky-surpassed').addClass('stuck');
-      //FADE IN "CLICK ME"
+      $('#clickPhotos5c').animate({"opacity": 1}, "slow");
   }
 }, {offset: '100%'});
 
@@ -612,7 +650,7 @@ $('#defineTimeIntro6c').waypoint(function (direction) {
     console.log('Hello intro6c photos and quotes');
     $('#reaction2Photos').animate({"opacity": 1}, "slow");
     $('#reaction2Photos').css("pointer-events", "auto")
-    //FADE IN "CLICK ME"
+      $('#clickPhotos6c').animate({"opacity": 1}, "slow");
   } else {
       if (player.play) {
         //is this volume animation even working???
@@ -626,7 +664,7 @@ $('#defineTimeIntro6c').waypoint(function (direction) {
     $('.headshotReaction2').animate({"opacity": 1}, "slow");
     $('.quoteVertical').addClass('startOpacity0');
     $('#reaction2Photos').css("pointer-events", "none")
-      //FADE OUT "CLICK ME"
+    $('#clickPhotos6c').animate({"opacity": 0}, "slow");
   }
   }, {offset: '90%'});
 
@@ -681,14 +719,14 @@ $('#wrapperIntro7b').waypoint(function (direction) {
       $('#reaction2Photos').css("pointer-events", "none");
       $('.quoteVertical').addClass('startOpacity0');
       $('.headshotReaction2').animate({"opacity": 1}, "slow");
-      //FADE OUT "CLICK ME"
+      $('#clickPhotos6c').animate({"opacity": 0}, "slow");
   } else {
       console.log("Fading in 6c photos and audio, fade out intro7a, Restick 6b - scrolling up");
       $('#reaction2Photos').css("pointer-events", "auto");
       $('#wrapperIntro6c').animate({"opacity": 1}, 800);
       $('#wrapperIntro7a').animate({"opacity": 0}, 800);
       $('#wrapperIntro6b').removeClass('sticky-surpassed').addClass('stuck');
-      //FADE IN "CLICK ME"
+      $('#clickPhotos6c').animate({"opacity": 1}, "slow");
   }
 }, {offset: '95%'});
 
@@ -700,7 +738,7 @@ $('#defineTimeIntro7c').waypoint(function (direction) {
     console.log('Hello intro7c photos and quotes');
     $('#reaction3Photos').animate({"opacity": 1}, "slow");
     $('#reaction3Photos').css("pointer-events", "auto")
-    //FADE IN "CLICK ME"
+    $('#clickPhotos7c').animate({"opacity": 1}, "slow");
   } else {
       if (player.play) {
         //is this volume animation even working???
@@ -714,7 +752,7 @@ $('#defineTimeIntro7c').waypoint(function (direction) {
     $('.headshotReaction3').animate({"opacity": 1}, "slow");
     $('.quoteVerticalQuad').addClass('startOpacity0');
     $('#reaction3Photos').css("pointer-events", "none")
-      //FADE OUT "CLICK ME"
+    $('#clickPhotos7c').animate({"opacity": 0}, "slow");
   }
   }, {offset: '90%'});
 
@@ -767,13 +805,13 @@ $('#wrapperIntro7d').waypoint(function (direction) {
       $('#reaction3Photos').css("pointer-events", "none");
       $('.quoteVerticalQuad').addClass('startOpacity0');
       $('.headshotReaction3').animate({"opacity": 1}, "slow");
-      //FADE OUT "CLICK ME"
+      $('#clickPhotos7c').animate({"opacity": 0}, "slow");
   } else {
       console.log("Fading in 7c photos and audio, Restick 7b - scrolling up");
       $('#reaction3Photos').css("pointer-events", "auto");
       $('#wrapperIntro7c').animate({"opacity": 1}, 800);
       $('#wrapperIntro7b').removeClass('sticky-surpassed').addClass('stuck');
-      //FADE IN "CLICK ME"
+      $('#clickPhotos7c').animate({"opacity": 1}, "slow");
   }
 }, {offset: '95%'});
 
@@ -812,10 +850,12 @@ $('#intro8').waypoint(function (direction) {
     console.log("topnav recede");
     //make slow
     $('.topnav').addClass("hiddenBar", 1000);
+    $('#scrollArrow').animate({"opacity": 1}, "slow");
   } else {
     //make slow
     console.log("topnav Full");
     $('.topnav').removeClass("hiddenBar", 1000);
+    $('#scrollArrow').animate({"opacity": 0}, "slow");
   }
 }, {offset: '20%'});
 
