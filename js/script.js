@@ -91,7 +91,7 @@ var sticky_1b = new Waypoint.Sticky({
 })
 
 // Fade in/out intro1b photos
-$('#intro1b').waypoint(function(direction) {
+$('#intro1a').waypoint(function(direction) {
   if(direction == 'down'){
     $('#statusQuoPhotos').animate({"opacity": 1}, "slow");
     $('#statusQuoPhotos').css("pointer-events", "auto");
@@ -109,7 +109,7 @@ $('#intro1b').waypoint(function(direction) {
       // player.load();
     } 
   }
-}, {offset: '20%'});
+}, {offset: '0%'});
 
 // Un/Re-sticking intro1
 $('#intro2').waypoint(function(direction) {
@@ -121,7 +121,6 @@ $('#intro2').waypoint(function(direction) {
     console.log ('Re-stick intro1b'); 
   }
 }, {offset: '100%'});
-
 
 // Re-set audio and and clickability after scrolling away from intro1
 $('#intro2').waypoint(function(direction) {
