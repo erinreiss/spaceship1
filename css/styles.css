@@ -254,8 +254,9 @@ p {
 
 .leftP{
     margin-left: 9%;
-    top: 241px;
+    top: 60vh;
     font-size: 1.12em;
+    position: absolute;
 }
 
 .stuck{

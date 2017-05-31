@@ -445,19 +445,20 @@ $('#wrapperIntro5a').waypoint(function (direction) {
 }, {offset: "40%"});
 
 //Fade in/out intro5b 20% before intro5a2para hits, and Un-sticking intro4
-$('#intro5a2para').waypoint(function (direction) {
-  console.log('Fade out/in that little baby paragraph after interactions');
+$('#intro5b').waypoint(function (direction) {
   $('.headshot').css("opacity", 1);
   if(direction == 'down'){
+    console.log('Fade out that little baby paragraph after interactions');
     $('#intro5a2para').animate({"opacity": 0}, "slow");
-    $('#wrapperIntro5b').animate({"opacity": 1}, "slow");
+    // $('#wrapperIntro5b').animate({"opacity": 1}, "slow");
     $('#wrapperIntro4').removeClass('stuck').addClass('sticky-surpassed');
   } else {
+    console.log('Fade in that little baby paragraph after interactions');
     $('#intro5a2para').animate({"opacity": 1}, "slow");
-    $('#wrapperIntro5b').animate({"opacity": 0}, "slow");
+    // $('#wrapperIntro5b').animate({"opacity": 0}, "slow");
     $('#wrapperIntro4').removeClass('sticky-surpassed').addClass('stuck');
   }
-}, {offset: '20%'});
+}, {offset: '80%'});
     
 // Changing Police React 1 header to/from white background
 $('#intro5b').waypoint(function (direction){
