@@ -444,8 +444,8 @@ $('#wrapperIntro5a').waypoint(function (direction) {
   }
 }, {offset: "40%"});
 
-//Fade in/out intro5b 20% before intro5a2para hits, and Un-sticking intro4
-$('#intro5b').waypoint(function (direction) {
+//Fade in/out babypara 20% before intro5a2para hits, and Un-sticking intro4
+$('#wrapperIntro5c').waypoint(function (direction) {
   $('.headshot').css("opacity", 1);
   if(direction == 'down'){
     console.log('Fade out that little baby paragraph after interactions');
@@ -460,16 +460,6 @@ $('#intro5b').waypoint(function (direction) {
   }
 }, {offset: '80%'});
     
-// Changing Police React 1 header to/from white background
-$('#intro5b').waypoint(function (direction){
-  console.log('Changing Police React 1 header to/from white background')
-  if(direction == 'down'){
-    $("#wrapperIntro5b").css("background-color", "white");
-  } else {
-    $("#wrapperIntro5b").css("background-color", "");
-  }
-});
-
 //sticky for #intro5b
 var sticky_5b = new Waypoint.Sticky({
   element: $('#wrapperIntro5b')[0]
@@ -479,6 +469,16 @@ var sticky_5b = new Waypoint.Sticky({
 var sticky_5c = new Waypoint.Sticky({
   element: $('#wrapperIntro5c')[0]
 })
+
+// Changing Police React 1 header to/from white background
+$('#intro5c').waypoint(function (direction){
+  console.log('Changing Police React 1 header to/from white background')
+  if(direction == 'down'){
+    $("#wrapperIntro5b").css("background-color", "white");
+  } else {
+    $("#wrapperIntro5b").css("background-color", "");
+  }
+});
 
 //Fade in/out intro5c photos and audio on entrance
 $('#defineTimeIntro5c').waypoint(function (direction) {
