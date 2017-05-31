@@ -582,7 +582,7 @@ $('#defineTimeIntro5e').waypoint(function (direction) {
   }, {offset: '85%'});
 
 //Fade out/in intro5a (big student photos)
-$('#wrapperIntro6b').waypoint(function (direction) {
+$('#wrapperStudentsReact1Header').waypoint(function (direction) {
   console.log("Fade out/in 5a");
   if(direction == 'down'){
     $('#wrapperIntro5a').animate({"opacity": 0}, "slow");
@@ -603,7 +603,7 @@ $('#defineTimeIntro5e').waypoint(function (direction) {
 }, {offset: '65%'});
 
 //Un/Re-stick wrapperIntro5e
-$('#wrapperIntro6b').waypoint(function (direction) {
+$('#wrapperStudentsReact1Header').waypoint(function (direction) {
   console.log("Un-sticking 5e");
   if(direction == 'down'){
     $('#wrapperIntro5e').removeClass('stuck').addClass('sticky-surpassed');
@@ -613,7 +613,7 @@ $('#wrapperIntro6b').waypoint(function (direction) {
 }, {offset: '100%'});
 
 //Fading out/in intro5e photos and audio on exit, fade in/out introa, un/restick wrapperPoliceReact1Header
-$('#wrapperIntro6b').waypoint(function (direction) {
+$('#wrapperStudentsReact1Header').waypoint(function (direction) {
   console.log("Fading out/in intro5e photos and audio on exit, fade in/out introa, un/restick wrapperPoliceReact1Header scrolling up");
   if(direction == 'down'){
       if (player.play) {
@@ -671,7 +671,7 @@ $('#defineTimeIntro6c').waypoint(function (direction) {
 //BOOO
 
 //Fade out/in intro6a (big cop photos)
-$('#wrapperIntro7b').waypoint(function (direction) {
+$('#wrapperPoliceReact2Header').waypoint(function (direction) {
   if(direction == 'down'){
     console.log("Fade out 6a - big photos of cops");
     $('#wrapperIntro6a').animate({"opacity": 0}, "slow");
@@ -681,19 +681,19 @@ $('#wrapperIntro7b').waypoint(function (direction) {
   }
 }, {offset: '110%'});
 
-// Fade out/in intro6b
+// Fade out/in wrapperStudentsReact1Header
 $('#defineTimeIntro6c').waypoint(function (direction) {
   if(direction == 'down'){
-    console.log("Fade out 6b - Students React Header");
-    $('#wrapperIntro6b').animate({"opacity": 0}, 800);
+    console.log("Fade out Students React Header");
+    $('#wrapperStudentsReact1Header').animate({"opacity": 0}, 800);
   } else {
-    console.log("Fade in 6b - Students React Header");
-    $('#wrapperIntro6b').animate({"opacity": 1}, 800);
+    console.log("Fade in Students React Header");
+    $('#wrapperStudentsReact1Header').animate({"opacity": 1}, 800);
   }
 }, {offset: '65%'});
 
 //Un/Re-stick wrapperIntro6c and 6a
-$('#wrapperIntro7b').waypoint(function (direction) {
+$('#wrapperPoliceReact2Header').waypoint(function (direction) {
   console.log("Un-sticking 6c and 6a");
   if(direction == 'down'){
     $('#wrapperIntro6c, #wrapperIntro6a').removeClass('stuck').addClass('sticky-surpassed');
@@ -702,10 +702,10 @@ $('#wrapperIntro7b').waypoint(function (direction) {
   }
 }, {offset: '100%'});
 
-//Fading out/in intro6c photos and audio on exit, fade in/out intro7a, un/restick intro6b
-$('#wrapperIntro7b').waypoint(function (direction) {
+//Fading out/in intro6c photos and audio on exit, fade in/out intro7a, un/restick wrapperStudentsReact1Header
+$('#wrapperPoliceReact2Header').waypoint(function (direction) {
   if(direction == 'down'){
-    console.log("Fading out 6c photos and audio, fade in intro7a, Unstick 6b - scrolling up");
+    console.log("Fading out 6c photos and audio, fade in intro7a, Unstick Students React Header - scrolling up");
       if (player.play) {
         //is this volume animation even working???
         player.animate({volume: 0.0}, 1000);
@@ -715,17 +715,17 @@ $('#wrapperIntro7b').waypoint(function (direction) {
       }
       $('#wrapperIntro6c').animate({"opacity": 0}, 800);
       $('#wrapperIntro7a').animate({"opacity": 1}, 800);
-      $('#wrapperIntro6b').removeClass('stuck').addClass('sticky-surpassed');
+      $('#wrapperStudentsReact1Header').removeClass('stuck').addClass('sticky-surpassed');
       $('#reaction2Photos').css("pointer-events", "none");
       $('.quoteVertical').addClass('startOpacity0');
       $('.headshotReaction2').animate({"opacity": 1}, "slow");
       $('#clickPhotos6c').animate({"opacity": 0}, "slow");
   } else {
-      console.log("Fading in 6c photos and audio, fade out intro7a, Restick 6b - scrolling up");
+      console.log("Fading in 6c photos and audio, fade out intro7a, Restick Students React Header - scrolling up");
       $('#reaction2Photos').css("pointer-events", "auto");
       $('#wrapperIntro6c').animate({"opacity": 1}, 800);
       $('#wrapperIntro7a').animate({"opacity": 0}, 800);
-      $('#wrapperIntro6b').removeClass('sticky-surpassed').addClass('stuck');
+      $('#wrapperStudentsReact1Header').removeClass('sticky-surpassed').addClass('stuck');
       $('#clickPhotos6c').animate({"opacity": 1}, "slow");
   }
 }, {offset: '95%'});
@@ -767,14 +767,14 @@ $('#wrapperIntro7d').waypoint(function (direction) {
   }
 }, {offset: '110%'});
 
-// Fade out/in intro7b
+// Fade out/in wrapperPoliceReact2Header
 $('#defineTimeIntro7c').waypoint(function (direction) {
   if(direction == 'down'){
-    console.log("Fade out 7b - Police React Header 2");
-    $('#wrapperIntro7b').animate({"opacity": 0}, 800);
+    console.log("Fade out Police React Header 2");
+    $('#wrapperPoliceReact2Header').animate({"opacity": 0}, 800);
   } else {
-    console.log("Fade in 7b - Police React Header 2");
-    $('#wrapperIntro7b').animate({"opacity": 1}, 800);
+    console.log("Fade in Police React Header 2");
+    $('#wrapperPoliceReact2Header').animate({"opacity": 1}, 800);
   }
 }, {offset: '65%'});
 
@@ -788,10 +788,10 @@ $('#wrapperIntro7d').waypoint(function (direction) {
   }
 }, {offset: '100%'});
 
-//Fading out/in intro7c photos and audio on exit, un/restick intro7b
+//Fading out/in intro7c photos and audio on exit, un/restick wrapperPoliceReact2Header
 $('#wrapperIntro7d').waypoint(function (direction) {
   if(direction == 'down'){
-    console.log("Fading out 7c photos and audio, Unstick 7b - scrolling up");
+    console.log("Fading out 7c photos and audio, Unstick wrapperPoliceReact2Header - scrolling up");
       if (player.play) {
         //is this volume animation even working???
         player.animate({volume: 0.0}, 1000);
@@ -801,33 +801,33 @@ $('#wrapperIntro7d').waypoint(function (direction) {
       }
       $('#wrapperIntro7c').animate({"opacity": 0}, 800);
       // $('#wrapperIntro7a').animate({"opacity": 1}, 800);
-      $('#wrapperIntro7b').removeClass('stuck').addClass('sticky-surpassed');
+      $('#wrapperPoliceReact2Header').removeClass('stuck').addClass('sticky-surpassed');
       $('#reaction3Photos').css("pointer-events", "none");
       $('.quoteVerticalQuad').addClass('startOpacity0');
       $('.headshotReaction3').animate({"opacity": 1}, "slow");
       $('#clickPhotos7c').animate({"opacity": 0}, "slow");
   } else {
-      console.log("Fading in 7c photos and audio, Restick 7b - scrolling up");
+      console.log("Fading in 7c photos and audio, Restick wrapperPoliceReact2Header - scrolling up");
       $('#reaction3Photos').css("pointer-events", "auto");
       $('#wrapperIntro7c').animate({"opacity": 1}, 800);
-      $('#wrapperIntro7b').removeClass('sticky-surpassed').addClass('stuck');
+      $('#wrapperPoliceReact2Header').removeClass('sticky-surpassed').addClass('stuck');
       $('#clickPhotos7c').animate({"opacity": 1}, "slow");
   }
 }, {offset: '95%'});
 
 // Changing Students React header to/from white background
-$('#intro6b').waypoint(function (direction){
+$('#wrapperIntro6c').waypoint(function (direction){
   console.log('Changing Students React header to/from white background')
   if(direction == 'down'){
-    $("#wrapperIntro6b").css("background-color", "white");
+    $("#wrapperStudentsReact1Header").css("background-color", "white");
   } else {
-    $("#wrapperIntro6b").css("background-color", "");
+    $("#wrapperStudentsReact1Header").css("background-color", "");
   }
 });
 
-//sticky for #intro6b
+//sticky for #wrapperStudentsReact1Header
 var sticky_6b = new Waypoint.Sticky({
-  element: $('#wrapperIntro6b')[0]
+  element: $('#wrapperStudentsReact1Header')[0]
 })
 
 //sticky for #intro6c
@@ -836,7 +836,7 @@ var sticky_6c = new Waypoint.Sticky({
 })
 
 var sticky_7b = new Waypoint.Sticky({
-  element: $('#wrapperIntro7b')[0]
+  element: $('#wrapperPoliceReact2Header')[0]
 })
 
 //sticky for #intro7c
