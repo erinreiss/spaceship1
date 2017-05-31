@@ -450,19 +450,19 @@ $('#wrapperIntro5c').waypoint(function (direction) {
   if(direction == 'down'){
     console.log('Fade out that little baby paragraph after interactions');
     $('#intro5a2para').animate({"opacity": 0}, "slow");
-    // $('#wrapperIntro5b').animate({"opacity": 1}, "slow");
+    // $('#wrapperPoliceReact1Header').animate({"opacity": 1}, "slow");
     $('#wrapperIntro4').removeClass('stuck').addClass('sticky-surpassed');
   } else {
     console.log('Fade in that little baby paragraph after interactions');
     $('#intro5a2para').animate({"opacity": 1}, "slow");
-    // $('#wrapperIntro5b').animate({"opacity": 0}, "slow");
+    // $('#wrapperPoliceReact1Header').animate({"opacity": 0}, "slow");
     $('#wrapperIntro4').removeClass('sticky-surpassed').addClass('stuck');
   }
 }, {offset: '80%'});
     
-//sticky for #intro5b
+//sticky for #wrapperPoliceReact1Header
 var sticky_5b = new Waypoint.Sticky({
-  element: $('#wrapperIntro5b')[0]
+  element: $('#wrapperPoliceReact1Header')[0]
 })
 
 //sticky for #intro5c
@@ -474,9 +474,9 @@ var sticky_5c = new Waypoint.Sticky({
 $('#intro5c').waypoint(function (direction){
   console.log('Changing Police React 1 header to/from white background')
   if(direction == 'down'){
-    $("#wrapperIntro5b").css("background-color", "white");
+    $("#wrapperPoliceReact1Header").css("background-color", "white");
   } else {
-    $("#wrapperIntro5b").css("background-color", "");
+    $("#wrapperPoliceReact1Header").css("background-color", "");
   }
 });
 
@@ -591,14 +591,14 @@ $('#wrapperIntro6b').waypoint(function (direction) {
   }
 }, {offset: '110%'});
 
-// Fade out/in intro5b
+// Fade out/in wrapperPoliceReact1Header
 $('#defineTimeIntro5e').waypoint(function (direction) {
   if(direction == 'down'){
     console.log("Fade out 5b");
-    $('#wrapperIntro5b').animate({"opacity": 0}, 800);
+    $('#wrapperPoliceReact1Header').animate({"opacity": 0}, 800);
   } else {
     console.log("Fade in 5b");
-    $('#wrapperIntro5b').animate({"opacity": 1}, 800);
+    $('#wrapperPoliceReact1Header').animate({"opacity": 1}, 800);
   }
 }, {offset: '65%'});
 
@@ -612,9 +612,9 @@ $('#wrapperIntro6b').waypoint(function (direction) {
   }
 }, {offset: '100%'});
 
-//Fading out/in intro5e photos and audio on exit, fade in/out introa, un/restick intro5b
+//Fading out/in intro5e photos and audio on exit, fade in/out introa, un/restick wrapperPoliceReact1Header
 $('#wrapperIntro6b').waypoint(function (direction) {
-  console.log("Fading out/in intro5e photos and audio on exit, fade in/out introa, un/restick intro5bscrolling up");
+  console.log("Fading out/in intro5e photos and audio on exit, fade in/out introa, un/restick wrapperPoliceReact1Header scrolling up");
   if(direction == 'down'){
       if (player.play) {
         //is this volume animation even working???
@@ -625,7 +625,7 @@ $('#wrapperIntro6b').waypoint(function (direction) {
       }
       $('#wrapperIntro5e').animate({"opacity": 0}, 800);
       $('#wrapperIntro6a').animate({"opacity": 1}, 800);
-      $('#wrapperIntro5b').removeClass('stuck').addClass('sticky-surpassed');
+      $('#wrapperPoliceReact1Header').removeClass('stuck').addClass('sticky-surpassed');
       $('#reaction1bPhotos').css("pointer-events", "none");
       $('.quoteVertical').addClass('startOpacity0');
       $('.headshotReaction1b').animate({"opacity": 1}, "slow");
@@ -634,7 +634,7 @@ $('#wrapperIntro6b').waypoint(function (direction) {
       $('#reaction1bPhotos').css("pointer-events", "auto");
       $('#wrapperIntro5e').animate({"opacity": 1}, 800);
       $('#wrapperIntro6a').animate({"opacity": 0}, 800);
-      $('#wrapperIntro5b').removeClass('sticky-surpassed').addClass('stuck');
+      $('#wrapperPoliceReact1Header').removeClass('sticky-surpassed').addClass('stuck');
       $('#clickPhotos5c').animate({"opacity": 1}, "slow");
   }
 }, {offset: '100%'});
