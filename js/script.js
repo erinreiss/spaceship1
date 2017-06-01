@@ -155,19 +155,19 @@ $('#intro2').waypoint(function(direction) {
 // Kyle_statusQuo Hover Listner
 $('#kyle_statusQuo')
   .mouseenter(function(){
-    $('#kyle_statusQuo').attr("src", "images/kyle_statusQuo2.png");
+    $('#kyle_statusQuo').attr("src", "images/kyle_statusQuo2.jpg");
   })
   .mouseleave(function(){
-    $('#kyle_statusQuo').attr("src", "images/kyle_statusQuo.png");
+    $('#kyle_statusQuo').attr("src", "images/kyle_statusQuo.jpg");
   });
 
   // Darin_statusQuo Hover Listner
 $('#darin_statusQuo')
   .mouseenter(function(){
-    $('#darin_statusQuo').attr("src", "images/darin_statusQuo2.png");
+    $('#darin_statusQuo').attr("src", "images/darin_statusQuo2.jpg");
   })
   .mouseleave(function(){
-    $('#darin_statusQuo').attr("src", "images/darin_statusQuo.png");
+    $('#darin_statusQuo').attr("src", "images/darin_statusQuo.jpg");
   });
 
 // Universal click listener for audio and quotes (not Vertical quotes)
