@@ -623,7 +623,7 @@ $('#wrapperStudentsReact1Header').waypoint(function (direction) {
         player.currentTime = 0;
         player.animate({volume: 1.0}, 0);
       }
-      $('#wrapperIntro5e').animate({"opacity": 0}, 800);
+      $('#wrapperIntro5e').stop(true, true).delay(1000).animate({"opacity": 0}, 800);
       $('#wrapperIntro6a').animate({"opacity": 1}, 800);
       $('#wrapperPoliceReact1Header').removeClass('stuck').addClass('sticky-surpassed');
       $('#reaction1bPhotos').css("pointer-events", "none");
@@ -681,16 +681,26 @@ $('#wrapperPoliceReact2Header').waypoint(function (direction) {
   }
 }, {offset: '110%'});
 
+//sticky for #wrapperStudentsReact1Header
+// var sticky_6b = new Waypoint.Sticky({
+//   element: $('#wrapperStudentsReact1Header')[0]
+// })
+
+//sticky for #intro6c
+var sticky_6c = new Waypoint.Sticky({
+  element: $('#wrapperIntro6c')[0]
+})
+
 // Fade out/in wrapperStudentsReact1Header
-$('#defineTimeIntro6c').waypoint(function (direction) {
-  if(direction == 'down'){
-    console.log("Fade out Students React Header");
-    $('#wrapperStudentsReact1Header').animate({"opacity": 0}, 800);
-  } else {
-    console.log("Fade in Students React Header");
-    $('#wrapperStudentsReact1Header').animate({"opacity": 1}, 800);
-  }
-}, {offset: '65%'});
+// $('#defineTimeIntro6c').waypoint(function (direction) {
+//   if(direction == 'down'){
+//     console.log("Fade out Students React Header");
+//     $('#wrapperStudentsReact1Header').animate({"opacity": 0}, 800);
+//   } else {
+//     console.log("Fade in Students React Header");
+//     $('#wrapperStudentsReact1Header').animate({"opacity": 1}, 800);
+//   }
+// }, {offset: '65%'});
 
 //Un/Re-stick wrapperIntro6c and 6a
 $('#wrapperPoliceReact2Header').waypoint(function (direction) {
@@ -713,9 +723,9 @@ $('#wrapperPoliceReact2Header').waypoint(function (direction) {
         player.currentTime = 0;
         player.animate({volume: 1.0}, 0);
       }
-      $('#wrapperIntro6c').animate({"opacity": 0}, 800);
+      $('#wrapperIntro6c').stop(true, true).delay(1000).animate({"opacity": 0}, 800);
       $('#wrapperIntro7a').animate({"opacity": 1}, 800);
-      $('#wrapperStudentsReact1Header').removeClass('stuck').addClass('sticky-surpassed');
+      // $('#wrapperStudentsReact1Header').removeClass('stuck').addClass('sticky-surpassed');
       $('#reaction2Photos').css("pointer-events", "none");
       $('.quoteVertical').addClass('startOpacity0');
       $('.headshotReaction2').animate({"opacity": 1}, "slow");
@@ -723,9 +733,9 @@ $('#wrapperPoliceReact2Header').waypoint(function (direction) {
   } else {
       console.log("Fading in 6c photos and audio, fade out intro7a, Restick Students React Header - scrolling up");
       $('#reaction2Photos').css("pointer-events", "auto");
-      $('#wrapperIntro6c').animate({"opacity": 1}, 800);
+      $('#wrapperIntro6c').animate({"opacity": 1}, 1000);
       $('#wrapperIntro7a').animate({"opacity": 0}, 800);
-      $('#wrapperStudentsReact1Header').removeClass('sticky-surpassed').addClass('stuck');
+      // $('#wrapperStudentsReact1Header').removeClass('sticky-surpassed').addClass('stuck');
       $('#clickPhotos6c').animate({"opacity": 1}, "slow");
   }
 }, {offset: '95%'});
@@ -768,15 +778,15 @@ $('#wrapperIntro7d').waypoint(function (direction) {
 }, {offset: '110%'});
 
 // Fade out/in wrapperPoliceReact2Header
-$('#defineTimeIntro7c').waypoint(function (direction) {
-  if(direction == 'down'){
-    console.log("Fade out Police React Header 2");
-    $('#wrapperPoliceReact2Header').animate({"opacity": 0}, 800);
-  } else {
-    console.log("Fade in Police React Header 2");
-    $('#wrapperPoliceReact2Header').animate({"opacity": 1}, 800);
-  }
-}, {offset: '65%'});
+// $('#defineTimeIntro7c').waypoint(function (direction) {
+//   if(direction == 'down'){
+//     console.log("Fade out Police React Header 2");
+//     $('#wrapperPoliceReact2Header').animate({"opacity": 0}, 800);
+//   } else {
+//     console.log("Fade in Police React Header 2");
+//     $('#wrapperPoliceReact2Header').animate({"opacity": 1}, 800);
+//   }
+// }, {offset: '65%'});
 
 //Un/Re-stick wrapperIntro7c and wrapperIntro7a - good waypoint?
 $('#wrapperIntro7d').waypoint(function (direction) {
@@ -799,9 +809,9 @@ $('#wrapperIntro7d').waypoint(function (direction) {
         player.currentTime = 0;
         player.animate({volume: 1.0}, 0);
       }
-      $('#wrapperIntro7c').animate({"opacity": 0}, 800);
+      $('#wrapperIntro7c').stop(true, true).delay(1000).animate({"opacity": 0}, 800);
       // $('#wrapperIntro7a').animate({"opacity": 1}, 800);
-      $('#wrapperPoliceReact2Header').removeClass('stuck').addClass('sticky-surpassed');
+      // $('#wrapperPoliceReact2Header').removeClass('stuck').addClass('sticky-surpassed');
       $('#reaction3Photos').css("pointer-events", "none");
       $('.quoteVerticalQuad').addClass('startOpacity0');
       $('.headshotReaction3').animate({"opacity": 1}, "slow");
@@ -810,7 +820,7 @@ $('#wrapperIntro7d').waypoint(function (direction) {
       console.log("Fading in 7c photos and audio, Restick wrapperPoliceReact2Header - scrolling up");
       $('#reaction3Photos').css("pointer-events", "auto");
       $('#wrapperIntro7c').animate({"opacity": 1}, 800);
-      $('#wrapperPoliceReact2Header').removeClass('sticky-surpassed').addClass('stuck');
+      // $('#wrapperPoliceReact2Header').removeClass('sticky-surpassed').addClass('stuck');
       $('#clickPhotos7c').animate({"opacity": 1}, "slow");
   }
 }, {offset: '95%'});
@@ -825,19 +835,9 @@ $('#wrapperIntro6c').waypoint(function (direction){
   }
 });
 
-//sticky for #wrapperStudentsReact1Header
-var sticky_6b = new Waypoint.Sticky({
-  element: $('#wrapperStudentsReact1Header')[0]
-})
-
-//sticky for #intro6c
-var sticky_6c = new Waypoint.Sticky({
-  element: $('#wrapperIntro6c')[0]
-})
-
-var sticky_7b = new Waypoint.Sticky({
-  element: $('#wrapperPoliceReact2Header')[0]
-})
+// var sticky_7b = new Waypoint.Sticky({
+//   element: $('#wrapperPoliceReact2Header')[0]
+// })
 
 //sticky for #intro7c
 var sticky_6c = new Waypoint.Sticky({
